@@ -1,0 +1,907 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Resources > Insurance Enrollment - ODHC Content Review</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+        }
+        
+        .container {
+            display: flex;
+            min-height: 100vh;
+        }
+        
+        .sidebar {
+            width: 320px;
+            background: #2c3e50;
+            color: white;
+            padding: 20px;
+            overflow-y: auto;
+            position: fixed;
+            height: 100vh;
+        }
+        
+        .sidebar h1 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #34495e;
+        }
+        
+        .sidebar h2 {
+            font-size: 1rem;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            color: #ecf0f1;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .sidebar h3 {
+            font-size: 0.9rem;
+            margin-top: 12px;
+            margin-left: 10px;
+            margin-bottom: 8px;
+            color: #bdc3c7;
+        }
+        
+        .sidebar ul {
+            list-style: none;
+        }
+        
+        .sidebar li {
+            margin: 5px 0;
+        }
+        
+        .sidebar a {
+            color: #bdc3c7;
+            text-decoration: none;
+            display: block;
+            padding: 8px 12px;
+            border-radius: 4px;
+            transition: all 0.3s;
+            font-size: 0.9rem;
+        }
+        
+        .sidebar a:hover {
+            background: #34495e;
+            color: white;
+            padding-left: 16px;
+        }
+        
+        .sidebar .subsection {
+            margin-left: 15px;
+        }
+        
+        .sidebar .missing-page {
+            color: #e74c3c;
+            opacity: 0.6;
+            cursor: not-allowed;
+            padding: 8px 12px;
+            font-size: 0.9rem;
+            font-style: italic;
+        }
+        
+        .sidebar .missing-page::after {
+            content: " (no content yet)";
+            font-size: 0.75rem;
+            color: #c0392b;
+        }
+        
+        .main-content {
+            flex: 1;
+            margin-left: 320px;
+            padding: 40px;
+        }
+        
+        .content-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1.8fr;
+            gap: 30px;
+            max-width: 2400px;
+            margin-bottom: 30px;
+        }
+        
+        .content-box {
+            background: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .content-box h1 {
+            color: #2c3e50;
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+        
+        .content-box h2 {
+            color: #34495e;
+            font-size: 1.4rem;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+        
+        .content-box h3 {
+            color: #555;
+            font-size: 1.1rem;
+            margin-top: 15px;
+            margin-bottom: 8px;
+        }
+        
+        .content-box p {
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 12px;
+        }
+        
+        .content-box ul {
+            margin: 10px 0 18px 20px;
+        }
+        
+        .content-box li {
+            color: #555;
+            margin: 8px 0;
+        }
+        
+        .design-preview {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .design-preview h2 {
+            font-size: 1.3rem;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #3498db;
+        }
+        
+        .wireframe-container {
+            background: #ffffff;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+            margin-top: 20px;
+        }
+        
+        .wireframe-header {
+            background: #e0e0e0;
+            padding: 15px;
+            border-bottom: 2px solid #ccc;
+        }
+        
+        .wireframe-logo {
+            width: 120px;
+            height: 30px;
+            background: #999;
+            margin-bottom: 5px;
+        }
+        
+        .wireframe-nav {
+            background: #f5f5f5;
+            padding: 12px 15px;
+            display: flex;
+            gap: 15px;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .wireframe-nav-item {
+            width: 60px;
+            height: 14px;
+            background: #aaa;
+            border-radius: 2px;
+        }
+        
+        .wireframe-content {
+            padding: 20px;
+        }
+        
+        .wireframe-section {
+            margin: 18px 0;
+            padding: 16px;
+            border: 2px dashed #ccc;
+            border-radius: 8px;
+        }
+        
+        .wireframe-section-label {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: #666;
+            margin-bottom: 12px;
+        }
+        
+        .wireframe-box {
+            height: 12px;
+            background: #bbb;
+            border-radius: 3px;
+            margin: 8px 0;
+        }
+        
+        .wireframe-box.short { width: 45%; }
+        .wireframe-box.medium { width: 70%; }
+        .wireframe-box.long { width: 95%; }
+        
+        .strategized-content {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: none;
+            border: 2px solid #ddd;
+        }
+        
+        .strategized-content h2 {
+            color: #333;
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #ccc;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .strategized-content h3 {
+            color: #333;
+            font-size: 1.35rem;
+            margin-top: 25px;
+            margin-bottom: 12px;
+            text-align: center;
+            letter-spacing: 0.2px;
+        }
+        
+        .strategized-content h4 {
+            color: #333;
+            font-size: 0.95rem;
+            margin-top: 15px;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        
+        .strategized-content p {
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 12px;
+            font-size: 0.95rem;
+        }
+        
+        .strategized-content ul {
+            margin: 15px 0;
+            padding-left: 0;
+            list-style: none;
+        }
+        
+        .strategized-content li {
+            color: #555;
+            margin: 10px 0;
+            padding-left: 25px;
+            position: relative;
+            line-height: 1.6;
+        }
+        
+        .strategized-content li:before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: #666;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: #999;
+            color: white;
+            padding: 12px 28px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            margin: 15px 10px 15px 0;
+            border: 2px solid #666;
+            box-shadow: none;
+            transition: none;
+        }
+        
+        .cta-button:hover {
+            background: #999;
+            box-shadow: none;
+            transform: none;
+        }
+        
+        .cta-button.secondary {
+            background: #999;
+            box-shadow: none;
+        }
+        
+        .cta-button.secondary:hover {
+            background: #999;
+            box-shadow: none;
+        }
+        
+        .trust-badge {
+            background: #f5f5f5;
+            border-left: 4px solid #999;
+            padding: 12px 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+        
+        .trust-badge strong {
+            color: #333;
+        }
+        
+        .phone-highlight {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #333;
+            text-align: center;
+            margin: 20px 0;
+            padding: 15px;
+            background: #f5f5f5;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+        }
+        
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .service-card {
+            background: white;
+            border: 2px solid #bbb;
+            border-radius: 8px;
+            padding: 18px;
+            text-align: center;
+            transition: none;
+        }
+        
+        .service-card:hover {
+            border-color: #bbb;
+            box-shadow: none;
+        }
+        
+        .service-card h4 {
+            color: #333;
+            font-size: 1rem;
+            margin: 10px 0 8px 0;
+        }
+        
+        .service-card p {
+            font-size: 0.85rem;
+            color: #666;
+            line-height: 1.5;
+            margin: 0;
+        }
+        
+        .bw-header {
+            background: #fff;
+            padding: 16px;
+            border-bottom: 2px solid #ddd;
+        }
+        
+        .bw-header-row {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+        
+        .bw-logo {
+            width: 56px;
+            height: 56px;
+            border: 3px solid #666;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: #333;
+            background: #f5f5f5;
+            flex: 0 0 auto;
+        }
+        
+        .bw-box {
+            border: 2px solid #bbb;
+            border-radius: 10px;
+            padding: 10px 12px;
+            background: #fff;
+            color: #333;
+            font-size: 0.85rem;
+            line-height: 1.2;
+            font-weight: 600;
+            min-height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+        
+        .bw-icon {
+            width: 44px;
+            height: 44px;
+            border: 2px solid #bbb;
+            border-radius: 12px;
+            background: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #333;
+            font-weight: 800;
+            font-size: 1rem;
+        }
+        
+        .bw-pill {
+            border: 3px solid #666;
+            border-radius: 28px;
+            padding: 10px 18px;
+            background: #f5f5f5;
+            color: #333;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            min-height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            white-space: nowrap;
+        }
+        
+        .bw-pill.alt {
+            border-color: #999;
+        }
+        
+        .bw-nav {
+            background: #fff;
+            padding: 16px;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .bw-nav-shell {
+            border: 2px solid #bbb;
+            border-radius: 14px;
+            padding: 14px 16px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            background: #fff;
+            flex-wrap: wrap;
+        }
+        
+        .bw-nav-item {
+            padding: 8px 10px;
+            border-radius: 10px;
+            border: 2px solid #ddd;
+            font-weight: 700;
+            color: #333;
+            font-size: 0.85rem;
+            background: #f5f5f5;
+        }
+        
+        .bw-nav-search {
+            margin-left: auto;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .bw-search {
+            width: 200px;
+            height: 36px;
+            border: 2px solid #bbb;
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            font-weight: 600;
+            background: #fff;
+        }
+        
+        .bw-slideshow {
+            border: 2px solid #bbb;
+            border-radius: 14px;
+            background: #fff;
+            padding: 16px 16px 12px 16px;
+            margin: 14px 0 18px 0;
+        }
+        
+        .bw-slideshow-controls {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px solid #e3e3e3;
+        }
+        
+        .bw-arrow {
+            width: 38px;
+            height: 30px;
+            border: 2px solid #bbb;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f5f5f5;
+            color: #333;
+            font-weight: 800;
+            user-select: none;
+        }
+        
+        .bw-dots {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .bw-dot {
+            width: 10px;
+            height: 10px;
+            border: 2px solid #bbb;
+            border-radius: 50%;
+            background: #fff;
+        }
+        
+        .bw-dot.active {
+            background: #666;
+        }
+        
+        .footer-card {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-left: 5px solid #f39c12;
+            max-width: 1800px;
+        }
+        
+        .footer-card h2 {
+            color: #d68910;
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+        }
+        
+        .footer-card p {
+            color: #555;
+            line-height: 1.7;
+            margin-bottom: 10px;
+        }
+        
+        .footer-card .copyright {
+            color: #888;
+            font-size: 0.85rem;
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px solid #ddd;
+        }
+        
+        @media (max-width: 768px) {
+            .sidebar {
+                width: 100%;
+                position: relative;
+                height: auto;
+            }
+            .main-content {
+                margin-left: 0;
+            }
+            .content-wrapper {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <nav class="sidebar">
+            <h1>ODHC Content Review</h1>
+            <a href="index.html" style="background: #34495e; margin-bottom: 20px;">🏠 Home</a>
+            <h2>About</h2>
+            <ul>
+                <li><a href="about-mission-vision-and-values.html">Mission, Vision, and Values</a></li>
+                <li><a href="about-services-overview.html">Services</a></li>
+                <h3>Locations</h3>
+                <ul class="subsection">
+                    <li><a href="about-locations-mankato.html">Mankato</a></li>
+                    <li><a href="about-locations-shakopee.html">Shakopee</a></li>
+                    <li><a href="about-locations-school-based-centers.html">School-Based Centers</a></li>
+                </ul>
+                <li><a href="about-meet-the-team.html">Meet the Team</a></li>
+                <li><a href="about-news-and-events.html">News and Events</a></li>
+                <li><a href="about-careers.html">Careers</a></li>
+            </ul>
+            <h2>Patient Resources</h2>
+            <ul>
+                <li><a href="patient-resources-patient-portal.html">Patient Portal</a></li>
+                <li><a href="patient-resources-forms.html">Forms</a></li>
+                <li><a href="patient-resources-financial-assistance.html">Financial Assistance</a></li>
+                <li><a href="patient-resources-insurance-enrollment.html">Insurance Enrollment</a></li>
+                <li><a href="patient-resources-community-resources.html">Community Resources</a></li>
+            </ul>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="donate.html">Donate</a></li>
+            <h2>Footer pages Utility</h2>
+            <ul>
+                <li><a href="footer-pages-privacy-policy.html">Privacy Policy</a></li>
+                <li><a href="footer-pages-faq.html">FAQ</a></li>
+                <li><span class="missing-page">Annual Report</span></li>
+            </ul>
+        </nav>
+        <main class="main-content">
+            <div class="content-wrapper">
+                <div class="content-box">
+                    <h1>Patient Resources &gt; Insurance Enrollment (SOURCED)</h1>
+                    <p><em>Content from ODHC website</em></p>
+                    <hr />
+                    
+                    <h2>Open Door Health Center</h2>
+                    <h3>Insurance Enrollment Assistance</h3>
+                    <p>Open Door has a team of certified insurance enrollment specialists who can help you with MNsure navigation and the Medical Assistance (MA) enrollment process, either over the phone or in person. We can help individuals, families, and children apply for Medicaid, and MinnesotaCare. Enrollment services are free of charge to patients as well as the general public. We offer bilingual enrollment assistance.</p>
+                    
+                    <p><strong>Contact us for an appointment, or email your questions.</strong><br>
+                    (507) 388-2120 | enrollment@odhc.org</p>
+                    
+                    <h3>What is MNsure?</h3>
+                    <p>MNsure is Minnesota's marketplace where individuals, families and small businesses can shop, compare and choose the health insurance coverage that meets their needs and budget. MNsure is the only place to qualify for financial help that can lower the cost of your monthly insurance premium.</p>
+                    
+                    <h3>What plans are offered on MNsure and when can I sign up?</h3>
+                    <p>Through MNsure, you can find out if you qualify for one of the following types of plans:</p>
+                    <ul>
+                        <li>Medical Assistance*</li>
+                        <li>MinnesotaCare*</li>
+                        <li>Private plans (according to your age and location) – during open enrollment, usually November through January.</li>
+                    </ul>
+                    <p><em>*If you are eligible for one of these programs, you can enroll through MNsure all year long.</em></p>
+                    
+                    <h3>Get Started Today!</h3>
+                    <p><strong>Call to set up your appointment.</strong></p>
+                    <p><strong>You can reach us at</strong> (507) 388-2120</p>
+                    
+                    <h3>Items to Bring to Your Insurance Enrollment Appointment</h3>
+                    <ul>
+                        <li>Driver's license or other ID</li>
+                        <li>Social Security number for each person applying</li>
+                        <li>Date of birth for each household member</li>
+                        <li>Recent pay stubs, current tax forms, and documentation for any other sources of income</li>
+                        <li>Non-citizens must bring immigration documents such as Green Card, I-9, Employment Authorization card, or any other document proving legal status (only for applicants)</li>
+                    </ul>
+                    
+                    <p><strong>For an appointment call</strong> (507) 388-2120<br>
+                    <strong>Fax:</strong> 507-388-3924</p>
+                    
+                    <h3>Related</h3>
+                    <p>Medical Health<br>
+                    Dental Health<br>
+                    Behavioral Health<br>
+                    Insurance Enrollment<br>
+                    Legal Services<br>
+                    The Patient Experience<br>
+                    Patient Forms</p>
+                    <hr />
+                </div>
+                
+                <div class="design-preview">
+                    <h2>📐 Wireframe - Patient Resources &gt; Insurance Enrollment</h2>
+                    <div class="wireframe-container">
+                        <div class="wireframe-header">
+                            <div class="wireframe-logo"></div>
+                        </div>
+                        <div class="wireframe-nav">
+                            <div class="wireframe-nav-item"></div>
+                            <div class="wireframe-nav-item"></div>
+                            <div class="wireframe-nav-item"></div>
+                            <div class="wireframe-nav-item"></div>
+                            <div class="wireframe-nav-item"></div>
+                        </div>
+                        <div class="wireframe-content">
+                            <div class="wireframe-section">
+                                <div class="wireframe-section-label">Hero + CTA</div>
+                                <div class="wireframe-box long"></div>
+                                <div class="wireframe-box medium"></div>
+                                <div class="wireframe-box long"></div>
+                            </div>
+                            <div class="wireframe-section">
+                                <div class="wireframe-section-label">Key Info Blocks</div>
+                                <div class="wireframe-box long"></div>
+                                <div class="wireframe-box long"></div>
+                                <div class="wireframe-box short"></div>
+                            </div>
+                            <div class="wireframe-section">
+                                <div class="wireframe-section-label">Checklist / Items to Bring</div>
+                                <div class="wireframe-box long"></div>
+                                <div class="wireframe-box medium"></div>
+                                <div class="wireframe-box long"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="strategized-content">
+                    <h2>Strategized Content</h2>
+                    
+                    <div class="bw-header" style="margin: 18px 0;">
+                        <div class="bw-header-row" aria-hidden="true">
+                            <div class="bw-logo">LOGO</div>
+                            <div class="bw-box" style="min-width: 220px;">OPEN DOOR HEALTH CENTER</div>
+                            <div class="bw-icon" title="Phone" aria-label="Phone">☎</div>
+                            <div style="flex: 1;"></div>
+                            <div class="bw-pill">Portal Login</div>
+                            <div class="bw-pill alt">Pay My Bill</div>
+                        </div>
+                    </div>
+                    
+                    <div class="bw-nav" style="margin: 0 0 22px 0;">
+                        <div class="bw-nav-shell" aria-hidden="true">
+                            <div class="bw-nav-item">About</div>
+                            <div class="bw-nav-item">Locations</div>
+                            <div class="bw-nav-item">Patient Resources</div>
+                            <div class="bw-nav-item">Contact</div>
+                            <div class="bw-nav-item">Donate</div>
+                            <div class="bw-nav-search">
+                                <div class="bw-search">Search…</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div style="margin: 14px 0 18px 0;">
+                        <div class="service-grid" style="grid-template-columns: 1fr 1fr;">
+                            <div style="text-align: left;">
+                                <h3 style="margin-top: 0; text-align: left;">Insurance Enrollment Assistance</h3>
+                                <p><strong>Free help navigating MNsure, Medical Assistance (MA), Medicaid, and MinnesotaCare—over the phone or in person.</strong></p>
+                                <p>Our certified enrollment specialists can help individuals, families, and children understand options and complete applications. Bilingual assistance is available.</p>
+                                
+                                <div style="margin-top: 18px;">
+                                    <a href="#" class="cta-button">Call (507) 388-2120</a>
+                                    <a href="#" class="cta-button secondary">Email Enrollment</a>
+                                </div>
+                            </div>
+                            <div style="padding: 0; overflow: hidden; display: flex; align-items: center; justify-content: center;">
+                                <div style="width: 100%; height: 100%; min-height: 240px; background: #f5f5f5; border: 2px dashed #bbb; display: flex; align-items: center; justify-content: center; color: #666; font-weight: 600;">
+                                    [Image]
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h3>How We Can Help</h3>
+                    <div class="service-grid" style="grid-template-columns: 1fr 1fr 1fr;">
+                        <div class="service-card">
+                            <h4>MNsure Navigation</h4>
+                            <p>Shop, compare, and understand coverage options that fit your needs and budget</p>
+                        </div>
+                        <div class="service-card">
+                            <h4>MA / Medicaid</h4>
+                            <p>Help with eligibility questions and completing Medical Assistance applications</p>
+                        </div>
+                        <div class="service-card">
+                            <h4>MinnesotaCare</h4>
+                            <p>Support with enrollment steps and required documentation</p>
+                        </div>
+                    </div>
+                    
+                    <div class="trust-badge">
+                        <strong>No-cost assistance:</strong> Enrollment services are free for patients and the general public.
+                    </div>
+                    
+                    <h3>What is MNsure?</h3>
+                    <div class="service-grid" style="grid-template-columns: 1fr;">
+                        <div class="service-card" style="text-align: left;">
+                            <p>MNsure is Minnesota's marketplace where individuals, families and small businesses can shop, compare and choose health insurance coverage. It's also where you can qualify for financial help to lower the cost of your monthly premium.</p>
+                        </div>
+                    </div>
+                    
+                    <h3>Plans & Enrollment Timing</h3>
+                    <div class="service-grid" style="grid-template-columns: 1fr 1fr;">
+                        <div class="service-card" style="text-align: left;">
+                            <h4>Plans on MNsure</h4>
+                            <ul>
+                                <li>Medical Assistance*</li>
+                                <li>MinnesotaCare*</li>
+                                <li>Private plans (open enrollment typically Nov-Jan)</li>
+                            </ul>
+                        </div>
+                        <div class="service-card" style="text-align: left;">
+                            <h4>Year-round Enrollment</h4>
+                            <p><em>*If eligible for Medical Assistance or MinnesotaCare, you can enroll through MNsure all year long.</em></p>
+                        </div>
+                    </div>
+                    
+                    <h3>Get Started</h3>
+                    <div class="service-grid" style="grid-template-columns: 1fr;">
+                        <div class="service-card" style="text-align: center;">
+                            <p><strong>Call to set up your appointment</strong></p>
+                            <div class="phone-highlight">(507) 388-2120</div>
+                            <p style="margin: 10px 0 0 0;">enrollment@odhc.org</p>
+                        </div>
+                    </div>
+                    
+                    <h3>Items to Bring</h3>
+                    <div class="service-grid" style="grid-template-columns: 1fr;">
+                        <div class="service-card" style="text-align: left;">
+                            <ul>
+                                <li>Driver's license or other ID</li>
+                                <li>Social Security number for each person applying</li>
+                                <li>Date of birth for each household member</li>
+                                <li>Recent pay stubs, current tax forms, and documentation for other income</li>
+                                <li>Non-citizens: immigration documents (Green Card, I-9, Employment Authorization card, or other proof of legal status)</li>
+                            </ul>
+                            <p><strong>Fax:</strong> 507-388-3924</p>
+                        </div>
+                    </div>
+                    
+                    <h3>Footer</h3>
+                    <div class="service-card" style="padding: 25px;">
+                        <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px;">
+                            <div>
+                                <h4>About</h4>
+                                <div style="text-align: left; font-size: 0.85rem; line-height: 1.6;">
+                                    <a href="about-mission-vision-and-values.html">Mission, Vision, and Values</a><br>
+                                    <a href="about-services-overview.html">Services</a><br>
+                                    <a href="about-meet-the-team.html">Meet the Team</a><br>
+                                    <a href="about-news-and-events.html">News and Events</a><br>
+                                </div>
+                            </div>
+                            <div>
+                                <h4>Locations</h4>
+                                <div style="text-align: left; font-size: 0.85rem; line-height: 1.6;">
+                                    <a href="about-locations-mankato.html">Mankato</a><br>
+                                    <a href="about-locations-shakopee.html">Shakopee</a><br>
+                                    <a href="about-locations-school-based-centers.html">School-Based Centers</a>
+                                </div>
+                            </div>
+                            <div>
+                                <h4>Patient Resources</h4>
+                                <div style="text-align: left; font-size: 0.85rem; line-height: 1.6;">
+                                    <a href="patient-resources-patient-portal.html">Patient Portal</a><br>
+                                    <a href="patient-resources-forms.html">Forms</a><br>
+                                    <a href="patient-resources-financial-assistance.html">Financial Assistance</a><br>
+                                    <a href="patient-resources-insurance-enrollment.html">Insurance Enrollment</a><br>
+                                    <a href="patient-resources-community-resources.html">Community Resources</a>
+                                </div>
+                            </div>
+                            <div>
+                                <h4>Contact &amp; More</h4>
+                                <div style="text-align: left; font-size: 0.85rem; line-height: 1.6;">
+                                    <a href="contact.html">Contact</a><br>
+                                    <a href="donate.html">Donate</a><br>
+                                    <a href="about-careers.html">Careers</a><br>
+                                    <a href="footer-pages-privacy-policy.html">Privacy Policy</a><br>
+                                    <a href="footer-pages-faq.html">FAQ</a><br>
+                                    <a href="footer-pages-annual-report.html">Annual Report</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-card">
+                <h2>📄 Footer Content</h2>
+                <p>Open Door Health Center is a Federally Qualified Health Center (FQHC). Open Door Health Center receives HHS funding and is a Health Center Program grantee under 42 U.S.C 254b, and is deemed a Public Health Service employer under 42 U.S.C. 233 (g)-(n)</p>
+                <p class="copyright">© Copyright - Open Door Health Center - powered by Enfold WordPress Theme</p>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

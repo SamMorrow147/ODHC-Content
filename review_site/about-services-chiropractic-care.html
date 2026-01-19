@@ -1,0 +1,1029 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About > Services > Chiropractic Care - ODHC Content Review</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+        }
+        
+        .container {
+            display: flex;
+            min-height: 100vh;
+        }
+        
+        .sidebar {
+            width: 320px;
+            background: #2c3e50;
+            color: white;
+            padding: 20px;
+            overflow-y: auto;
+            position: fixed;
+            height: 100vh;
+        }
+        
+        .sidebar h1 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #34495e;
+        }
+        
+        .sidebar h2 {
+            font-size: 1rem;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            color: #ecf0f1;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .sidebar h3 {
+            font-size: 0.9rem;
+            margin-top: 12px;
+            margin-left: 10px;
+            margin-bottom: 8px;
+            color: #bdc3c7;
+        }
+        
+        .sidebar ul {
+            list-style: none;
+        }
+        
+        .sidebar li {
+            margin: 5px 0;
+        }
+        
+        .sidebar a {
+            color: #bdc3c7;
+            text-decoration: none;
+            display: block;
+            padding: 8px 12px;
+            border-radius: 4px;
+            transition: all 0.3s;
+            font-size: 0.9rem;
+        }
+        
+        .sidebar a:hover {
+            background: #34495e;
+            color: white;
+            padding-left: 16px;
+        }
+        
+        .sidebar .subsection {
+            margin-left: 15px;
+        }
+        
+        .sidebar .missing-page {
+            color: #e74c3c;
+            opacity: 0.6;
+            cursor: not-allowed;
+            padding: 8px 12px;
+            font-size: 0.9rem;
+            font-style: italic;
+        }
+        
+        .sidebar .missing-page::after {
+            content: " (no content yet)";
+            font-size: 0.75rem;
+            color: #c0392b;
+        }
+        
+        .main-content {
+            flex: 1;
+            margin-left: 320px;
+            padding: 40px;
+        }
+        
+        .content-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1.8fr;
+            gap: 30px;
+            max-width: 2400px;
+            margin-bottom: 30px;
+        }
+        
+        .content-wrapper.three-col {
+            grid-template-columns: 1fr 1fr 1.8fr;
+            max-width: 2400px;
+        }
+        
+        .strategized-content {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: none;
+            border: 2px solid #ddd;
+        }
+        
+        .strategized-content h2 {
+            color: #333;
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #ccc;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .strategized-content h3 {
+            color: #333;
+            font-size: 1.1rem;
+            margin-top: 25px;
+            margin-bottom: 12px;
+        }
+        
+        .strategized-content h4 {
+            color: #333;
+            font-size: 0.95rem;
+            margin-top: 15px;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        
+        .strategized-content p {
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 12px;
+            font-size: 0.95rem;
+        }
+        
+        .strategized-content ul {
+            margin: 15px 0;
+            padding-left: 0;
+            list-style: none;
+        }
+        
+        .strategized-content li {
+            color: #555;
+            margin: 10px 0;
+            padding-left: 25px;
+            position: relative;
+            line-height: 1.6;
+        }
+        
+        .strategized-content li:before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: #a8c954;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: #999;
+            color: white;
+            padding: 12px 28px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            margin: 15px 10px 15px 0;
+            border: 2px solid #666;
+            box-shadow: 0 2px 8px rgba(168, 201, 84, 0.3);
+            transition: all 0.3s;
+        }
+        
+        .cta-button:hover {
+            background: #95b349;
+            box-shadow: 0 4px 12px rgba(168, 201, 84, 0.4);
+            transform: translateY(-2px);
+        }
+        
+        .cta-button.secondary {
+            background: #999;
+            box-shadow: 0 2px 8px rgba(232, 134, 121, 0.3);
+        }
+        
+        .cta-button.secondary:hover {
+            background: #d67568;
+            box-shadow: 0 4px 12px rgba(232, 134, 121, 0.4);
+        }
+        
+        .trust-badge {
+            background: #e8f4f8;
+            border-left: 4px solid #3a8fa8;
+            padding: 12px 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+        
+        .trust-badge strong {
+            color: #333;
+        }
+        
+        .phone-highlight {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #333;
+            text-align: center;
+            margin: 20px 0;
+            padding: 15px;
+            background: #e8f4f8;
+            border-radius: 8px;
+        }
+        
+        .optimized-badge {
+            background: #999;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .footer-card {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: none;
+            border-left: 5px solid #f39c12;
+            max-width: 1800px;
+        }
+        
+        .redirect-card {
+            background: #f8f9fa;
+            padding: 15px 20px;
+            border-radius: 6px;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+            border-left: 3px solid #16a085;
+            max-width: 1800px;
+            margin-top: 20px;
+        }
+        
+        .redirect-card h2 {
+            color: #16a085;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+            padding-bottom: 6px;
+            border-bottom: 1px solid #d0d0d0;
+        }
+        
+        .redirect-mapping {
+            background: white;
+            padding: 10px;
+            border-radius: 4px;
+            margin: 8px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.75rem;
+            line-height: 1.4;
+        }
+        
+        .redirect-mapping .old-url {
+            color: #e74c3c;
+            font-weight: 600;
+        }
+        
+        .redirect-mapping .new-url {
+            color: #27ae60;
+            font-weight: 600;
+        }
+        
+        .redirect-mapping .redirect-type {
+            background: #16a085;
+            color: white;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            margin-right: 8px;
+        }
+        
+        .content-box {
+            background: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: none;
+        }
+        
+        .design-preview {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: none;
+        }
+        
+        .design-preview h2 {
+            font-size: 1.3rem;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #3498db;
+        }
+        
+        .mockup-container {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+        }
+        
+        .mockup-header {
+            background: linear-gradient(135deg, #3a8fa8 0%, #2c7a8f 100%);
+            padding: 20px;
+            color: white;
+        }
+        
+        .mockup-logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .mockup-tagline {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        
+        .mockup-nav {
+            background: #2c5f7c;
+            padding: 12px 20px;
+            display: flex;
+            gap: 20px;
+            font-size: 0.85rem;
+        }
+        
+        .mockup-nav a {
+            color: white;
+            text-decoration: none;
+            opacity: 0.8;
+        }
+        
+        .mockup-nav a:hover {
+            opacity: 1;
+        }
+        
+        .mockup-content {
+            padding: 30px;
+            background: #ffffff;
+            max-height: 600px;
+            overflow-y: auto;
+        }
+        
+        .mockup-content h1 {
+            color: #333;
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+        
+        .mockup-content h2 {
+            color: #333;
+            font-size: 1.4rem;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+        
+        .mockup-content h3 {
+            color: #333;
+            font-size: 1.1rem;
+            margin-top: 15px;
+            margin-bottom: 8px;
+        }
+        
+        .mockup-content p {
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 12px;
+        }
+        
+        .mockup-content ul {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+        
+        .mockup-content li {
+            color: #555;
+            margin: 8px 0;
+        }
+        
+        .mockup-content a {
+            color: #333;
+            text-decoration: none;
+            border-bottom: 1px solid #89c8d9;
+        }
+        
+        .mockup-content a:hover {
+            color: #2c7a8f;
+            border-bottom-color: #333;
+        }
+        
+        .mockup-button {
+            display: inline-block;
+            background: #999;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin: 10px 5px;
+            border: 2px solid #666;
+        }
+        
+        .mockup-button.secondary {
+            background: #999;
+        }
+        
+        .mockup-highlight {
+            background: #e8f4f8;
+            border-left: 4px solid #3a8fa8;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+        
+        .mockup-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin: 20px 0;
+        }
+        
+        .mockup-stat {
+            background: linear-gradient(135deg, #3a8fa8 0%, #2c7a8f 100%);
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        
+        .mockup-stat-value {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        
+        .mockup-stat-label {
+            font-size: 0.8rem;
+            opacity: 0.9;
+        }
+        
+        .wireframe-container {
+            background: #ffffff;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+            margin-top: 20px;
+        }
+        
+        .wireframe-header {
+            background: #e0e0e0;
+            padding: 15px;
+            border-bottom: 2px solid #ccc;
+        }
+        
+        .wireframe-logo {
+            width: 120px;
+            height: 30px;
+            background: #999;
+            margin-bottom: 5px;
+        }
+        
+        .wireframe-tagline {
+            width: 180px;
+            height: 12px;
+            background: #bbb;
+        }
+        
+        .wireframe-nav {
+            background: #f5f5f5;
+            padding: 12px 15px;
+            display: flex;
+            gap: 15px;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .wireframe-nav-item {
+            width: 60px;
+            height: 14px;
+            background: #aaa;
+            border-radius: 2px;
+        }
+        
+        .wireframe-content {
+            padding: 20px;
+            background: #fafafa;
+        }
+        
+        .wireframe-hero {
+            border: 2px dashed #999;
+            padding: 30px;
+            margin-bottom: 20px;
+            background: #fff;
+        }
+        
+        .wireframe-title {
+            width: 70%;
+            height: 28px;
+            background: #333;
+            margin-bottom: 15px;
+        }
+        
+        .wireframe-subtitle {
+            width: 50%;
+            height: 16px;
+            background: #666;
+            margin-bottom: 10px;
+        }
+        
+        .wireframe-text {
+            width: 100%;
+            height: 10px;
+            background: #ccc;
+            margin: 8px 0;
+        }
+        
+        .wireframe-text.short {
+            width: 85%;
+        }
+        
+        .wireframe-text.medium {
+            width: 92%;
+        }
+        
+        .wireframe-button {
+            display: inline-block;
+            width: 140px;
+            height: 38px;
+            background: #999;
+            border: 2px solid #666;
+            margin: 10px 10px 10px 0;
+            border-radius: 20px;
+        }
+        
+        .wireframe-section {
+            border: 1px solid #ddd;
+            padding: 20px;
+            margin: 15px 0;
+            background: #fff;
+            text-align: center;
+        }
+        
+        .wireframe-heading {
+            width: 40%;
+            height: 20px;
+            background: #555;
+            margin-bottom: 12px;
+        }
+        
+        .wireframe-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 15px 0;
+        }
+        
+        .wireframe-card {
+            border: 2px solid #bbb;
+            padding: 15px;
+            background: #fff;
+            min-height: 80px;
+        }
+        
+        .wireframe-card-title {
+            width: 70%;
+            height: 14px;
+            background: #666;
+            margin-bottom: 10px;
+        }
+        
+        .wireframe-card-text {
+            width: 100%;
+            height: 8px;
+            background: #ddd;
+            margin: 5px 0;
+        }
+        
+        .wireframe-image {
+            width: 100%;
+            height: 120px;
+            background: #e0e0e0;
+            border: 2px dashed #999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            font-size: 0.9rem;
+            margin: 10px 0;
+        }
+        
+        .wireframe-list {
+            margin: 10px 0;
+        }
+        
+        .wireframe-list-item {
+            display: flex;
+            align-items: center;
+            margin: 8px 0;
+        }
+        
+        .wireframe-bullet {
+            width: 6px;
+            height: 6px;
+            background: #666;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+        
+        .wireframe-list-text {
+            width: 80%;
+            height: 10px;
+            background: #ccc;
+        }
+        
+        .wireframe-label {
+            font-size: 0.75rem;
+            color: #666;
+            margin: 5px 0;
+            font-family: sans-serif;
+            text-align: center;
+        }
+        
+        .wireframe-section-label {
+            font-size: 0.8rem;
+            color: #333;
+            font-weight: 600;
+            margin: 10px 0 5px 0;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            text-align: center;
+        }
+        
+        .wireframe-icon {
+            width: 40px;
+            height: 40px;
+            background: #ddd;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            margin: 5px;
+        }
+        
+        .content-box h1 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #3498db;
+        }
+        
+        .content-box h2 {
+            color: #34495e;
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+        
+        .content-box h3 {
+            color: #555;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+        
+        .content-box img {
+            max-width: 100%;
+            height: auto;
+            margin: 20px 0;
+            border-radius: 4px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        .content-box a {
+            color: #3498db;
+            text-decoration: none;
+        }
+        
+        .content-box a:hover {
+            text-decoration: underline;
+        }
+        
+        .source-info {
+            background: #e3f2fd;
+            padding: 20px;
+            margin: 0 0 30px 0;
+            border-radius: 6px;
+            border-left: 4px solid #2196f3;
+        }
+        
+        .source-info h3 {
+            margin-top: 0;
+            margin-bottom: 12px;
+            color: #1976d2;
+            font-size: 1.1rem;
+        }
+        
+        .source-info ul {
+            margin: 0;
+            padding-left: 20px;
+        }
+        
+        .source-info li {
+            margin: 8px 0;
+        }
+        
+        .source-info a {
+            color: #1976d2;
+            word-break: break-all;
+            font-size: 0.95rem;
+        }
+        
+        .footer-card h2 {
+            color: #d68910;
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #f39c12;
+        }
+        
+        .footer-card p {
+            color: #555;
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin: 12px 0;
+        }
+        
+        .footer-card .copyright {
+            color: #888;
+            font-size: 0.85rem;
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px solid #eee;
+        }
+        
+        .image-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 20px;
+            margin: 20px 0 0 0;
+        }
+        
+        .image-item {
+            text-align: center;
+        }
+        
+        .image-gallery img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 6px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .image-gallery img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+        }
+        
+        .image-caption {
+            font-size: 0.75rem;
+            color: #666;
+            margin-top: 8px;
+            word-break: break-word;
+        }
+        
+        .alert {
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+        }
+        
+        @media (max-width: 768px) {
+            .sidebar {
+                width: 100%;
+                position: relative;
+                height: auto;
+            }
+            
+            .main-content {
+                margin-left: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <nav class="sidebar">
+            <h1>ODHC Content Review</h1>
+            <a href="index.html" style="background: #34495e; margin-bottom: 20px;">🏠 Home</a><h2>About</h2><ul><li><a href="about-mission-vision-and-values.html">Mission, Vision, and Values</a></li><li><a href="about-services-overview.html">Services</a></li><h3>Locations</h3><ul class="subsection"><li><a href="about-locations-mankato.html">Mankato</a></li><li><a href="about-locations-shakopee.html">Shakopee</a></li><li><a href="about-locations-school-based-centers.html">School-Based Centers</a></li></ul><li><a href="about-meet-the-team.html">Meet the Team</a></li><li><a href="about-news-and-events.html">News and Events</a></li><li><a href="about-careers.html">Careers</a></li></ul><h2>Patient Resources</h2><ul><li><a href="patient-resources-patient-portal.html">Patient Portal</a></li><li><a href="patient-resources-forms.html">Forms</a></li><li><a href="patient-resources-financial-assistance.html">Financial Assistance</a></li><li><a href="patient-resources-insurance-enrollment.html">Insurance Enrollment</a></li><li><a href="patient-resources-community-resources.html">Community Resources</a></li></ul><li><a href="contact.html">Contact</a></li><li><a href="donate.html">Donate</a></li><h2>Footer pages Utility</h2><ul><li><a href="footer-pages-privacy-policy.html">Privacy Policy</a></li><li><a href="footer-pages-faq.html">FAQ</a></li><li><span class="missing-page">Annual Report</span></li></ul>
+        </nav>
+        <main class="main-content">
+            <div class="content-wrapper">
+                <div class="content-box">
+                    <h1>About &gt; Services &gt; Chiropractic Care (SOURCED)</h1>
+<p><em>Content from ODHC website</em></p>
+<hr />
+<h2>Chiropractic Care</h2>
+<h3>Comprehensive chiropractic services for pain relief and wellness</h3>
+<p>Open Door Health Center offers chiropractic care as part of our commitment to providing comprehensive healthcare services to our community.</p>
+<h3>What is Chiropractic Care?</h3>
+<p>Chiropractic care focuses on the diagnosis and treatment of neuromuscular disorders, with an emphasis on treatment through manual adjustment and/or manipulation of the spine. Chiropractors aim to reduce pain and improve the functionality of patients as well as to educate them on how they can account for their own health via exercise, ergonomics, and other therapies.</p>
+<h3>Conditions Treated</h3>
+<p>Chiropractic care can help with:
+- Back pain
+- Neck pain
+- Headaches and migraines
+- Joint pain and stiffness
+- Sports injuries
+- Work-related injuries
+- Muscle strain
+- Posture problems</p>
+<h3>Schedule an Appointment</h3>
+<p>For more information about our chiropractic services and to schedule an appointment, call <strong>(507) 388-2120</strong></p>
+<h3>Insurance and Payment</h3>
+<p>We accept many insurance plans and offer our sliding fee discount program for those who qualify.</p>
+<hr />
+                </div>
+                
+    <div class="design-preview">
+        <h2>📐 Wireframe - About > Services > Chiropractic Care</h2>
+        
+    <div class="wireframe-container">
+        <div class="wireframe-header">
+            <div style="display: flex; justify-content: space-between; align-items: center; padding: 15px;">
+                <div>
+                    <div class="wireframe-logo"></div>
+                    <div class="wireframe-label">Logo + Tagline</div>
+                </div>
+                <div style="display: flex; gap: 10px;">
+                    <div class="wireframe-button"></div>
+                    <div class="wireframe-button"></div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="wireframe-nav">
+            <div class="wireframe-nav-item"></div>
+            <div class="wireframe-nav-item"></div>
+            <div class="wireframe-nav-item"></div>
+            <div class="wireframe-nav-item"></div>
+            <div class="wireframe-nav-item"></div>
+        </div>
+        
+        <div class="wireframe-content">
+    
+            <div class="wireframe-hero">
+                <div class="wireframe-section-label">Hero Section</div>
+                <div class="wireframe-title"></div>
+                <div class="wireframe-subtitle"></div>
+                <div class="wireframe-text"></div>
+                <div class="wireframe-text medium"></div>
+                <div class="wireframe-text short"></div>
+    
+                <div style="margin-top: 15px;">
+                    <div class="wireframe-button"></div>
+                    <div class="wireframe-button"></div>
+                    <div class="wireframe-label">CTA Buttons</div>
+                </div>
+        
+            </div>
+    
+            <div class="wireframe-section">
+                <div class="wireframe-section-label">Services List</div>
+                <div class="wireframe-heading"></div>
+                <div class="wireframe-list">
+                    <div class="wireframe-list-item">
+                        <div class="wireframe-bullet"></div>
+                        <div class="wireframe-list-text"></div>
+                    </div>
+                    <div class="wireframe-list-item">
+                        <div class="wireframe-bullet"></div>
+                        <div class="wireframe-list-text"></div>
+                    </div>
+                    <div class="wireframe-list-item">
+                        <div class="wireframe-bullet"></div>
+                        <div class="wireframe-list-text"></div>
+                    </div>
+                    <div class="wireframe-list-item">
+                        <div class="wireframe-bullet"></div>
+                        <div class="wireframe-list-text"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="wireframe-section">
+                <div class="wireframe-section-label">Team Image</div>
+                <div class="wireframe-image">Image</div>
+            </div>
+            
+            <div class="wireframe-section" style="background: #fafafa;">
+                <div class="wireframe-section-label">2-Column Info Cards</div>
+                <div class="wireframe-grid">
+                    <div class="wireframe-card">
+                        <div class="wireframe-icon">Icon</div>
+                        <div class="wireframe-card-title"></div>
+                        <div class="wireframe-card-text"></div>
+                    </div>
+                    <div class="wireframe-card">
+                        <div class="wireframe-icon">Icon</div>
+                        <div class="wireframe-card-title"></div>
+                        <div class="wireframe-card-text"></div>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="wireframe-section" style="background: #e0e0e0; border-top: 3px solid #999;">
+                <div class="wireframe-section-label">4-Column Footer</div>
+                <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px;">
+                    <div>
+                        <div class="wireframe-text" style="height: 14px; background: #999;"></div>
+                        <div class="wireframe-text" style="height: 8px; margin: 6px 0;"></div>
+                        <div class="wireframe-text short" style="height: 8px;"></div>
+                    </div>
+                    <div>
+                        <div class="wireframe-text" style="height: 14px; background: #999;"></div>
+                        <div class="wireframe-text" style="height: 8px; margin: 6px 0;"></div>
+                        <div class="wireframe-text" style="height: 8px; margin: 6px 0;"></div>
+                    </div>
+                    <div>
+                        <div class="wireframe-text" style="height: 14px; background: #999;"></div>
+                        <div class="wireframe-text" style="height: 8px; margin: 6px 0;"></div>
+                        <div class="wireframe-text" style="height: 8px; margin: 6px 0;"></div>
+                    </div>
+                    <div>
+                        <div class="wireframe-text" style="height: 14px; background: #999;"></div>
+                        <div class="wireframe-text" style="height: 8px; margin: 6px 0;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    </div>
+            
+            <div class="strategized-content">
+                <h2>
+                    Strategized Content
+                </h2>
+                
+                <h3>Relief from Pain, Naturally</h3>
+                <p><strong>Chiropractic care can help you feel better without medication or surgery.</strong></p>
+                
+                <div style="text-align: center; margin: 25px 0;">
+                    <a href="#" class="cta-button">Schedule Chiropractic Visit</a>
+                </div>
+                
+                <div class="phone-highlight">Call (507) 388-2120</div>
+                
+                <h3>Get Back to Feeling Your Best</h3>
+                <p>Whether you're dealing with back pain, neck pain, headaches, or injury recovery, our licensed chiropractor can help you find relief and improve your overall wellness.</p>
+                
+                <h3>Conditions We Treat</h3>
+                <ul>
+                    <li><strong>Back Pain</strong> - Relief from lower back, mid-back, and upper back discomfort</li>
+                    <li><strong>Neck Pain & Stiffness</strong> - Restore mobility and reduce pain</li>
+                    <li><strong>Headaches & Migraines</strong> - Address the root cause of recurring headaches</li>
+                    <li><strong>Sports Injuries</strong> - Get back in the game with targeted treatment</li>
+                    <li><strong>Work-Related Injuries</strong> - Recovery from repetitive stress and workplace accidents</li>
+                    <li><strong>Auto Accident Injuries</strong> - Whiplash and collision-related pain relief</li>
+                </ul>
+                
+                <h3>Part of Your Complete Care</h3>
+                <p>Because we're a full-service health center, your chiropractic care is coordinated with your medical and behavioral health services. This whole-person approach means better results for you.</p>
+                
+                <div class="trust-badge">
+                    <strong>Affordable Chiropractic Care:</strong> We accept most insurance plans, Minnesota Care, and Medical Assistance. Our sliding fee program makes chiropractic care accessible to everyone who needs it.
+                </div>
+                
+                <h3>Visit Us in Mankato</h3>
+                <p><strong>Address:</strong> 309 Holly Lane, Mankato, MN 56001</p>
+                <p><strong>Hours:</strong><br>
+                Monday, Tuesday, Wednesday & Friday: 8:00am - 5:00pm<br>
+                Thursday: 9:00am - 5:00pm</p>
+                
+                <div style="text-align: center; margin: 25px 0;">
+                    <a href="#" class="cta-button">Book Your Appointment</a>
+                </div>
+            </div>
+            </div>
+            
+            <div class="footer-card">
+                <h2>📄 Footer Content</h2>
+                <p>Open Door Health Center is a Federally Qualified Health Center (FQHC). Open Door Health Center receives HHS funding and is a Health Center Program grantee under 42 U.S.C 254b, and is deemed a Public Health Service employer under 42 U.S.C. 233 (g)-(n)</p>
+                <p class="copyright">© Copyright - Open Door Health Center - powered by Enfold WordPress Theme</p>
+            </div>
+            
+        </main>
+    </div>
+</body>
+</html>

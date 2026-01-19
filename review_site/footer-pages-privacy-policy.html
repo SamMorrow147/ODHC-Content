@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Footer Pages > Privacy Policy - ODHC Content Review</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+        }
+        
+        .container {
+            display: flex;
+            min-height: 100vh;
+        }
+        
+        .sidebar {
+            width: 320px;
+            background: #2c3e50;
+            color: white;
+            padding: 20px;
+            overflow-y: auto;
+            position: fixed;
+            height: 100vh;
+        }
+        
+        .sidebar h1 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #34495e;
+        }
+        
+        .sidebar h2 {
+            font-size: 1rem;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            color: #ecf0f1;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .sidebar h3 {
+            font-size: 0.9rem;
+            margin-top: 12px;
+            margin-left: 10px;
+            margin-bottom: 8px;
+            color: #bdc3c7;
+        }
+        
+        .sidebar ul {
+            list-style: none;
+        }
+        
+        .sidebar li {
+            margin: 5px 0;
+        }
+        
+        .sidebar a {
+            color: #bdc3c7;
+            text-decoration: none;
+            display: block;
+            padding: 8px 12px;
+            border-radius: 4px;
+            transition: all 0.3s;
+            font-size: 0.9rem;
+        }
+        
+        .sidebar a:hover {
+            background: #34495e;
+            color: white;
+            padding-left: 16px;
+        }
+        
+        .sidebar .subsection {
+            margin-left: 15px;
+        }
+        
+        .sidebar .missing-page {
+            color: #e74c3c;
+            opacity: 0.6;
+            cursor: not-allowed;
+            padding: 8px 12px;
+            font-size: 0.9rem;
+            font-style: italic;
+        }
+        
+        .sidebar .missing-page::after {
+            content: " (no content yet)";
+            font-size: 0.75rem;
+            color: #c0392b;
+        }
+        
+        .main-content {
+            flex: 1;
+            margin-left: 320px;
+            padding: 40px;
+        }
+        
+        .content-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            max-width: 1800px;
+            margin-bottom: 30px;
+        }
+        
+        .content-wrapper.three-col {
+            grid-template-columns: 1fr 1fr 1fr;
+            max-width: 2400px;
+        }
+        
+        .footer-card {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-left: 5px solid #f39c12;
+            max-width: 1800px;
+        }
+        
+        .redirect-card {
+            background: #f8f9fa;
+            padding: 15px 20px;
+            border-radius: 6px;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+            border-left: 3px solid #16a085;
+            max-width: 1800px;
+            margin-top: 20px;
+        }
+        
+        .redirect-card h2 {
+            color: #16a085;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+            padding-bottom: 6px;
+            border-bottom: 1px solid #d0d0d0;
+        }
+        
+        .redirect-mapping {
+            background: white;
+            padding: 10px;
+            border-radius: 4px;
+            margin: 8px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.75rem;
+            line-height: 1.4;
+        }
+        
+        .redirect-mapping .old-url {
+            color: #e74c3c;
+            font-weight: 600;
+        }
+        
+        .redirect-mapping .new-url {
+            color: #27ae60;
+            font-weight: 600;
+        }
+        
+        .redirect-mapping .redirect-type {
+            background: #16a085;
+            color: white;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            margin-right: 8px;
+        }
+        
+        .content-box {
+            background: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .design-preview {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .design-preview h2 {
+            font-size: 1.3rem;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #3498db;
+        }
+        
+        .mockup-container {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+        }
+        
+        .mockup-header {
+            background: linear-gradient(135deg, #3a8fa8 0%, #2c7a8f 100%);
+            padding: 20px;
+            color: white;
+        }
+        
+        .mockup-logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .mockup-tagline {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        
+        .mockup-nav {
+            background: #2c5f7c;
+            padding: 12px 20px;
+            display: flex;
+            gap: 20px;
+            font-size: 0.85rem;
+        }
+        
+        .mockup-nav a {
+            color: white;
+            text-decoration: none;
+            opacity: 0.8;
+        }
+        
+        .mockup-nav a:hover {
+            opacity: 1;
+        }
+        
+        .mockup-content {
+            padding: 30px;
+            background: linear-gradient(135deg, #f5f9fa 0%, #ffffff 100%);
+            max-height: 600px;
+            overflow-y: auto;
+        }
+        
+        .mockup-content h1 {
+            color: #2c5f7c;
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+        
+        .mockup-content h2 {
+            color: #3a8fa8;
+            font-size: 1.4rem;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+        
+        .mockup-content h3 {
+            color: #2c5f7c;
+            font-size: 1.1rem;
+            margin-top: 15px;
+            margin-bottom: 8px;
+        }
+        
+        .mockup-content p {
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 12px;
+        }
+        
+        .mockup-content ul {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+        
+        .mockup-content li {
+            color: #555;
+            margin: 8px 0;
+        }
+        
+        .mockup-content a {
+            color: #3a8fa8;
+            text-decoration: none;
+            border-bottom: 1px solid #89c8d9;
+        }
+        
+        .mockup-content a:hover {
+            color: #2c7a8f;
+            border-bottom-color: #3a8fa8;
+        }
+        
+        .mockup-button {
+            display: inline-block;
+            background: #a8c954;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin: 10px 5px;
+            border: none;
+        }
+        
+        .mockup-button.secondary {
+            background: #e88679;
+        }
+        
+        .mockup-highlight {
+            background: #e8f4f8;
+            border-left: 4px solid #3a8fa8;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+        
+        .mockup-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin: 20px 0;
+        }
+        
+        .mockup-stat {
+            background: linear-gradient(135deg, #3a8fa8 0%, #2c7a8f 100%);
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        
+        .mockup-stat-value {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        
+        .mockup-stat-label {
+            font-size: 0.8rem;
+            opacity: 0.9;
+        }
+        
+        .wireframe-container {
+            background: #ffffff;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+            margin-top: 20px;
+        }
+        
+        .wireframe-header {
+            background: #e0e0e0;
+            padding: 15px;
+            border-bottom: 2px solid #ccc;
+        }
+        
+        .wireframe-logo {
+            width: 120px;
+            height: 30px;
+            background: #999;
+            margin-bottom: 5px;
+        }
+        
+        .wireframe-tagline {
+            width: 180px;
+            height: 12px;
+            background: #bbb;
+        }
+        
+        .wireframe-nav {
+            background: #f5f5f5;
+            padding: 12px 15px;
+            display: flex;
+            gap: 15px;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .wireframe-nav-item {
+            width: 60px;
+            height: 14px;
+            background: #aaa;
+            border-radius: 2px;
+        }
+        
+        .wireframe-content {
+            padding: 20px;
+            background: #fafafa;
+        }
+        
+        .wireframe-hero {
+            border: 2px dashed #999;
+            padding: 30px;
+            margin-bottom: 20px;
+            background: #fff;
+        }
+        
+        .wireframe-title {
+            width: 70%;
+            height: 28px;
+            background: #333;
+            margin-bottom: 15px;
+        }
+        
+        .wireframe-subtitle {
+            width: 50%;
+            height: 16px;
+            background: #666;
+            margin-bottom: 10px;
+        }
+        
+        .wireframe-text {
+            width: 100%;
+            height: 10px;
+            background: #ccc;
+            margin: 8px 0;
+        }
+        
+        .wireframe-text.short {
+            width: 85%;
+        }
+        
+        .wireframe-text.medium {
+            width: 92%;
+        }
+        
+        .wireframe-button {
+            display: inline-block;
+            width: 140px;
+            height: 38px;
+            background: #999;
+            border: 2px solid #666;
+            margin: 10px 10px 10px 0;
+            border-radius: 20px;
+        }
+        
+        .wireframe-section {
+            border: 1px solid #ddd;
+            padding: 20px;
+            margin: 15px 0;
+            background: #fff;
+            text-align: center;
+        }
+        
+        .wireframe-heading {
+            width: 40%;
+            height: 20px;
+            background: #555;
+            margin-bottom: 12px;
+        }
+        
+        .wireframe-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 15px 0;
+        }
+        
+        .wireframe-card {
+            border: 2px solid #bbb;
+            padding: 15px;
+            background: #fff;
+            min-height: 80px;
+        }
+        
+        .wireframe-card-title {
+            width: 70%;
+            height: 14px;
+            background: #666;
+            margin-bottom: 10px;
+        }
+        
+        .wireframe-card-text {
+            width: 100%;
+            height: 8px;
+            background: #ddd;
+            margin: 5px 0;
+        }
+        
+        .wireframe-image {
+            width: 100%;
+            height: 120px;
+            background: #e0e0e0;
+            border: 2px dashed #999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            font-size: 0.9rem;
+            margin: 10px 0;
+        }
+        
+        .wireframe-list {
+            margin: 10px 0;
+        }
+        
+        .wireframe-list-item {
+            display: flex;
+            align-items: center;
+            margin: 8px 0;
+        }
+        
+        .wireframe-bullet {
+            width: 6px;
+            height: 6px;
+            background: #666;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+        
+        .wireframe-list-text {
+            width: 80%;
+            height: 10px;
+            background: #ccc;
+        }
+        
+        .wireframe-label {
+            font-size: 0.75rem;
+            color: #666;
+            margin: 5px 0;
+            font-family: sans-serif;
+            text-align: center;
+        }
+        
+        .wireframe-section-label {
+            font-size: 0.8rem;
+            color: #333;
+            font-weight: 600;
+            margin: 10px 0 5px 0;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            text-align: center;
+        }
+        
+        .wireframe-icon {
+            width: 40px;
+            height: 40px;
+            background: #ddd;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            margin: 5px;
+        }
+        
+        .content-box h1 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #3498db;
+        }
+        
+        .content-box h2 {
+            color: #34495e;
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+        
+        .content-box h3 {
+            color: #555;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+        
+        .content-box img {
+            max-width: 100%;
+            height: auto;
+            margin: 20px 0;
+            border-radius: 4px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        .content-box a {
+            color: #3498db;
+            text-decoration: none;
+        }
+        
+        .content-box a:hover {
+            text-decoration: underline;
+        }
+        
+        .source-info {
+            background: #e3f2fd;
+            padding: 20px;
+            margin: 0 0 30px 0;
+            border-radius: 6px;
+            border-left: 4px solid #2196f3;
+        }
+        
+        .source-info h3 {
+            margin-top: 0;
+            margin-bottom: 12px;
+            color: #1976d2;
+            font-size: 1.1rem;
+        }
+        
+        .source-info ul {
+            margin: 0;
+            padding-left: 20px;
+        }
+        
+        .source-info li {
+            margin: 8px 0;
+        }
+        
+        .source-info a {
+            color: #1976d2;
+            word-break: break-all;
+            font-size: 0.95rem;
+        }
+        
+        .footer-card h2 {
+            color: #d68910;
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #f39c12;
+        }
+        
+        .footer-card p {
+            color: #555;
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin: 12px 0;
+        }
+        
+        .footer-card .copyright {
+            color: #888;
+            font-size: 0.85rem;
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px solid #eee;
+        }
+        
+        .image-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 20px;
+            margin: 20px 0 0 0;
+        }
+        
+        .image-item {
+            text-align: center;
+        }
+        
+        .image-gallery img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 6px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .image-gallery img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+        }
+        
+        .image-caption {
+            font-size: 0.75rem;
+            color: #666;
+            margin-top: 8px;
+            word-break: break-word;
+        }
+        
+        .alert {
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+        }
+        
+        @media (max-width: 768px) {
+            .sidebar {
+                width: 100%;
+                position: relative;
+                height: auto;
+            }
+            
+            .main-content {
+                margin-left: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <nav class="sidebar">
+            <h1>ODHC Content Review</h1>
+            <a href="index.html" style="background: #34495e; margin-bottom: 20px;">🏠 Home</a><h2>About</h2><ul><li><a href="about-mission-vision-and-values.html">Mission, Vision, and Values</a></li><li><a href="about-services-overview.html">Services</a></li><h3>Locations</h3><ul class="subsection"><li><a href="about-locations-mankato.html">Mankato</a></li><li><a href="about-locations-shakopee.html">Shakopee</a></li><li><a href="about-locations-school-based-centers.html">School-Based Centers</a></li></ul><li><a href="about-meet-the-team.html">Meet the Team</a></li><li><a href="about-news-and-events.html">News and Events</a></li><li><a href="about-careers.html">Careers</a></li></ul><h2>Patient Resources</h2><ul><li><a href="patient-resources-patient-portal.html">Patient Portal</a></li><li><a href="patient-resources-forms.html">Forms</a></li><li><a href="patient-resources-financial-assistance.html">Financial Assistance</a></li><li><a href="patient-resources-insurance-enrollment.html">Insurance Enrollment</a></li><li><a href="patient-resources-community-resources.html">Community Resources</a></li></ul><li><a href="contact.html">Contact</a></li><li><a href="donate.html">Donate</a></li><h2>Footer pages Utility</h2><ul><li><a href="footer-pages-privacy-policy.html">Privacy Policy</a></li><li><a href="footer-pages-faq.html">FAQ</a></li><li><span class="missing-page">Annual Report</span></li></ul>
+        </nav>
+        <main class="main-content">
+            <div class="content-wrapper">
+                <div class="content-box">
+                    <div class="source-info"><h3>📄 Original Source Page(s):</h3><ul><li><a href="https://odhc.org/privacy-policy/" target="_blank" rel="noopener">https://odhc.org/privacy-policy/</a></li></ul></div><h1>Footer &gt; Privacy-Policy</h1>
+<p><em>Content scraped from ODHC website</em></p>
+<hr />
+<h2>Source: Privacy Policy</h2>
+<p><em>URL: https://odhc.org/privacy-policy/</em></p>
+<h2>Open Door Health Center Privacy Practices</h2>
+<p>Thank you for choosing Open Door Health Center (ODHC) for your healthcare. ODHC has always been committed to maintaining the security, privacy, and confidentiality of your medical information. Effective April 14, 2003, the federal government requires that we provide you with the following privacy practice notification regarding our legal duties and privacy practices. Please review the following privacy notification and again, thank you for choosing ODHC for your healthcare provider.</p>
+<p><em>This notice applies to the following Open Door Health Center (ODHC) entities: Mankato, Jordan, Outreach Services</em></p>
+<p>To view our Privacy Policy as a PDF, please <a href="assets/pdfs/Notice-of-Privacy-Practices.pdf">click here</a>.</p>
+<p><strong><em>Your medical information may be used and disclosed for the following purposes:</em></strong></p>
+<p><strong>TREATMENT:</strong> We may use your information to provide, coordinate, and manage your care and treatment. Prior written consent is required for these disclosures, except in the case of an emergency when it is not possible to obtain your consent.</p>
+<p><strong>PAYMENT:</strong> We may use and disclose medical information about you so that the treatment and services you receive may be billed to, and payment may be collected from, you, and your insurance company, or another third party. We will obtain your written consent prior to making disclosures for payment purposes.</p>
+<p><strong>HEALTH CARE OPERATIONS:</strong> We may use and disclose medical information about you for ODHC’s healthcare operations. Healthcare operations are the uses and disclosures of information that are necessary to run ODHC, and to make sure that all of our patients receive quality care. We will get your written consent prior to making disclosures to others outside of ODHC for healthcare operations purposes.</p>
+<p><strong>APPOINTMENT REMINDERS &amp; OTHER HEALTH INFORMATION:</strong> We may use your medical information to send you reminders about future appointments. We may also send you refill reminders or other communications about your current medications. However, if we receive any financial remuneration for making such refill or medication communication beyond our costs of making the communication, we must first obtain your written authorization to make such communications. We may contact you with information about new or alternative treatments or health care services or for purposes of care coordination, unless we receive financial remuneration in exchange for making the communication. In that case, we will obtain your written authorization to make such communications. However, we are not required to obtain your written authorization for face-to-face communications.</p>
+<p><strong>FUNDRAISING:</strong> ODHC may use certain information about you (specifically, your name, address, age, gender, date of birth or other demographic information; dates you received care from ODHC; department of service information; treating physician; outcome information and health insurance status) to let you know about fundraising or other charitable events. You have the right to opt-out of receiving such fundraising communication. Each fundraising communication you receive will include an opportunity to opt-out of future fundraising communications. Alternatively, you may notify ODHC’s Compliance Manager to opt-out of fundraising communications.</p>
+<p><strong>TO PEOPLE ASSISTING IN YOUR CARE:</strong> ODHC will only disclose medical information to those taking care of you, helping you pay your bills, or other close family members or friends if these people need to know this information to help you, and then only to the extent permitted by law. We will ask for written consent prior to making disclosures about you to family or friends. If you are able to make your own health care decisions, ODHC will ask your permission before using your medical information for these purposes. If you are unable to make health care decisions, ODHC will disclose relevant medical information to family members or other responsible people if we feel it is in your best interest to do so, including in an emergency situation.</p>
+<p><strong>RESEARCH:</strong> Federal law permits ODHC to use and disclose medical information about you for research purposes, either with your specific written authorization, or when the study has been reviewed for privacy protection by an Institutional Review Board or Privacy Board before the research begins. In some cases, researchers may be permitted to use information in a limited way to determine whether the study or the potential participants are appropriate. Minnesota law generally requires that we get your consent before we disclose your health information to an outside researcher. We will make a good faith effort to obtain your consent or refusal to participate in any research study, as required by law, prior to releasing any identifiable information about you to outside researchers.</p>
+<p><strong>AS REQUIRED BY LAW:</strong> We will disclose medical information about you when we are required to do so by federal, state or local law.</p>
+<p><strong>TO AVERT A SERIOUS THREAT TO HEALTH OR SAFETY:</strong> We may use and disclose medical information about you when necessary to prevent a serious threat to your health and safety or the health and safety of the public or another person. Any disclosure must be only to someone able to help prevent the threat. In addition, Minnesota law generally does not permit these disclosures unless we have your written consent, or when the disclosure is specifically required by law, including the limited circumstances in which ODHC health care professionals have a “duty to warn.”</p>
+<p><strong><em>Your medical information may be released in the following special situations:</em></strong></p>
+<p><strong>ORGAN &amp; TISSUE DONATION:</strong> We may release your medical information to organizations that handle organ procurement or organ, eye or tissue transplantation, or to an organ donation bank as necessary to facilitate organ or tissue donation and transplantation.</p>
+<p><strong>MILITARY and VETERANS:</strong> If you are a member of the armed forces, we will release medical information about you as requested by military command authorities if we are required to do so by law, or when we have your written consent We may also release medical information about foreign military personnel to the appropriate military authority as required by law or written consent.</p>
+<p><strong>WORKERS’ COMPENSATION:</strong> We may release medical information about you for workers’ compensation or similar programs. These programs provide benefits for work-related injuries or illness. We are permitted to disclose information regarding your work related injury to your employer or your employer’s workers’ compensation insurer without your specific consent, so long as the information is related to a workers’ compensation claim.</p>
+<p><strong>PUBLIC HEALTH:</strong> We may disclose medical information to public health authorities about you for public health activities. These disclosures generally include the following:</p>
+<p>▸ Preventing or controlling disease, injury or disability;<br />
+▸ Reporting births and deaths;<br />
+▸ Reporting child abuse or neglect, or abuse of a vulnerable adult;<br />
+▸ Reporting reactions to medications or problems with products; notifying people of recalls of products they may be using;<br />
+▸ Notifying a person who may have been exposed to a disease or may be at risk for contracting or spreading disease or condition; or ▸ Reporting to the FDA as permitted or required by law.</p>
+<p><strong>HEALTH OVERSIGHT ACTIVITIES:</strong> ODHC may disclose medical information to a health oversight agency for health oversight activities that are authorized by law. These oversight activities include examples such as, government audits, investigations, inspections, and licensure activities. These activities are necessary for the government to monitor the health care system, government programs, and compliance with civil rights laws. Minnesota law requires that patient identifying information be removed from most disclosures for health oversight purposes, unless you have provided us with written consent for the disclosure.</p>
+<p><strong>LAWSUITS &amp; DISPUTES:</strong> We may disclose medical information about you in response to a valid court order or statutory authorization, or with your written consent.</p>
+<p><strong>LAW ENFORCEMENT:</strong> We may release medical information if asked to do so by a law enforcement official in response to a valid court order, grand jury subpoena, warrant, or with your written consent. In addition, we are required to report certain types of wounds. In some cases, reports will include only fact of injury, and any additional disclosures would require your consent or a court order. We may also release information to law enforcement that is not a part of the health record for the following reasons:</p>
+<ul>
+<li>To identify or locate a suspect, fugitive, material witness, or missing person;</li>
+<li>If you are the victim of a crime, if, under certain limited circumstances, we are unable to obtain your agreement;</li>
+<li>About a death we believe may be the result of criminal conduct;</li>
+<li>About criminal conduct at our facility; and</li>
+<li>In emergency circumstances to report a crime; the location of the crime or victims; or the identity, description or location of the person who committed the crime.</li>
+</ul>
+<p><strong>CORONERS, MEDICAL EXAMINERS, &amp; FUNERAL DIRECTORS:</strong> We will release medical information to a coroner or medical examiner in the case of certain types of death, and we must disclose health records upon the request of the coroner or medical examiner. We may also release the fact of death and certain demographic information about you to funeral directors as necessary to carry out their duties. Other disclosures from your health record will require the consent of a surviving spouse, parent, person appointed by you in writing or your legally authorized representative.</p>
+<p><strong>NATIONAL SECURITY AND INTELLIGENCE ACTIVITIES:</strong> We will release medical information about you to authorized federal officials for intelligence, counter-intelligence, and other national security activities only as required by law or with your written consent.</p>
+<p><strong>PROTECTIVE SERVICES FOR THE PRESIDENT &amp; OTHERS:</strong> We will disclose medical information about you to authorized federal officials so they may provide protection to the President, other authorized persons, foreign heads of state, or conduct special investigations only as required by law or with your written consent.</p>
+<p><strong>INMATES:</strong> If you are an inmate of a correctional institution or under the custody of a law enforcement official, we will release medical information about you to the correctional institution or law enforcement official only as permitted by law or with your written consent.</p>
+<p><strong><em>You have the following rights regarding medical information we maintain about you:</em></strong></p>
+<p><strong>RIGHT TO INSPECT &amp; COPY:</strong> You have the right to inspect and receive a copy of your medical information that is used to make decisions about your care. Usually, this includes medical and billing records maintained by ODHC. If you wish to inspect and copy medical information, you must submit your request in writing to the Health Information Specialist. If you request a copy of the information, we may charge a reasonable fee for the costs of copying, mailing, or other supplies associated with your request, to the extent permitted by state and federal law.</p>
+<p>If we maintain your health information electronically as part of a designated record set, you have the right to receive a copy of your health information in electronic format upon your request. You may also direct us to transmit your health information (hard or electronic copy) directly to an entity or person clearly and specifically designated by you in writing. We may deny your  request to inspect and copy your information in limited circumstances. In these cases, we may supply the information to a third party who may release the information to you. If you are denied access to medical information, you may request that the denial be reviewed. Another licensed healthcare professional chosen by ODHC will review your request and the denial. The person conducting the review will not be the person who denied your request. We will comply with the outcome of the review.</p>
+<p><strong>RIGHT TO AN ACCOUNTING OF DISCLOSURES:</strong> You have the right to request an “accounting of disclosures.” This is a list of the disclosures we made of medical information about you. This list will not include disclosures for treatment, payment, and healthcare operations; disclosures that you have authorized for treatment, payment, and healthcare operations; disclosures that you have authorized or that have been made to you; disclosures for facility directories; disclosures for national security or intelligence purposes; disclosures to correctional institutions or law enforcement with custody of you; disclosures that took place before April 14, 2003; and certain other disclosures. To request this list of disclosures, you must submit your request in writing to the Health Information Specialist. Your request must state a time period for which you would like the accounting. The accounting period may not go back further than six years from the date of the request, and it may not include dates before April 14, 2003. You may receive one free accounting in any 12-month period. We will charge you for additional requests.</p>
+<p><strong>RIGHT TO REQUEST AMENDMENT:</strong> If you believe that medical information we have about you is incorrect or incomplete, you have the right to ask us to change the information. You have the right to request an amendment for as long as the information is kept by or for ODHC. To request a change to your information, your request must be made in writing and submitted to the Health Information Specialist. In addition, you must provide a reason that supports your request. We may deny your request for an amendment if it is not in writing or does not include a reason to support the request. In addition, we may deny your request if you ask us to amend information that:</p>
+<p>▸ Was not created by ODHC, unless the person or entity that created the information is no longer available to make the amendment; ▸ Is not part of the medical information kept by or for ODHC;<br />
+▸ Is not part of the information which you would be permitted to inspect and copy; or ▸ Is accurate and complete.</p>
+<p><strong>RIGHT TO REQUEST RESTRICTIONS:</strong> You have the right to request a restriction or limitation on the medical information we use or disclose about you. If you pay out-of-pocket in full for an item, or service, then you may request that we not disclose information pertaining solely to such item or service to your health plan for purposes of payment or health care operations. We are required to agree with such a request, unless you request a restriction on the information we disclose to a Health Maintenance Organization (“HMO”) and the law prohibits us from accepting payment from you above the cost-sharing amount for the item or service that is the subject of the requested restriction. However, we are not required to agree to any other request. If we do agree, we will comply with your request unless the information is needed to provide you emergency treatment or you request that we remove the restriction. To request restrictions, you must make your request in writing to the Health Information Specialist. In your request, you must tell us (1) what information you want to limit; (2) whether you want to limit our use, disclosure, or both; and (3) to whom you want the limits to apply.</p>
+<p><strong>RIGHT TO REQUEST CONFIDENTIAL COMMUNICATIONS:</strong> You have the right to request that we communicate with you about medical matters in a certain way or at a certain location. To request confidential communications, you must make your request in writing to the Compliance Manager. We will not ask you the reason for your request. We will accommodate all reasonable requests. Your request must specify how or where you wish to be contacted, and we may require you to provide information about how payment will be handled.</p>
+<p><strong>RIGHT TO A PAPER COPY OF THIS NOTICE:</strong> You have the right to receive a paper copy of this notice. You may ask us to give you a copy of this notice at any time.</p>
+<p><strong>CHANGES TO THIS NOTICE:</strong> The effective date of this notice is October 28, 2019. We reserve the right to change this notice. We reserve the right to make the revised or changed notice effective for medical information we already have about you, as well as any information we receive in the future. If the terms of this notice are changed, ODHC will provide you with a revised notice upon request, and we will post the revised notice on our website and in designated locations at ODHC.</p>
+<p><strong>COMPLAINTS or QUESTIONS:</strong> If you believe your privacy rights have been violated, you may file a complaint with us or with the Secretary of the Department of Health and Human Services. To file a complaint with ODHC, or to ask a question about this notice, contact the Compliance Manager. All complaints must be submitted in writing. You will not be penalized for filing a complaint.</p>
+<p><strong>OTHER USES &amp; DISCLOSURES OF PROTECTED HEALTH INFORMATION:</strong> We are required to obtain a written authorization from you for most uses and disclosures of psychotherapy notes, uses and disclosures of protected health information for marketing purposes and disclosures that constitute a sale of protected health information. Except as described in this Notice, ODHC will not use or disclose your protected health information without a specific written authorization from you. If you provide us with this written authorization to use or disclose medical information about you may revoke that authorization, in writing, at any time. If you revoke your authorization, we will no longer use or disclose medical information about you for the reasons covered by your written authorization, except to the extent we have already relied on your authorization. We are unable to take back any disclosures we have already made with your permission, and we are required to retain our records of the care that we provided you.</p>
+<hr />
+                </div>
+                
+    <div class="design-preview">
+        <h2>📐 Wireframe - Footer Pages > Privacy Policy</h2>
+        
+    <div class="wireframe-container">
+        <div class="wireframe-header">
+            <div style="display: flex; justify-content: space-between; align-items: center; padding: 15px;">
+                <div>
+                    <div class="wireframe-logo"></div>
+                    <div class="wireframe-label">Logo + Tagline</div>
+                </div>
+                <div style="display: flex; gap: 10px;">
+                    <div class="wireframe-button"></div>
+                    <div class="wireframe-button"></div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="wireframe-nav">
+            <div class="wireframe-nav-item"></div>
+            <div class="wireframe-nav-item"></div>
+            <div class="wireframe-nav-item"></div>
+            <div class="wireframe-nav-item"></div>
+            <div class="wireframe-nav-item"></div>
+        </div>
+        
+        <div class="wireframe-content">
+    
+            <div class="wireframe-hero">
+                <div class="wireframe-section-label">Hero Section</div>
+                <div class="wireframe-title"></div>
+                <div class="wireframe-subtitle"></div>
+                <div class="wireframe-text"></div>
+                <div class="wireframe-text medium"></div>
+                <div class="wireframe-text short"></div>
+    
+            </div>
+    
+            <div class="wireframe-section">
+                <div class="wireframe-section-label">Content Section</div>
+                <div class="wireframe-heading"></div>
+                <div class="wireframe-text"></div>
+                <div class="wireframe-text medium"></div>
+                <div class="wireframe-text short"></div>
+            </div>
+            
+            <div class="wireframe-section">
+                <div class="wireframe-section-label">Content Section</div>
+                <div class="wireframe-heading"></div>
+                <div class="wireframe-text"></div>
+                <div class="wireframe-text medium"></div>
+                <div class="wireframe-text short"></div>
+            </div>
+            
+            <div class="wireframe-section" style="background: #e0e0e0; border-top: 3px solid #999;">
+                <div class="wireframe-section-label">4-Column Footer</div>
+                <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px;">
+                    <div>
+                        <div class="wireframe-text" style="height: 14px; background: #999;"></div>
+                        <div class="wireframe-text" style="height: 8px; margin: 6px 0;"></div>
+                        <div class="wireframe-text short" style="height: 8px;"></div>
+                    </div>
+                    <div>
+                        <div class="wireframe-text" style="height: 14px; background: #999;"></div>
+                        <div class="wireframe-text" style="height: 8px; margin: 6px 0;"></div>
+                        <div class="wireframe-text" style="height: 8px; margin: 6px 0;"></div>
+                    </div>
+                    <div>
+                        <div class="wireframe-text" style="height: 14px; background: #999;"></div>
+                        <div class="wireframe-text" style="height: 8px; margin: 6px 0;"></div>
+                        <div class="wireframe-text" style="height: 8px; margin: 6px 0;"></div>
+                    </div>
+                    <div>
+                        <div class="wireframe-text" style="height: 14px; background: #999;"></div>
+                        <div class="wireframe-text" style="height: 8px; margin: 6px 0;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    </div>
+    
+            </div>
+            <div class="footer-card">
+                <h2>📄 Footer Content</h2>
+                <p>Open Door Health Center is a Federally Qualified Health Center (FQHC). Open Door Health Center receives HHS funding and is a Health Center Program grantee under 42 U.S.C 254b, and is deemed a Public Health Service employer under 42 U.S.C. 233 (g)-(n)</p>
+                <p class="copyright">© Copyright - Open Door Health Center - powered by Enfold WordPress Theme</p>
+            </div>
+            
+    <div class="redirect-card">
+        <h2>🔀 301 Redirect Mapping (SEO)</h2>
+        <p style="margin-bottom: 10px; color: #666; font-size: 0.8rem;">Configure these redirects to preserve search rankings:</p>
+    
+        <div class="redirect-mapping">
+            <span class="redirect-type">301</span>
+            <strong style="font-size: 0.7rem;">From:</strong> <span class="old-url">/privacy-policy/</span>
+            <strong style="font-size: 0.7rem; margin-left: 10px;">→</strong>
+            <strong style="font-size: 0.7rem;">To:</strong> <span class="new-url">/footer-pages-privacy-policy.html</span>
+        </div>
+        
+        <p style="margin-top: 10px; font-size: 0.7rem; color: #888; padding-top: 8px; border-top: 1px solid #ddd;">
+            <strong>Implementation:</strong> Configure in .htaccess, nginx.conf, or hosting platform redirect manager.
+        </p>
+    </div>
+    
+        </main>
+    </div>
+</body>
+</html>

@@ -1,0 +1,1325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Resources > Forms - ODHC Content Review</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+        }
+        
+        .container {
+            display: flex;
+            min-height: 100vh;
+        }
+        
+        .sidebar {
+            width: 320px;
+            background: #2c3e50;
+            color: white;
+            padding: 20px;
+            overflow-y: auto;
+            position: fixed;
+            height: 100vh;
+        }
+        
+        .sidebar h1 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #34495e;
+        }
+        
+        .sidebar h2 {
+            font-size: 1rem;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            color: #ecf0f1;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .sidebar h3 {
+            font-size: 0.9rem;
+            margin-top: 12px;
+            margin-left: 10px;
+            margin-bottom: 8px;
+            color: #bdc3c7;
+        }
+        
+        .sidebar ul {
+            list-style: none;
+        }
+        
+        .sidebar li {
+            margin: 5px 0;
+        }
+        
+        .sidebar a {
+            color: #bdc3c7;
+            text-decoration: none;
+            display: block;
+            padding: 8px 12px;
+            border-radius: 4px;
+            transition: all 0.3s;
+            font-size: 0.9rem;
+        }
+        
+        .sidebar a:hover {
+            background: #34495e;
+            color: white;
+            padding-left: 16px;
+        }
+        
+        .sidebar .subsection {
+            margin-left: 15px;
+        }
+        
+        .sidebar .missing-page {
+            color: #e74c3c;
+            opacity: 0.6;
+            cursor: not-allowed;
+            padding: 8px 12px;
+            font-size: 0.9rem;
+            font-style: italic;
+        }
+        
+        .sidebar .missing-page::after {
+            content: " (no content yet)";
+            font-size: 0.75rem;
+            color: #c0392b;
+        }
+        
+        .main-content {
+            flex: 1;
+            margin-left: 320px;
+            padding: 40px;
+        }
+        
+        .content-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1.8fr;
+            gap: 30px;
+            max-width: 2400px;
+            margin-bottom: 30px;
+        }
+        
+        .content-wrapper.three-col {
+            grid-template-columns: 1fr 1fr 1.8fr;
+            max-width: 2400px;
+        }
+
+        /* Strategized Content (B/W Wireframe Rules) */
+        .strategized-content {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: none;
+            border: 2px solid #ddd;
+        }
+        
+        .strategized-content h2 {
+            color: #333;
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #ccc;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .strategized-content h3 {
+            color: #333;
+            font-size: 1.35rem;
+            margin-top: 25px;
+            margin-bottom: 12px;
+            text-align: center;
+            letter-spacing: 0.2px;
+        }
+        
+        .strategized-content h4 {
+            color: #333;
+            font-size: 0.95rem;
+            margin-top: 15px;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        
+        .strategized-content p {
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 12px;
+            font-size: 0.95rem;
+        }
+        
+        .strategized-content ul {
+            margin: 15px 0;
+            padding-left: 0;
+            list-style: none;
+        }
+        
+        .strategized-content li {
+            color: #555;
+            margin: 10px 0;
+            padding-left: 25px;
+            position: relative;
+            line-height: 1.6;
+        }
+        
+        .strategized-content li:before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: #666;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: #999;
+            color: white;
+            padding: 12px 28px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            margin: 15px 10px 15px 0;
+            border: 2px solid #666;
+            box-shadow: none;
+            transition: none;
+        }
+        
+        .cta-button:hover {
+            background: #999;
+            box-shadow: none;
+            transform: none;
+        }
+        
+        .cta-button.secondary {
+            background: #999;
+            box-shadow: none;
+        }
+        
+        .cta-button.secondary:hover {
+            background: #999;
+            box-shadow: none;
+        }
+        
+        .phone-highlight {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #333;
+            text-align: center;
+            margin: 14px 0 6px 0;
+            padding: 12px;
+            background: #f5f5f5;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+        }
+        
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .service-card {
+            background: white;
+            border: 2px solid #bbb;
+            border-radius: 8px;
+            padding: 18px;
+            text-align: center;
+            transition: none;
+        }
+        
+        .service-card:hover {
+            border-color: #bbb;
+            box-shadow: none;
+        }
+        
+        .service-card h4 {
+            color: #333;
+            font-size: 1rem;
+            margin: 10px 0 8px 0;
+        }
+        
+        .service-card p {
+            font-size: 0.85rem;
+            color: #666;
+            line-height: 1.5;
+            margin: 0;
+        }
+        
+        /* B/W Header Wireframe */
+        .bw-header {
+            background: #fff;
+            padding: 16px;
+            border-bottom: 2px solid #ddd;
+        }
+        
+        .bw-header-row {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+        
+        .bw-logo {
+            width: 56px;
+            height: 56px;
+            border: 3px solid #666;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: #333;
+            background: #f5f5f5;
+            flex: 0 0 auto;
+        }
+        
+        .bw-box {
+            border: 2px solid #bbb;
+            border-radius: 10px;
+            padding: 10px 12px;
+            background: #fff;
+            color: #333;
+            font-size: 0.85rem;
+            line-height: 1.2;
+            font-weight: 600;
+            min-height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+        
+        .bw-icon {
+            width: 44px;
+            height: 44px;
+            border: 2px solid #bbb;
+            border-radius: 12px;
+            background: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #333;
+            font-weight: 800;
+            font-size: 1rem;
+        }
+        
+        .bw-pill {
+            border: 3px solid #666;
+            border-radius: 28px;
+            padding: 10px 18px;
+            background: #f5f5f5;
+            color: #333;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            min-height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            white-space: nowrap;
+        }
+        
+        .bw-pill.alt {
+            border-color: #999;
+        }
+        
+        /* B/W Navigation */
+        .bw-nav {
+            background: #fff;
+            padding: 16px;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .bw-nav-shell {
+            border: 2px solid #bbb;
+            border-radius: 14px;
+            padding: 14px 16px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            background: #fff;
+            flex-wrap: wrap;
+        }
+        
+        .bw-nav-item {
+            padding: 8px 10px;
+            border-radius: 10px;
+            border: 2px solid #ddd;
+            font-weight: 700;
+            color: #333;
+            font-size: 0.85rem;
+            background: #f5f5f5;
+        }
+        
+        .bw-nav-search {
+            margin-left: auto;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .bw-search {
+            width: 200px;
+            height: 36px;
+            border: 2px solid #bbb;
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            font-weight: 600;
+            background: #fff;
+        }
+        
+        /* B/W Slideshow/Hero */
+        .bw-slideshow {
+            border: 2px solid #bbb;
+            border-radius: 14px;
+            background: #fff;
+            padding: 16px 16px 12px 16px;
+            margin: 14px 0 18px 0;
+        }
+        
+        .bw-slideshow-controls {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px solid #e3e3e3;
+        }
+        
+        .bw-arrow {
+            width: 38px;
+            height: 30px;
+            border: 2px solid #bbb;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f5f5f5;
+            color: #333;
+            font-weight: 800;
+            user-select: none;
+        }
+        
+        .bw-dots {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .bw-dot {
+            width: 10px;
+            height: 10px;
+            border: 2px solid #bbb;
+            border-radius: 50%;
+            background: #fff;
+        }
+        
+        .bw-dot.active {
+            background: #666;
+        }
+        
+        .footer-card {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-left: 5px solid #f39c12;
+            max-width: 1800px;
+        }
+        
+        .redirect-card {
+            background: #f8f9fa;
+            padding: 15px 20px;
+            border-radius: 6px;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+            border-left: 3px solid #16a085;
+            max-width: 1800px;
+            margin-top: 20px;
+        }
+        
+        .redirect-card h2 {
+            color: #16a085;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+            padding-bottom: 6px;
+            border-bottom: 1px solid #d0d0d0;
+        }
+        
+        .redirect-mapping {
+            background: white;
+            padding: 10px;
+            border-radius: 4px;
+            margin: 8px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.75rem;
+            line-height: 1.4;
+        }
+        
+        .redirect-mapping .old-url {
+            color: #e74c3c;
+            font-weight: 600;
+        }
+        
+        .redirect-mapping .new-url {
+            color: #27ae60;
+            font-weight: 600;
+        }
+        
+        .redirect-mapping .redirect-type {
+            background: #16a085;
+            color: white;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            margin-right: 8px;
+        }
+        
+        .content-box {
+            background: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .design-preview {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .design-preview h2 {
+            font-size: 1.3rem;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #3498db;
+        }
+        
+        .mockup-container {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+        }
+        
+        .mockup-header {
+            background: linear-gradient(135deg, #3a8fa8 0%, #2c7a8f 100%);
+            padding: 20px;
+            color: white;
+        }
+        
+        .mockup-logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .mockup-tagline {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        
+        .mockup-nav {
+            background: #2c5f7c;
+            padding: 12px 20px;
+            display: flex;
+            gap: 20px;
+            font-size: 0.85rem;
+        }
+        
+        .mockup-nav a {
+            color: white;
+            text-decoration: none;
+            opacity: 0.8;
+        }
+        
+        .mockup-nav a:hover {
+            opacity: 1;
+        }
+        
+        .mockup-content {
+            padding: 30px;
+            background: linear-gradient(135deg, #f5f9fa 0%, #ffffff 100%);
+            max-height: 600px;
+            overflow-y: auto;
+        }
+        
+        .mockup-content h1 {
+            color: #2c5f7c;
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+        
+        .mockup-content h2 {
+            color: #3a8fa8;
+            font-size: 1.4rem;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+        
+        .mockup-content h3 {
+            color: #2c5f7c;
+            font-size: 1.1rem;
+            margin-top: 15px;
+            margin-bottom: 8px;
+        }
+        
+        .mockup-content p {
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 12px;
+        }
+        
+        .mockup-content ul {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+        
+        .mockup-content li {
+            color: #555;
+            margin: 8px 0;
+        }
+        
+        .mockup-content a {
+            color: #3a8fa8;
+            text-decoration: none;
+            border-bottom: 1px solid #89c8d9;
+        }
+        
+        .mockup-content a:hover {
+            color: #2c7a8f;
+            border-bottom-color: #3a8fa8;
+        }
+        
+        .mockup-button {
+            display: inline-block;
+            background: #a8c954;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin: 10px 5px;
+            border: none;
+        }
+        
+        .mockup-button.secondary {
+            background: #e88679;
+        }
+        
+        .mockup-highlight {
+            background: #e8f4f8;
+            border-left: 4px solid #3a8fa8;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+        
+        .mockup-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin: 20px 0;
+        }
+        
+        .mockup-stat {
+            background: linear-gradient(135deg, #3a8fa8 0%, #2c7a8f 100%);
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        
+        .mockup-stat-value {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        
+        .mockup-stat-label {
+            font-size: 0.8rem;
+            opacity: 0.9;
+        }
+        
+        .wireframe-container {
+            background: #ffffff;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+            margin-top: 20px;
+        }
+        
+        .wireframe-header {
+            background: #e0e0e0;
+            padding: 15px;
+            border-bottom: 2px solid #ccc;
+        }
+        
+        .wireframe-logo {
+            width: 120px;
+            height: 30px;
+            background: #999;
+            margin-bottom: 5px;
+        }
+        
+        .wireframe-tagline {
+            width: 180px;
+            height: 12px;
+            background: #bbb;
+        }
+        
+        .wireframe-nav {
+            background: #f5f5f5;
+            padding: 12px 15px;
+            display: flex;
+            gap: 15px;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .wireframe-nav-item {
+            width: 60px;
+            height: 14px;
+            background: #aaa;
+            border-radius: 2px;
+        }
+        
+        .wireframe-content {
+            padding: 20px;
+            background: #fafafa;
+        }
+        
+        .wireframe-hero {
+            border: 2px dashed #999;
+            padding: 30px;
+            margin-bottom: 20px;
+            background: #fff;
+        }
+        
+        .wireframe-title {
+            width: 70%;
+            height: 28px;
+            background: #333;
+            margin-bottom: 15px;
+        }
+        
+        .wireframe-subtitle {
+            width: 50%;
+            height: 16px;
+            background: #666;
+            margin-bottom: 10px;
+        }
+        
+        .wireframe-text {
+            width: 100%;
+            height: 10px;
+            background: #ccc;
+            margin: 8px 0;
+        }
+        
+        .wireframe-text.short {
+            width: 85%;
+        }
+        
+        .wireframe-text.medium {
+            width: 92%;
+        }
+        
+        .wireframe-button {
+            display: inline-block;
+            width: 140px;
+            height: 38px;
+            background: #999;
+            border: 2px solid #666;
+            margin: 10px 10px 10px 0;
+            border-radius: 20px;
+        }
+        
+        .wireframe-section {
+            border: 1px solid #ddd;
+            padding: 20px;
+            margin: 15px 0;
+            background: #fff;
+            text-align: center;
+        }
+        
+        .wireframe-heading {
+            width: 40%;
+            height: 20px;
+            background: #555;
+            margin-bottom: 12px;
+        }
+        
+        .wireframe-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 15px 0;
+        }
+        
+        .wireframe-card {
+            border: 2px solid #bbb;
+            padding: 15px;
+            background: #fff;
+            min-height: 80px;
+        }
+        
+        .wireframe-card-title {
+            width: 70%;
+            height: 14px;
+            background: #666;
+            margin-bottom: 10px;
+        }
+        
+        .wireframe-card-text {
+            width: 100%;
+            height: 8px;
+            background: #ddd;
+            margin: 5px 0;
+        }
+        
+        .wireframe-image {
+            width: 100%;
+            height: 120px;
+            background: #e0e0e0;
+            border: 2px dashed #999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            font-size: 0.9rem;
+            margin: 10px 0;
+        }
+        
+        .wireframe-list {
+            margin: 10px 0;
+        }
+        
+        .wireframe-list-item {
+            display: flex;
+            align-items: center;
+            margin: 8px 0;
+        }
+        
+        .wireframe-bullet {
+            width: 6px;
+            height: 6px;
+            background: #666;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+        
+        .wireframe-list-text {
+            width: 80%;
+            height: 10px;
+            background: #ccc;
+        }
+        
+        .wireframe-label {
+            font-size: 0.75rem;
+            color: #666;
+            margin: 5px 0;
+            font-family: sans-serif;
+            text-align: center;
+        }
+        
+        .wireframe-section-label {
+            font-size: 0.8rem;
+            color: #333;
+            font-weight: 600;
+            margin: 10px 0 5px 0;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            text-align: center;
+        }
+        
+        .wireframe-icon {
+            width: 40px;
+            height: 40px;
+            background: #ddd;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            margin: 5px;
+        }
+        
+        .content-box h1 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #3498db;
+        }
+        
+        .content-box h2 {
+            color: #34495e;
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+        
+        .content-box h3 {
+            color: #555;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+        
+        .content-box img {
+            max-width: 100%;
+            height: auto;
+            margin: 20px 0;
+            border-radius: 4px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        .content-box a {
+            color: #3498db;
+            text-decoration: none;
+        }
+        
+        .content-box a:hover {
+            text-decoration: underline;
+        }
+        
+        .source-info {
+            background: #e3f2fd;
+            padding: 20px;
+            margin: 0 0 30px 0;
+            border-radius: 6px;
+            border-left: 4px solid #2196f3;
+        }
+        
+        .source-info h3 {
+            margin-top: 0;
+            margin-bottom: 12px;
+            color: #1976d2;
+            font-size: 1.1rem;
+        }
+        
+        .source-info ul {
+            margin: 0;
+            padding-left: 20px;
+        }
+        
+        .source-info li {
+            margin: 8px 0;
+        }
+        
+        .source-info a {
+            color: #1976d2;
+            word-break: break-all;
+            font-size: 0.95rem;
+        }
+        
+        .footer-card h2 {
+            color: #d68910;
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #f39c12;
+        }
+        
+        .footer-card p {
+            color: #555;
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin: 12px 0;
+        }
+        
+        .footer-card .copyright {
+            color: #888;
+            font-size: 0.85rem;
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px solid #eee;
+        }
+        
+        .image-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 20px;
+            margin: 20px 0 0 0;
+        }
+        
+        .image-item {
+            text-align: center;
+        }
+        
+        .image-gallery img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 6px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .image-gallery img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+        }
+        
+        .image-caption {
+            font-size: 0.75rem;
+            color: #666;
+            margin-top: 8px;
+            word-break: break-word;
+        }
+        
+        .alert {
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+        }
+        
+        @media (max-width: 768px) {
+            .sidebar {
+                width: 100%;
+                position: relative;
+                height: auto;
+            }
+            
+            .main-content {
+                margin-left: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <nav class="sidebar">
+            <h1>ODHC Content Review</h1>
+            <a href="index.html" style="background: #34495e; margin-bottom: 20px;">🏠 Home</a><h2>About</h2><ul><li><a href="about-mission-vision-and-values.html">Mission, Vision, and Values</a></li><li><a href="about-services-overview.html">Services</a></li><h3>Locations</h3><ul class="subsection"><li><a href="about-locations-mankato.html">Mankato</a></li><li><a href="about-locations-shakopee.html">Shakopee</a></li><li><a href="about-locations-school-based-centers.html">School-Based Centers</a></li></ul><li><a href="about-meet-the-team.html">Meet the Team</a></li><li><a href="about-news-and-events.html">News and Events</a></li><li><a href="about-careers.html">Careers</a></li></ul><h2>Patient Resources</h2><ul><li><a href="patient-resources-patient-portal.html">Patient Portal</a></li><li><a href="patient-resources-forms.html">Forms</a></li><li><a href="patient-resources-financial-assistance.html">Financial Assistance</a></li><li><a href="patient-resources-insurance-enrollment.html">Insurance Enrollment</a></li><li><a href="patient-resources-community-resources.html">Community Resources</a></li></ul><li><a href="contact.html">Contact</a></li><li><a href="donate.html">Donate</a></li><h2>Footer pages Utility</h2><ul><li><a href="footer-pages-privacy-policy.html">Privacy Policy</a></li><li><a href="footer-pages-faq.html">FAQ</a></li><li><span class="missing-page">Annual Report</span></li></ul>
+        </nav>
+        <main class="main-content">
+            <div class="content-wrapper">
+                <div class="content-box">
+                    <h1>Patient Resources &gt; Forms (SOURCED)</h1>
+<p><em>Content from ODHC website</em></p>
+<hr />
+<h2>Open Door Health Center</h2>
+<h3>Patient Forms</h3>
+<p>Below are patient forms we collect here at Open Door</p>
+<p>It may help to have some of these forms filled out in advance of your appointment.</p>
+<p>You can either fill them out electronically via SignNow, print them out and bring them to your appointment, or fax them ahead of time to (507) 388-3924.</p>
+<p>If you fill out a form electronically there is no need to print or fax the form(s) to us.</p>
+
+<p><strong>Welcome Packet English</strong> <a href="https://signnow.com/s/hHkHmjju">https://signnow.com/s/hHkHmjju</a></p>
+<p><strong>Welcome Packet Spanish</strong> <a href="https://signnow.com/s/5RKhlOcS">https://signnow.com/s/5RKhlOcS</a></p>
+<p><strong>Notice of Privacy Practices English</strong> <a href="https://signnow.com/s/98VDKIw7">https://signnow.com/s/98VDKIw7</a></p>
+<p><strong>Notice of Privacy Practices Spanish</strong> <a href="https://signnow.com/s/MbTxYDud">https://signnow.com/s/MbTxYDud</a></p>
+<p><strong>Notice of Nondiscrimination English</strong> <a href="https://signnow.com/s/ydWPDM9E">https://signnow.com/s/ydWPDM9E</a></p>
+<p><strong>Notice of Nondiscrimination Spanish</strong> <a href="https://signnow.com/s/zxzjEjZo">https://signnow.com/s/zxzjEjZo</a></p>
+<p><strong>Registration English</strong> <a href="https://signnow.com/s/MArwSF7D">https://signnow.com/s/MArwSF7D</a></p>
+<p><strong>Registration Spanish</strong> <a href="https://signnow.com/s/1BwQgbWm">https://signnow.com/s/1BwQgbWm</a></p>
+<p><strong>Care of Minor English</strong> <a href="https://signnow.com/s/MS7x3VYM">https://signnow.com/s/MS7x3VYM</a></p>
+<p><strong>Care of Minor Spanish</strong> <a href="https://signnow.com/s/cCkjIKzz">https://signnow.com/s/cCkjIKzz</a></p>
+<p><strong>Release of Info English</strong> <a href="https://signnow.com/s/PJTPwFR1">https://signnow.com/s/PJTPwFR1</a></p>
+<p><strong>Release of Info Spanish</strong> <a href="https://signnow.com/s/GVEn0TPw">https://signnow.com/s/GVEn0TPw</a></p>
+<p><strong>Telehealth English</strong> <a href="https://signnow.com/s/DQ1qRCMM">https://signnow.com/s/DQ1qRCMM</a></p>
+<p><strong>Telehealth Spanish</strong> <a href="https://signnow.com/s/Q8mpyDbi">https://signnow.com/s/Q8mpyDbi</a></p>
+<p><strong>Health History English</strong> <a href="https://signnow.com/s/PTBfxCXi">https://signnow.com/s/PTBfxCXi</a></p>
+<p><strong>Health History Spanish</strong> <a href="https://signnow.com/s/dDQ7nR0A">https://signnow.com/s/dDQ7nR0A</a></p>
+<p><strong>Welcome Packet Verification English</strong> <a href="https://signnow.com/s/qFxrRcCd">https://signnow.com/s/qFxrRcCd</a></p>
+<p><strong>Welcome Packet Verification Spanish</strong> <a href="https://signnow.com/s/Klok9eFb">https://signnow.com/s/Klok9eFb</a></p>
+<p><strong>Electronic Communication English</strong> <a href="https://signnow.com/s/qerCqmu5">https://signnow.com/s/qerCqmu5</a></p>
+<p><strong>Electronic Communication Spanish</strong> <a href="https://signnow.com/s/ONAIeqAm">https://signnow.com/s/ONAIeqAm</a></p>
+<p><strong>Consent to Treat English</strong> <a href="https://signnow.com/s/I91PO4By">https://signnow.com/s/I91PO4By</a></p>
+<p><strong>Consent to Treat Spanish</strong> <a href="https://signnow.com/s/CxOxKmyK">https://signnow.com/s/CxOxKmyK</a></p>
+<p><strong>Patient Feedback</strong> <a href="https://signnow.com/s/OwiqmEHI">https://signnow.com/s/OwiqmEHI</a></p>
+<hr />
+                </div>
+                
+    <div class="design-preview">
+        <h2>📐 Wireframe - Patient Resources > Forms</h2>
+        
+    <div class="wireframe-container">
+        <div class="wireframe-header">
+            <div style="display: flex; justify-content: space-between; align-items: center; padding: 15px;">
+                <div>
+                    <div class="wireframe-logo"></div>
+                    <div class="wireframe-label">Logo + Tagline</div>
+                </div>
+                <div style="display: flex; gap: 10px;">
+                    <div class="wireframe-button"></div>
+                    <div class="wireframe-button"></div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="wireframe-nav">
+            <div class="wireframe-nav-item"></div>
+            <div class="wireframe-nav-item"></div>
+            <div class="wireframe-nav-item"></div>
+            <div class="wireframe-nav-item"></div>
+            <div class="wireframe-nav-item"></div>
+        </div>
+        
+        <div class="wireframe-content">
+    
+            <div class="wireframe-hero">
+                <div class="wireframe-section-label">Hero Section</div>
+                <div class="wireframe-title"></div>
+                <div class="wireframe-subtitle"></div>
+                <div class="wireframe-text"></div>
+                <div class="wireframe-text medium"></div>
+                <div class="wireframe-text short"></div>
+    
+            </div>
+    
+            <div class="wireframe-section">
+                <div class="wireframe-section-label">Content Section</div>
+                <div class="wireframe-heading"></div>
+                <div class="wireframe-text"></div>
+                <div class="wireframe-text"></div>
+                <div class="wireframe-text short"></div>
+            </div>
+            
+            <div class="wireframe-section" style="background: #fafafa;">
+                <div class="wireframe-section-label">2-Column Cards</div>
+                <div class="wireframe-grid">
+                    <div class="wireframe-card">
+                        <div class="wireframe-card-title"></div>
+                        <div class="wireframe-card-text"></div>
+                        <div class="wireframe-card-text short"></div>
+                        <div class="wireframe-button" style="width: 100px; margin-top: 10px;"></div>
+                    </div>
+                    <div class="wireframe-card">
+                        <div class="wireframe-card-title"></div>
+                        <div class="wireframe-card-text"></div>
+                        <div class="wireframe-card-text short"></div>
+                        <div class="wireframe-button" style="width: 100px; margin-top: 10px;"></div>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="wireframe-section" style="background: #e0e0e0; border-top: 3px solid #999;">
+                <div class="wireframe-section-label">4-Column Footer</div>
+                <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px;">
+                    <div>
+                        <div class="wireframe-text" style="height: 14px; background: #999;"></div>
+                        <div class="wireframe-text" style="height: 8px; margin: 6px 0;"></div>
+                        <div class="wireframe-text short" style="height: 8px;"></div>
+                    </div>
+                    <div>
+                        <div class="wireframe-text" style="height: 14px; background: #999;"></div>
+                        <div class="wireframe-text" style="height: 8px; margin: 6px 0;"></div>
+                        <div class="wireframe-text" style="height: 8px; margin: 6px 0;"></div>
+                    </div>
+                    <div>
+                        <div class="wireframe-text" style="height: 14px; background: #999;"></div>
+                        <div class="wireframe-text" style="height: 8px; margin: 6px 0;"></div>
+                        <div class="wireframe-text" style="height: 8px; margin: 6px 0;"></div>
+                    </div>
+                    <div>
+                        <div class="wireframe-text" style="height: 14px; background: #999;"></div>
+                        <div class="wireframe-text" style="height: 8px; margin: 6px 0;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    </div>
+    
+                <div class="strategized-content">
+                    <h2>
+                        Strategized Content
+                    </h2>
+
+                    <div class="bw-header" style="margin: 18px 0;">
+                        <div class="bw-header-row" aria-hidden="true">
+                            <div class="bw-logo">LOGO</div>
+                            <div class="bw-box" style="min-width: 220px;">OPEN DOOR HEALTH CENTER</div>
+                            <div class="bw-icon" title="Phone" aria-label="Phone">☎</div>
+                            <div style="flex: 1;"></div>
+                            <div class="bw-pill">Portal Login</div>
+                            <div class="bw-pill alt">Pay My Bill</div>
+                        </div>
+                    </div>
+
+                    <div class="bw-nav" style="margin: 0 0 22px 0;">
+                        <div class="bw-nav-shell" aria-hidden="true">
+                            <div class="bw-nav-item">About</div>
+                            <div class="bw-nav-item">Locations</div>
+                            <div class="bw-nav-item">Patient Resources</div>
+                            <div class="bw-nav-item">Contact</div>
+                            <div class="bw-nav-item">Donate</div>
+                            <div class="bw-nav-search">
+                                <div class="bw-search">Search…</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bw-slideshow">
+                        <h3 style="margin-top: 0;">Patient Forms</h3>
+                        <p><strong>Fill out forms in advance to help your appointment go smoothly—complete online via SignNow, print and bring, or fax ahead of time.</strong></p>
+                        <p>If you complete a form electronically, there’s no need to print or fax it to us.</p>
+
+                        <div style="text-align: center; margin: 18px 0 6px 0;">
+                            <a href="#" class="cta-button">Complete Forms Online</a>
+                            <a href="#" class="cta-button secondary">Fax: (507) 388-3924</a>
+                        </div>
+
+                        <div class="bw-slideshow-controls" aria-hidden="true">
+                            <div class="bw-arrow">‹</div>
+                            <div class="bw-dots">
+                                <div class="bw-dot active"></div>
+                                <div class="bw-dot"></div>
+                                <div class="bw-dot"></div>
+                            </div>
+                            <div class="bw-arrow">›</div>
+                        </div>
+                    </div>
+
+                    <h3>How to Submit</h3>
+                    <div class="service-grid" style="grid-template-columns: 1fr 1fr 1fr;">
+                        <div class="service-card" style="text-align: left;">
+                            <h4>SignNow (Recommended)</h4>
+                            <p>Fill forms electronically online.</p>
+                        </div>
+                        <div class="service-card" style="text-align: left;">
+                            <h4>Print & Bring</h4>
+                            <p>Print forms and bring them to your appointment.</p>
+                        </div>
+                        <div class="service-card" style="text-align: left;">
+                            <h4>Fax Ahead</h4>
+                            <p>Fax forms to (507) 388-3924 before your visit.</p>
+                        </div>
+                    </div>
+
+                    <h3>Forms Library</h3>
+                    <div class="service-grid" style="grid-template-columns: 1fr 1fr;">
+                        <div class="service-card" style="text-align: left;">
+                            <h4>Welcome & Registration</h4>
+                            <ul>
+                                <li><a href="https://signnow.com/s/hHkHmjju">Welcome Packet (English)</a></li>
+                                <li><a href="https://signnow.com/s/5RKhlOcS">Welcome Packet (Spanish)</a></li>
+                                <li><a href="https://signnow.com/s/qFxrRcCd">Welcome Packet Verification (English)</a></li>
+                                <li><a href="https://signnow.com/s/Klok9eFb">Welcome Packet Verification (Spanish)</a></li>
+                                <li><a href="https://signnow.com/s/MArwSF7D">Registration (English)</a></li>
+                                <li><a href="https://signnow.com/s/1BwQgbWm">Registration (Spanish)</a></li>
+                                <li><a href="https://signnow.com/s/MS7x3VYM">Care of Minor (English)</a></li>
+                                <li><a href="https://signnow.com/s/cCkjIKzz">Care of Minor (Spanish)</a></li>
+                            </ul>
+                        </div>
+                        <div class="service-card" style="text-align: left;">
+                            <h4>Notices & Consents</h4>
+                            <ul>
+                                <li><a href="https://signnow.com/s/98VDKIw7">Notice of Privacy Practices (English)</a></li>
+                                <li><a href="https://signnow.com/s/MbTxYDud">Notice of Privacy Practices (Spanish)</a></li>
+                                <li><a href="https://signnow.com/s/ydWPDM9E">Notice of Nondiscrimination (English)</a></li>
+                                <li><a href="https://signnow.com/s/zxzjEjZo">Notice of Nondiscrimination (Spanish)</a></li>
+                                <li><a href="https://signnow.com/s/qerCqmu5">Electronic Communication (English)</a></li>
+                                <li><a href="https://signnow.com/s/ONAIeqAm">Electronic Communication (Spanish)</a></li>
+                                <li><a href="https://signnow.com/s/I91PO4By">Consent to Treat (English)</a></li>
+                                <li><a href="https://signnow.com/s/CxOxKmyK">Consent to Treat (Spanish)</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="service-grid" style="grid-template-columns: 1fr 1fr;">
+                        <div class="service-card" style="text-align: left;">
+                            <h4>Care & Records</h4>
+                            <ul>
+                                <li><a href="https://signnow.com/s/PJTPwFR1">Release of Info (English)</a></li>
+                                <li><a href="https://signnow.com/s/GVEn0TPw">Release of Info (Spanish)</a></li>
+                                <li><a href="https://signnow.com/s/DQ1qRCMM">Telehealth (English)</a></li>
+                                <li><a href="https://signnow.com/s/Q8mpyDbi">Telehealth (Spanish)</a></li>
+                                <li><a href="https://signnow.com/s/PTBfxCXi">Health History (English)</a></li>
+                                <li><a href="https://signnow.com/s/dDQ7nR0A">Health History (Spanish)</a></li>
+                            </ul>
+                        </div>
+                        <div class="service-card" style="text-align: left;">
+                            <h4>Feedback</h4>
+                            <ul>
+                                <li><a href="https://signnow.com/s/OwiqmEHI">Patient Feedback</a></li>
+                            </ul>
+                            <div class="phone-highlight">(507) 388-3924 (Fax)</div>
+                            <p style="text-align: center; margin: 0;">No need to print/fax if completed electronically.</p>
+                        </div>
+                    </div>
+
+                    <h3>Footer</h3>
+                    <div class="service-card" style="padding: 25px;">
+                        <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px;">
+                            <div>
+                                <h4>About</h4>
+                                <div style="text-align: left; font-size: 0.85rem; line-height: 1.6;">
+                                    <a href="about-mission-vision-and-values.html">Mission, Vision, and Values</a><br>
+                                    <a href="about-services-overview.html">Services</a><br>
+                                    <a href="about-meet-the-team.html">Meet the Team</a><br>
+                                    <a href="about-news-and-events.html">News and Events</a><br>
+                                </div>
+                            </div>
+                            <div>
+                                <h4>Locations</h4>
+                                <div style="text-align: left; font-size: 0.85rem; line-height: 1.6;">
+                                    <a href="about-locations-mankato.html">Mankato</a><br>
+                                    <a href="about-locations-shakopee.html">Shakopee</a><br>
+                                    <a href="about-locations-school-based-centers.html">School-Based Centers</a>
+                                </div>
+                            </div>
+                            <div>
+                                <h4>Patient Resources</h4>
+                                <div style="text-align: left; font-size: 0.85rem; line-height: 1.6;">
+                                    <a href="patient-resources-patient-portal.html">Patient Portal</a><br>
+                                    <a href="patient-resources-forms.html">Forms</a><br>
+                                    <a href="patient-resources-financial-assistance.html">Financial Assistance</a><br>
+                                    <a href="patient-resources-insurance-enrollment.html">Insurance Enrollment</a><br>
+                                    <a href="patient-resources-community-resources.html">Community Resources</a>
+                                </div>
+                            </div>
+                            <div>
+                                <h4>Contact &amp; More</h4>
+                                <div style="text-align: left; font-size: 0.85rem; line-height: 1.6;">
+                                    <a href="contact.html">Contact</a><br>
+                                    <a href="donate.html">Donate</a><br>
+                                    <a href="about-careers.html">Careers</a><br>
+                                    <a href="footer-pages-privacy-policy.html">Privacy Policy</a><br>
+                                    <a href="footer-pages-faq.html">FAQ</a><br>
+                                    <a href="footer-pages-annual-report.html">Annual Report</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="footer-card">
+                <h2>📄 Footer Content</h2>
+                <p>Open Door Health Center is a Federally Qualified Health Center (FQHC). Open Door Health Center receives HHS funding and is a Health Center Program grantee under 42 U.S.C 254b, and is deemed a Public Health Service employer under 42 U.S.C. 233 (g)-(n)</p>
+                <p class="copyright">© Copyright - Open Door Health Center - powered by Enfold WordPress Theme</p>
+            </div>
+            
+        </main>
+    </div>
+</body>
+</html>

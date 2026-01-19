@@ -1,0 +1,40 @@
+{
+  "base_url": "https://odhc.org",
+  "output_dirs": {
+    "scraped_content": "scraped_content",
+    "assets": "assets",
+    "images": "assets/images",
+    "pdfs": "assets/pdfs",
+    "review_site": "review_site"
+  },
+  "page_mappings": {
+    "/": "about/overview.md",
+    "/about": "about/overview.md",
+    "/mission-statement": "about/mission-vision-values.md",
+    "/overview": "about/overview.md",
+    "/medical-health": "about/services/medical.md",
+    "/dental-health": "about/services/dental.md",
+    "/behavioral-health": "about/services/behavioral-health.md",
+    "/insurance-enrollment": "about/services/insurance-enrollment.md",
+    "/chiropractic-care": "about/services/chiropractic-care.md",
+    "/locations": "about/locations/overview.md",
+    "/leadership": "about/team.md",
+    "/news": "about/news-events.md",
+    "/annual-report": "footer/annual-report.md",
+    "/careers": "about/careers.md",
+    "/job-openings": "about/careers.md",
+    "/patient-portal": "patient-resources/portal.md",
+    "/patient-forms": "patient-resources/forms.md",
+    "/financial-assistance": "patient-resources/financial-assistance.md",
+    "/community-resources": "patient-resources/community-resources.md",
+    "/contact": "contact.md",
+    "/donate": "donate.md",
+    "/privacy-policy": "footer/privacy-policy.md",
+    "/frequently-asked-questions": "footer/faq.md"
+  },
+  "scraper_settings": {
+    "max_depth": 3,
+    "delay_seconds": 1,
+    "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36"
+  }
+}

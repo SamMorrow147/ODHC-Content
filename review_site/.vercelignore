@@ -1,0 +1,2 @@
+# Exclude backup files from deployment
+*.bak

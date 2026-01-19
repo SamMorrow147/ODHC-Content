@@ -1,0 +1,68 @@
+ODHC Content Scraping Report
+============================================================
+
+Total pages scraped: 22
+Total markdown files created: 14
+
+
+Content Organization:
+------------------------------------------------------------
+
+about/careers.md (1 sources)
+  - Job Openings: https://odhc.org/careers/job-openings/
+
+about/overview.md (3 sources)
+  - We speak your language!: https://odhc.org
+  - We speak your language!: https://odhc.org/
+  - Overview: https://odhc.org/overview/
+
+about/services/behavioral-health.md (2 sources)
+  - Behavioral Health: https://odhc.org/behavioral-health/
+  - Behavioral Health: https://odhc.org/patient/behavioral-health/
+
+about/services/dental.md (2 sources)
+  - Dental Health: https://odhc.org/dental-health/
+  - Dental Health: https://odhc.org/patient/dental-health/
+
+about/services/insurance-enrollment.md (1 sources)
+  - Insurance Enrollment: https://odhc.org/insurance-enrollment/
+
+about/services/medical.md (2 sources)
+  - Medical Health: https://odhc.org/medical-health/
+  - Medical Health: https://odhc.org/patient/medical-health/
+
+donate.md (1 sources)
+  - Donate to Open Door Health Center: https://odhc.org/donate-to-open-door-health-center/
+
+footer/faq.md (1 sources)
+  - Frequently Asked Questions: https://odhc.org/frequently-asked-questions/
+
+footer/privacy-policy.md (1 sources)
+  - Privacy Policy: https://odhc.org/privacy-policy/
+
+patient-resources/community-resources.md (1 sources)
+  - Community Resources: https://odhc.org/community-resources/
+
+patient-resources/financial-assistance.md (2 sources)
+  - Financial Assistance: https://odhc.org/financial-assistance
+  - Financial Assistance: https://odhc.org/financial-assistance/
+
+unmapped/community-health-education.md (1 sources)
+  - Community Health: https://odhc.org/community-health-education/
+
+unmapped/covid-19.md (2 sources)
+  - COVID-19 Information: https://odhc.org/covid-19
+  - COVID-19 Information: https://odhc.org/covid-19/
+
+unmapped/telehealth.md (2 sources)
+  - Telehealth: https://odhc.org/telehealth
+  - Telehealth: https://odhc.org/telehealth/
+
+
+Pages requiring manual review (unmapped):
+------------------------------------------------------------
+  - /community-health-education
+  - /covid-19
+  - /covid-19
+  - /telehealth
+  - /telehealth

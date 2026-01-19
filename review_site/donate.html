@@ -1,0 +1,1333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donate - ODHC Content Review</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+        }
+        
+        .container {
+            display: flex;
+            min-height: 100vh;
+        }
+        
+        .sidebar {
+            width: 320px;
+            background: #2c3e50;
+            color: white;
+            padding: 20px;
+            overflow-y: auto;
+            position: fixed;
+            height: 100vh;
+        }
+        
+        .sidebar h1 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #34495e;
+        }
+        
+        .sidebar h2 {
+            font-size: 1rem;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            color: #ecf0f1;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .sidebar h3 {
+            font-size: 0.9rem;
+            margin-top: 12px;
+            margin-left: 10px;
+            margin-bottom: 8px;
+            color: #bdc3c7;
+        }
+        
+        .sidebar ul {
+            list-style: none;
+        }
+        
+        .sidebar li {
+            margin: 5px 0;
+        }
+        
+        .sidebar a {
+            color: #bdc3c7;
+            text-decoration: none;
+            display: block;
+            padding: 8px 12px;
+            border-radius: 4px;
+            transition: all 0.3s;
+            font-size: 0.9rem;
+        }
+        
+        .sidebar a:hover {
+            background: #34495e;
+            color: white;
+            padding-left: 16px;
+        }
+        
+        .sidebar .subsection {
+            margin-left: 15px;
+        }
+        
+        .sidebar .missing-page {
+            color: #e74c3c;
+            opacity: 0.6;
+            cursor: not-allowed;
+            padding: 8px 12px;
+            font-size: 0.9rem;
+            font-style: italic;
+        }
+        
+        .sidebar .missing-page::after {
+            content: " (no content yet)";
+            font-size: 0.75rem;
+            color: #c0392b;
+        }
+        
+        .main-content {
+            flex: 1;
+            margin-left: 320px;
+            padding: 40px;
+        }
+        
+        .content-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1.8fr;
+            gap: 30px;
+            max-width: 2400px;
+            margin-bottom: 30px;
+        }
+        
+        .content-wrapper.three-col {
+            grid-template-columns: 1fr 1fr 1.8fr;
+            max-width: 2400px;
+        }
+        
+        .strategized-content {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: none;
+            border: 2px solid #ddd;
+        }
+        
+        .strategized-content h2 {
+            color: #333;
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #ccc;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .strategized-content h3 {
+            color: #333;
+            font-size: 1.1rem;
+            margin-top: 25px;
+            margin-bottom: 12px;
+        }
+        
+        .strategized-content h4 {
+            color: #333;
+            font-size: 0.95rem;
+            margin-top: 15px;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        
+        .strategized-content p {
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 12px;
+            font-size: 0.95rem;
+        }
+        
+        .strategized-content ul {
+            margin: 15px 0;
+            padding-left: 0;
+            list-style: none;
+        }
+        
+        .strategized-content li {
+            color: #555;
+            margin: 10px 0;
+            padding-left: 25px;
+            position: relative;
+            line-height: 1.6;
+        }
+        
+        .strategized-content li:before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: #666;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: #999;
+            color: white;
+            padding: 12px 28px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            margin: 15px 10px 15px 0;
+            border: 2px solid #666;
+            box-shadow: none;
+            transition: none;
+        }
+        
+        .cta-button:hover {
+            background: #999;
+            box-shadow: none;
+            transform: none;
+        }
+        
+        .cta-button.secondary {
+            background: #fff;
+            color: #333;
+            border: 2px solid #666;
+            box-shadow: none;
+        }
+        
+        .cta-button.secondary:hover {
+            background: #f5f5f5;
+            box-shadow: none;
+        }
+        
+        .optimized-badge {
+            background: #999;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .service-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 15px;
+            margin: 15px 0;
+        }
+        
+        .service-card {
+            background: #fff;
+            border: 2px solid #bbb;
+            padding: 15px;
+            border-radius: 4px;
+            text-align: center;
+        }
+        
+        .service-card h4 {
+            color: #333;
+            font-size: 0.9rem;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        
+        .service-card p {
+            color: #555;
+            font-size: 0.85rem;
+            line-height: 1.5;
+            margin: 0;
+        }
+        
+        .bw-header {
+            background: #fff;
+            border: 2px solid #000;
+            padding: 12px 20px;
+            margin-bottom: 15px;
+        }
+        
+        .bw-header-row {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .bw-logo {
+            width: 120px;
+            height: 40px;
+            background: #e0e0e0;
+            border: 2px solid #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 0.75rem;
+            color: #000;
+        }
+        
+        .bw-box {
+            background: #f5f5f5;
+            border: 2px solid #000;
+            padding: 8px 12px;
+            font-weight: 600;
+            font-size: 0.75rem;
+            color: #000;
+        }
+        
+        .bw-icon {
+            width: 32px;
+            height: 32px;
+            background: #f5f5f5;
+            border: 2px solid #000;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+        }
+        
+        .bw-pill {
+            background: #000;
+            color: white;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            border: 2px solid #000;
+        }
+        
+        .bw-pill.alt {
+            background: #fff;
+            color: #000;
+            border: 2px solid #000;
+        }
+        
+        .bw-nav {
+            background: #fff;
+            border: 2px solid #000;
+            padding: 10px 20px;
+            margin-bottom: 15px;
+        }
+        
+        .bw-nav-shell {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .bw-nav-item {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #000;
+            padding: 6px 0;
+        }
+        
+        .bw-nav-search {
+            margin-left: auto;
+        }
+        
+        .bw-search {
+            background: #f5f5f5;
+            border: 2px solid #000;
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            color: #666;
+        }
+        
+        .bw-slideshow {
+            background: #fff;
+            border: 2px solid #000;
+            padding: 25px;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+        
+        .bw-slideshow h3 {
+            color: #000;
+            font-size: 1.2rem;
+            margin-bottom: 12px;
+        }
+        
+        .bw-slideshow p {
+            color: #555;
+            font-size: 0.9rem;
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+        
+        .bw-slideshow-controls {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .bw-arrow {
+            width: 32px;
+            height: 32px;
+            background: #f5f5f5;
+            border: 2px solid #000;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #000;
+        }
+        
+        .bw-dots {
+            display: flex;
+            gap: 8px;
+        }
+        
+        .bw-dot {
+            width: 10px;
+            height: 10px;
+            background: #fff;
+            border: 2px solid #000;
+            border-radius: 50%;
+        }
+        
+        .bw-dot.active {
+            background: #000;
+        }
+        
+        .footer-card {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-left: 5px solid #f39c12;
+            max-width: 1800px;
+        }
+        
+        .redirect-card {
+            background: #f8f9fa;
+            padding: 15px 20px;
+            border-radius: 6px;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+            border-left: 3px solid #16a085;
+            max-width: 1800px;
+            margin-top: 20px;
+        }
+        
+        .redirect-card h2 {
+            color: #16a085;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+            padding-bottom: 6px;
+            border-bottom: 1px solid #d0d0d0;
+        }
+        
+        .redirect-mapping {
+            background: white;
+            padding: 10px;
+            border-radius: 4px;
+            margin: 8px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.75rem;
+            line-height: 1.4;
+        }
+        
+        .redirect-mapping .old-url {
+            color: #e74c3c;
+            font-weight: 600;
+        }
+        
+        .redirect-mapping .new-url {
+            color: #27ae60;
+            font-weight: 600;
+        }
+        
+        .redirect-mapping .redirect-type {
+            background: #16a085;
+            color: white;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            margin-right: 8px;
+        }
+        
+        .content-box {
+            background: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .design-preview {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .design-preview h2 {
+            font-size: 1.3rem;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #3498db;
+        }
+        
+        .mockup-container {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+        }
+        
+        .mockup-header {
+            background: linear-gradient(135deg, #3a8fa8 0%, #2c7a8f 100%);
+            padding: 20px;
+            color: white;
+        }
+        
+        .mockup-logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .mockup-tagline {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        
+        .mockup-nav {
+            background: #2c5f7c;
+            padding: 12px 20px;
+            display: flex;
+            gap: 20px;
+            font-size: 0.85rem;
+        }
+        
+        .mockup-nav a {
+            color: white;
+            text-decoration: none;
+            opacity: 0.8;
+        }
+        
+        .mockup-nav a:hover {
+            opacity: 1;
+        }
+        
+        .mockup-content {
+            padding: 30px;
+            background: linear-gradient(135deg, #f5f9fa 0%, #ffffff 100%);
+            max-height: 600px;
+            overflow-y: auto;
+        }
+        
+        .mockup-content h1 {
+            color: #2c5f7c;
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+        
+        .mockup-content h2 {
+            color: #3a8fa8;
+            font-size: 1.4rem;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+        
+        .mockup-content h3 {
+            color: #2c5f7c;
+            font-size: 1.1rem;
+            margin-top: 15px;
+            margin-bottom: 8px;
+        }
+        
+        .mockup-content p {
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 12px;
+        }
+        
+        .mockup-content ul {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+        
+        .mockup-content li {
+            color: #555;
+            margin: 8px 0;
+        }
+        
+        .mockup-content a {
+            color: #3a8fa8;
+            text-decoration: none;
+            border-bottom: 1px solid #89c8d9;
+        }
+        
+        .mockup-content a:hover {
+            color: #2c7a8f;
+            border-bottom-color: #3a8fa8;
+        }
+        
+        .mockup-button {
+            display: inline-block;
+            background: #a8c954;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin: 10px 5px;
+            border: none;
+        }
+        
+        .mockup-button.secondary {
+            background: #e88679;
+        }
+        
+        .mockup-highlight {
+            background: #e8f4f8;
+            border-left: 4px solid #3a8fa8;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+        
+        .mockup-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin: 20px 0;
+        }
+        
+        .mockup-stat {
+            background: linear-gradient(135deg, #3a8fa8 0%, #2c7a8f 100%);
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        
+        .mockup-stat-value {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        
+        .mockup-stat-label {
+            font-size: 0.8rem;
+            opacity: 0.9;
+        }
+        
+        .wireframe-container {
+            background: #ffffff;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+            margin-top: 20px;
+        }
+        
+        .wireframe-header {
+            background: #e0e0e0;
+            padding: 15px;
+            border-bottom: 2px solid #ccc;
+        }
+        
+        .wireframe-logo {
+            width: 120px;
+            height: 30px;
+            background: #999;
+            margin-bottom: 5px;
+        }
+        
+        .wireframe-tagline {
+            width: 180px;
+            height: 12px;
+            background: #bbb;
+        }
+        
+        .wireframe-nav {
+            background: #f5f5f5;
+            padding: 12px 15px;
+            display: flex;
+            gap: 15px;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .wireframe-nav-item {
+            width: 60px;
+            height: 14px;
+            background: #aaa;
+            border-radius: 2px;
+        }
+        
+        .wireframe-content {
+            padding: 20px;
+            background: #fafafa;
+        }
+        
+        .wireframe-hero {
+            border: 2px dashed #999;
+            padding: 30px;
+            margin-bottom: 20px;
+            background: #fff;
+        }
+        
+        .wireframe-title {
+            width: 70%;
+            height: 28px;
+            background: #333;
+            margin-bottom: 15px;
+        }
+        
+        .wireframe-subtitle {
+            width: 50%;
+            height: 16px;
+            background: #666;
+            margin-bottom: 10px;
+        }
+        
+        .wireframe-text {
+            width: 100%;
+            height: 10px;
+            background: #ccc;
+            margin: 8px 0;
+        }
+        
+        .wireframe-text.short {
+            width: 85%;
+        }
+        
+        .wireframe-text.medium {
+            width: 92%;
+        }
+        
+        .wireframe-button {
+            display: inline-block;
+            width: 140px;
+            height: 38px;
+            background: #999;
+            border: 2px solid #666;
+            margin: 10px 10px 10px 0;
+            border-radius: 20px;
+        }
+        
+        .wireframe-section {
+            border: 1px solid #ddd;
+            padding: 20px;
+            margin: 15px 0;
+            background: #fff;
+            text-align: center;
+        }
+        
+        .wireframe-heading {
+            width: 40%;
+            height: 20px;
+            background: #555;
+            margin-bottom: 12px;
+        }
+        
+        .wireframe-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 15px 0;
+        }
+        
+        .wireframe-card {
+            border: 2px solid #bbb;
+            padding: 15px;
+            background: #fff;
+            min-height: 80px;
+        }
+        
+        .wireframe-card-title {
+            width: 70%;
+            height: 14px;
+            background: #666;
+            margin-bottom: 10px;
+        }
+        
+        .wireframe-card-text {
+            width: 100%;
+            height: 8px;
+            background: #ddd;
+            margin: 5px 0;
+        }
+        
+        .wireframe-image {
+            width: 100%;
+            height: 120px;
+            background: #e0e0e0;
+            border: 2px dashed #999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            font-size: 0.9rem;
+            margin: 10px 0;
+        }
+        
+        .wireframe-list {
+            margin: 10px 0;
+        }
+        
+        .wireframe-list-item {
+            display: flex;
+            align-items: center;
+            margin: 8px 0;
+        }
+        
+        .wireframe-bullet {
+            width: 6px;
+            height: 6px;
+            background: #666;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+        
+        .wireframe-list-text {
+            width: 80%;
+            height: 10px;
+            background: #ccc;
+        }
+        
+        .wireframe-label {
+            font-size: 0.75rem;
+            color: #666;
+            margin: 5px 0;
+            font-family: sans-serif;
+            text-align: center;
+        }
+        
+        .wireframe-section-label {
+            font-size: 0.8rem;
+            color: #333;
+            font-weight: 600;
+            margin: 10px 0 5px 0;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            text-align: center;
+        }
+        
+        .wireframe-icon {
+            width: 40px;
+            height: 40px;
+            background: #ddd;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            margin: 5px;
+        }
+        
+        .content-box h1 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #3498db;
+        }
+        
+        .content-box h2 {
+            color: #34495e;
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+        
+        .content-box h3 {
+            color: #555;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+        
+        .content-box img {
+            max-width: 100%;
+            height: auto;
+            margin: 20px 0;
+            border-radius: 4px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        .content-box a {
+            color: #3498db;
+            text-decoration: none;
+        }
+        
+        .content-box a:hover {
+            text-decoration: underline;
+        }
+        
+        .source-info {
+            background: #e3f2fd;
+            padding: 20px;
+            margin: 0 0 30px 0;
+            border-radius: 6px;
+            border-left: 4px solid #2196f3;
+        }
+        
+        .source-info h3 {
+            margin-top: 0;
+            margin-bottom: 12px;
+            color: #1976d2;
+            font-size: 1.1rem;
+        }
+        
+        .source-info ul {
+            margin: 0;
+            padding-left: 20px;
+        }
+        
+        .source-info li {
+            margin: 8px 0;
+        }
+        
+        .source-info a {
+            color: #1976d2;
+            word-break: break-all;
+            font-size: 0.95rem;
+        }
+        
+        .footer-card h2 {
+            color: #d68910;
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #f39c12;
+        }
+        
+        .footer-card p {
+            color: #555;
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin: 12px 0;
+        }
+        
+        .footer-card .copyright {
+            color: #888;
+            font-size: 0.85rem;
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px solid #eee;
+        }
+
+        /* Low-fidelity rotating partner logos strip (wireframe) */
+        .partner-rotator {
+            position: fixed;
+            left: 320px; /* account for sidebar */
+            right: 0;
+            bottom: 0;
+            height: 56px;
+            background: #ffffff;
+            border-top: 2px solid #ddd;
+            display: flex;
+            align-items: center;
+            padding: 0 16px;
+            z-index: 50;
+        }
+
+        .partner-rotator-label {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: #333;
+            margin-right: 14px;
+            white-space: nowrap;
+        }
+
+        .partner-rotator-track {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 10px;
+            width: 100%;
+        }
+
+        .partner-rotator-logo {
+            height: 28px;
+            border: 2px dashed #bbb;
+            background: #f5f5f5;
+            color: #666;
+            font-size: 0.75rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 6px;
+        }
+
+        @media (max-width: 768px) {
+            .partner-rotator {
+                left: 0;
+            }
+            .partner-rotator-track {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        
+        .image-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 20px;
+            margin: 20px 0 0 0;
+        }
+        
+        .image-item {
+            text-align: center;
+        }
+        
+        .image-gallery img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 6px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .image-gallery img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+        }
+        
+        .image-caption {
+            font-size: 0.75rem;
+            color: #666;
+            margin-top: 8px;
+            word-break: break-word;
+        }
+        
+        .alert {
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+        }
+        
+        @media (max-width: 768px) {
+            .sidebar {
+                width: 100%;
+                position: relative;
+                height: auto;
+            }
+            
+            .main-content {
+                margin-left: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <nav class="sidebar">
+            <h1>ODHC Content Review</h1>
+            <a href="index.html" style="background: #34495e; margin-bottom: 20px;">🏠 Home</a><h2>About</h2><ul><li><a href="about-mission-vision-and-values.html">Mission, Vision, and Values</a></li><li><a href="about-services-overview.html">Services</a></li><h3>Locations</h3><ul class="subsection"><li><a href="about-locations-mankato.html">Mankato</a></li><li><a href="about-locations-shakopee.html">Shakopee</a></li><li><a href="about-locations-school-based-centers.html">School-Based Centers</a></li></ul><li><a href="about-meet-the-team.html">Meet the Team</a></li><li><a href="about-news-and-events.html">News and Events</a></li><li><a href="about-careers.html">Careers</a></li></ul><h2>Patient Resources</h2><ul><li><a href="patient-resources-patient-portal.html">Patient Portal</a></li><li><a href="patient-resources-forms.html">Forms</a></li><li><a href="patient-resources-financial-assistance.html">Financial Assistance</a></li><li><a href="patient-resources-insurance-enrollment.html">Insurance Enrollment</a></li><li><a href="patient-resources-community-resources.html">Community Resources</a></li></ul><li><a href="contact.html">Contact</a></li><li><a href="donate.html">Donate</a></li><h2>Footer pages Utility</h2><ul><li><a href="footer-pages-privacy-policy.html">Privacy Policy</a></li><li><a href="footer-pages-faq.html">FAQ</a></li><li><span class="missing-page">Annual Report</span></li></ul>
+        </nav>
+        <main class="main-content">
+            <div class="content-wrapper">
+                <div class="content-box">
+                    <h1>Donate (SOURCED)</h1>
+<p><em>Content from ODHC website</em></p>
+<hr />
+
+<h2>Open Door Health Center</h2>
+<h3>Donations</h3>
+<p><strong>We Greatly Appreciate Your Generosity!</strong></p>
+<p>Open Door has been providing medical, dental, and mental health services to under served populations in South Central Minnesota since 1994.</p>
+<p>Your generosity helps Open Door meet the increasing demand of uninsured and underinsured individuals and families in our community.</p>
+<p>We are a 501(c)(3) non-profit organization. Your donation is tax deductible.</p>
+
+<p><strong>Your donations to Open Door Health Center make our families healthier and our community more prosperous by…</strong></p>
+<ul>
+    <li>Providing comprehensive and preventative care for children and adults.</li>
+    <li>Assisting in eliminating health care inequality in Southern Minnesota.</li>
+    <li>Providing culturally and linguistically appropriate care for all people.</li>
+    <li>Providing alternatives to costly emergency room visits.</li>
+    <li>Educating individuals and families in need of greater health.</li>
+</ul>
+
+<p>In today’s economy, the number of people without adequate healthcare is increasing. Many of our patients are hard-working citizens who struggle to make ends meet. Many have jobs that provide inadequate insurance.</p>
+<p><strong>A gift to Open Door is a gift to our community.</strong></p>
+
+<p>You may also call (507) 388-2120, email us for more information, or mail a check to:</p>
+<p><strong>Open Door Health Center</strong><br>
+309 Holly Lane<br>
+Mankato, MN 56001</p>
+
+<p>After receipt of your gift, we will send you a letter for your records.</p>
+<p>To find out more about donating your time and talents, please call (507) 388-2120 or contact us for more information.</p>
+<hr />
+                </div>
+                
+    <div class="design-preview">
+        <h2>📐 Wireframe - Donate</h2>
+        
+    <div class="wireframe-container">
+        <div class="wireframe-header">
+            <div style="display: flex; justify-content: space-between; align-items: center; padding: 15px;">
+                <div>
+                    <div class="wireframe-logo"></div>
+                    <div class="wireframe-label">Logo + Tagline</div>
+                </div>
+                <div style="display: flex; gap: 10px;">
+                    <div class="wireframe-button"></div>
+                    <div class="wireframe-button"></div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="wireframe-nav">
+            <div class="wireframe-nav-item"></div>
+            <div class="wireframe-nav-item"></div>
+            <div class="wireframe-nav-item"></div>
+            <div class="wireframe-nav-item"></div>
+            <div class="wireframe-nav-item"></div>
+        </div>
+        
+        <div class="wireframe-content">
+    
+            <div class="wireframe-hero">
+                <div class="wireframe-section-label">Hero Section</div>
+                <div class="wireframe-title"></div>
+                <div class="wireframe-subtitle"></div>
+                <div class="wireframe-text"></div>
+                <div class="wireframe-text medium"></div>
+                <div class="wireframe-text short"></div>
+    
+            </div>
+    
+            <div class="wireframe-section">
+                <div class="wireframe-section-label">Content Section</div>
+                <div class="wireframe-heading"></div>
+                <div class="wireframe-text"></div>
+                <div class="wireframe-text medium"></div>
+                <div class="wireframe-text short"></div>
+            </div>
+            
+            <div class="wireframe-section" style="background: #e0e0e0; border-top: 3px solid #999;">
+                <div class="wireframe-section-label">4-Column Footer</div>
+                <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px;">
+                    <div>
+                        <div class="wireframe-text" style="height: 14px; background: #999;"></div>
+                        <div class="wireframe-text" style="height: 8px; margin: 6px 0;"></div>
+                        <div class="wireframe-text short" style="height: 8px;"></div>
+                    </div>
+                    <div>
+                        <div class="wireframe-text" style="height: 14px; background: #999;"></div>
+                        <div class="wireframe-text" style="height: 8px; margin: 6px 0;"></div>
+                        <div class="wireframe-text" style="height: 8px; margin: 6px 0;"></div>
+                    </div>
+                    <div>
+                        <div class="wireframe-text" style="height: 14px; background: #999;"></div>
+                        <div class="wireframe-text" style="height: 8px; margin: 6px 0;"></div>
+                        <div class="wireframe-text" style="height: 8px; margin: 6px 0;"></div>
+                    </div>
+                    <div>
+                        <div class="wireframe-text" style="height: 14px; background: #999;"></div>
+                        <div class="wireframe-text" style="height: 8px; margin: 6px 0;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    </div>
+            
+            <div class="strategized-content">
+                <h2>
+                    Strategized Content
+                </h2>
+
+                <div class="bw-header" style="margin: 18px 0;">
+                    <div class="bw-header-row" aria-hidden="true">
+                        <div class="bw-logo">LOGO</div>
+                        <div class="bw-box" style="min-width: 220px;">OPEN DOOR HEALTH CENTER</div>
+                        <div class="bw-icon" title="Phone" aria-label="Phone">☎</div>
+                        <div style="flex: 1;"></div>
+                        <div class="bw-pill">Portal Login</div>
+                        <div class="bw-pill alt">Pay My Bill</div>
+                    </div>
+                </div>
+
+                <div class="bw-nav" style="margin: 0 0 22px 0;">
+                    <div class="bw-nav-shell" aria-hidden="true">
+                        <div class="bw-nav-item">About</div>
+                        <div class="bw-nav-item">Locations</div>
+                        <div class="bw-nav-item">Patient Resources</div>
+                        <div class="bw-nav-item">Contact</div>
+                        <div class="bw-nav-item">Donate</div>
+                        <div class="bw-nav-search">
+                            <div class="bw-search">Search…</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bw-slideshow">
+                    <h3 style="margin-top: 0;">Support Our Mission—Make a Difference</h3>
+                    <p><strong>Your donation helps us provide quality, affordable healthcare to families who need it most—regardless of their ability to pay.</strong></p>
+                    <p>Every contribution makes a real difference in our community. Help us continue providing medical, dental, and behavioral health care to those who need it.</p>
+                    
+                    <div style="text-align: center; margin: 18px 0 6px 0;">
+                        <a href="#" class="cta-button">Donate Now</a>
+                        <a href="#" class="cta-button secondary">Become a Monthly Donor</a>
+                    </div>
+
+                    <div class="bw-slideshow-controls" aria-hidden="true">
+                        <div class="bw-arrow">‹</div>
+                        <div class="bw-dots">
+                            <div class="bw-dot active"></div>
+                            <div class="bw-dot"></div>
+                            <div class="bw-dot"></div>
+                        </div>
+                        <div class="bw-arrow">›</div>
+                    </div>
+                </div>
+                
+                <h3>We Greatly Appreciate Your Generosity</h3>
+                <div class="service-grid" style="grid-template-columns: 1fr;">
+                    <div class="service-card" style="text-align: left;">
+                        <p>Open Door has been providing medical, dental, and mental health services to under served populations in South Central Minnesota since 1994. Your generosity helps Open Door meet the increasing demand of uninsured and underinsured individuals and families in our community.</p>
+                        <p><strong>Open Door Health Center is a 501(c)(3) non-profit organization. Your donation is tax deductible.</strong></p>
+                    </div>
+                </div>
+                
+                <h3>Your Donation Helps By</h3>
+                <div class="service-grid" style="grid-template-columns: 1fr;">
+                    <div class="service-card" style="text-align: left;">
+                        <ul>
+                            <li>Providing comprehensive and preventative care for children and adults.</li>
+                            <li>Assisting in eliminating health care inequality in Southern Minnesota.</li>
+                            <li>Providing culturally and linguistically appropriate care for all people.</li>
+                            <li>Providing alternatives to costly emergency room visits.</li>
+                            <li>Educating individuals and families in need of greater health.</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <h3>Why Now</h3>
+                <div class="service-grid" style="grid-template-columns: 1fr;">
+                    <div class="service-card" style="text-align: left;">
+                        <p>In today’s economy, the number of people without adequate healthcare is increasing. Many of our patients are hard-working citizens who struggle to make ends meet. Many have jobs that provide inadequate insurance.</p>
+                        <p><strong>A gift to Open Door is a gift to our community.</strong></p>
+                    </div>
+                </div>
+                
+                <h3>Contact Us About Giving</h3>
+                <div class="service-grid" style="grid-template-columns: 1fr;">
+                    <div class="service-card" style="text-align: center;">
+                        <h4>Questions About Donating?</h4>
+                        <p>You may call (507) 388-2120, email us for more information, or mail a check to the address below. After receipt of your gift, we will send you a letter for your records.</p>
+                        <div class="phone-highlight">(507) 388-2120</div>
+                        <p style="margin-top: 12px;"><strong>Open Door Health Center</strong><br>309 Holly Lane<br>Mankato, MN 56001</p>
+                        <div style="text-align: center; margin-top: 20px;">
+                            <a href="#" class="cta-button">Make a Donation</a>
+                            <a href="#" class="cta-button secondary">Donate Time &amp; Talents</a>
+                        </div>
+                    </div>
+                </div>
+
+                <h3>Footer</h3>
+                <div class="service-card" style="padding: 25px;">
+                    <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px;">
+                        <div>
+                            <h4>About</h4>
+                            <div style="text-align: left; font-size: 0.85rem; line-height: 1.6;">
+                                <a href="about-mission-vision-and-values.html">Mission, Vision, and Values</a><br>
+                                <a href="about-services-overview.html">Services</a><br>
+                                <a href="about-meet-the-team.html">Meet the Team</a><br>
+                                <a href="about-news-and-events.html">News and Events</a><br>
+                            </div>
+                        </div>
+                        <div>
+                            <h4>Locations</h4>
+                            <div style="text-align: left; font-size: 0.85rem; line-height: 1.6;">
+                                <a href="about-locations-mankato.html">Mankato</a><br>
+                                <a href="about-locations-shakopee.html">Shakopee</a><br>
+                                <a href="about-locations-school-based-centers.html">School-Based Centers</a>
+                            </div>
+                        </div>
+                        <div>
+                            <h4>Patient Resources</h4>
+                            <div style="text-align: left; font-size: 0.85rem; line-height: 1.6;">
+                                <a href="patient-resources-patient-portal.html">Patient Portal</a><br>
+                                <a href="patient-resources-forms.html">Forms</a><br>
+                                    <a href="patient-resources-financial-assistance.html">Financial Assistance</a><br>
+                                    <a href="patient-resources-insurance-enrollment.html">Insurance Enrollment</a><br>
+                                    <a href="patient-resources-community-resources.html">Community Resources</a>
+                            </div>
+                        </div>
+                        <div>
+                            <h4>Contact &amp; More</h4>
+                            <div style="text-align: left; font-size: 0.85rem; line-height: 1.6;">
+                                <a href="contact.html">Contact</a><br>
+                                <a href="donate.html">Donate</a><br>
+                                <a href="about-careers.html">Careers</a><br>
+                                <a href="footer-pages-privacy-policy.html">Privacy Policy</a><br>
+                                <a href="footer-pages-faq.html">FAQ</a><br>
+                                <a href="footer-pages-annual-report.html">Annual Report</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+            
+            </div>
+            
+            <div class="footer-card">
+                <h2>📄 Footer Content</h2>
+                <p>Open Door Health Center is a Federally Qualified Health Center (FQHC). Open Door Health Center receives HHS funding and is a Health Center Program grantee under 42 U.S.C 254b, and is deemed a Public Health Service employer under 42 U.S.C. 233 (g)-(n)</p>
+                <p class="copyright">© Copyright - Open Door Health Center - powered by Enfold WordPress Theme</p>
+            </div>
+
+            <!-- Low-fidelity rotating partner logos (wireframe placeholder) -->
+            <div class="partner-rotator" aria-label="Partner logos (rotating)">
+                <div class="partner-rotator-label">Health Partners (rotating logos)</div>
+                <div class="partner-rotator-track" aria-hidden="true">
+                    <div class="partner-rotator-logo">LOGO</div>
+                    <div class="partner-rotator-logo">LOGO</div>
+                    <div class="partner-rotator-logo">LOGO</div>
+                    <div class="partner-rotator-logo">LOGO</div>
+                    <div class="partner-rotator-logo">LOGO</div>
+                    <div class="partner-rotator-logo">LOGO</div>
+                </div>
+            </div>
+            
+    <div class="redirect-card">
+        <h2>🔀 301 Redirect Mapping (SEO)</h2>
+        <p style="margin-bottom: 10px; color: #666; font-size: 0.8rem;">Configure these redirects to preserve search rankings:</p>
+    
+        <div class="redirect-mapping">
+            <span class="redirect-type">301</span>
+            <strong style="font-size: 0.7rem;">From:</strong> <span class="old-url">/donate-to-open-door-health-center/</span>
+            <strong style="font-size: 0.7rem; margin-left: 10px;">→</strong>
+            <strong style="font-size: 0.7rem;">To:</strong> <span class="new-url">/donate.html</span>
+        </div>
+        
+        <p style="margin-top: 10px; font-size: 0.7rem; color: #888; padding-top: 8px; border-top: 1px solid #ddd;">
+            <strong>Implementation:</strong> Configure in .htaccess, nginx.conf, or hosting platform redirect manager.
+        </p>
+    </div>
+    
+        </main>
+    </div>
+</body>
+</html>
