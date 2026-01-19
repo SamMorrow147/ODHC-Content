@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About &gt; FAQ - ODHC Content Review</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; line-height: 1.6; color: #333; background: #f5f5f5; }
+        .container { display: flex; min-height: 100vh; }
+        .sidebar { width: 320px; background: #2c3e50; color: white; padding: 20px; overflow-y: auto; position: fixed; height: 100vh; }
+        .sidebar h1 { font-size: 1.5rem; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 2px solid #34495e; }
+        .sidebar h2 { font-size: 1rem; margin-top: 20px; margin-bottom: 10px; color: #ecf0f1; text-transform: uppercase; letter-spacing: 1px; }
+        .sidebar h2 a { color: inherit; text-decoration: none; display: block; padding: 6px 12px 6px 0; border-radius: 4px; }
+        .sidebar h2 a:hover { background: #34495e; color: white; padding-left: 16px; }
+        .sidebar h3 { font-size: 0.9rem; margin-top: 12px; margin-left: 10px; margin-bottom: 8px; color: #bdc3c7; }
+        .sidebar ul { list-style: none; }
+        .sidebar li { margin: 5px 0; }
+        .sidebar a { color: #bdc3c7; text-decoration: none; display: block; padding: 8px 12px; border-radius: 4px; transition: all 0.3s; font-size: 0.9rem; }
+        .sidebar a:hover { background: #34495e; color: white; padding-left: 16px; }
+        .sidebar .subsection { margin-left: 15px; }
+        .sidebar .missing-page { color: #e74c3c; opacity: 0.6; cursor: not-allowed; padding: 8px 12px; font-size: 0.9rem; font-style: italic; }
+        .sidebar .missing-page::after { content: " (no content yet)"; font-size: 0.75rem; color: #c0392b; }
+        .main-content { flex: 1; margin-left: 320px; padding: 40px; }
+        .content-wrapper { display: grid; grid-template-columns: 1fr 1.8fr; gap: 30px; max-width: 2400px; margin-bottom: 30px; }
+        .strategized-content { background: #ffffff; padding: 30px; border-radius: 8px; box-shadow: none; border: 2px solid #ddd; }
+        .strategized-content h2 { color: #333; font-size: 1.3rem; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 2px solid #ccc; }
+        .strategized-content h3 { color: #333; font-size: 1.35rem; margin-top: 25px; margin-bottom: 12px; text-align: center; letter-spacing: 0.2px; }
+        .strategized-content h4 { color: #333; font-size: 0.95rem; margin-top: 15px; margin-bottom: 8px; font-weight: 600; }
+        .strategized-content p { color: #555; line-height: 1.8; margin-bottom: 12px; font-size: 0.95rem; }
+        .strategized-content ul { margin: 15px 0; padding-left: 0; list-style: none; }
+        .strategized-content li { color: #555; margin: 10px 0; padding-left: 25px; position: relative; line-height: 1.6; }
+        .strategized-content li:before { content: "•"; position: absolute; left: 0; color: #666; font-weight: bold; font-size: 1.1rem; }
+        .cta-button { display: inline-block; background: #999; color: white; padding: 12px 28px; border-radius: 25px; text-decoration: none; font-weight: 600; font-size: 0.95rem; margin: 15px 10px 15px 0; border: 2px solid #666; }
+        .cta-button:hover { background: #999; }
+        .cta-button.secondary { background: #999; }
+        .cta-button.secondary:hover { background: #999; }
+        .service-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin: 20px 0; }
+        .service-card { background: white; padding: 20px; border-radius: 8px; border: 2px solid #bbb; text-align: center; transition: none; }
+        .service-card:hover { border-color: #bbb; }
+        .service-card h4 { color: #333; font-size: 1rem; margin: 10px 0 8px 0; }
+        .service-card p { font-size: 0.85rem; color: #666; line-height: 1.5; margin: 0; }
+        .bw-header { background: #fff; padding: 16px; border-bottom: 2px solid #ddd; }
+        .bw-header-row { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+        .bw-logo { width: 56px; height: 56px; border: 3px solid #666; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 700; color: #333; background: #f5f5f5; flex: 0 0 auto; }
+        .bw-box { border: 2px solid #bbb; border-radius: 10px; padding: 10px 12px; background: #fff; color: #333; font-size: 0.85rem; line-height: 1.2; font-weight: 600; min-height: 44px; display: flex; align-items: center; justify-content: center; text-align: center; }
+        .bw-icon { width: 44px; height: 44px; border: 2px solid #bbb; border-radius: 12px; background: #fff; display: flex; align-items: center; justify-content: center; color: #333; font-weight: 800; font-size: 1rem; }
+        .bw-pill { border: 3px solid #666; border-radius: 28px; padding: 10px 18px; background: #f5f5f5; color: #333; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase; font-size: 0.8rem; min-height: 44px; display: flex; align-items: center; justify-content: center; white-space: nowrap; }
+        .bw-pill.alt { border-color: #999; }
+        .bw-nav { background: #fff; padding: 16px; border-bottom: 1px solid #ddd; }
+        .bw-nav-shell { border: 2px solid #bbb; border-radius: 14px; padding: 14px 16px; display: flex; align-items: center; gap: 14px; background: #fff; flex-wrap: wrap; }
+        .bw-nav-item { padding: 8px 10px; border-radius: 10px; border: 2px solid #ddd; font-weight: 700; color: #333; font-size: 0.85rem; background: #f5f5f5; }
+        .bw-nav-search { margin-left: auto; display: flex; align-items: center; gap: 10px; }
+        .bw-search { width: 200px; height: 36px; border: 2px solid #bbb; border-radius: 18px; display: flex; align-items: center; justify-content: center; color: #666; font-weight: 600; background: #fff; }
+        .bw-slideshow { border: 2px solid #bbb; border-radius: 14px; background: #fff; padding: 16px 16px 12px 16px; margin: 14px 0 18px 0; text-align: left; }
+        .bw-slideshow-image { min-height: 200px; margin-bottom: 16px; background: #f0f0f0; border: 2px dashed #bbb; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #999; font-size: 0.9rem; font-weight: 500; }
+        .bw-slideshow-controls { display: flex; align-items: center; justify-content: space-between; margin-top: 10px; padding-top: 10px; border-top: 1px solid #e3e3e3; }
+        .bw-arrow { width: 38px; height: 30px; border: 2px solid #bbb; border-radius: 10px; display: flex; align-items: center; justify-content: center; background: #f5f5f5; color: #333; font-weight: 800; user-select: none; }
+        .bw-dots { display: flex; align-items: center; gap: 8px; }
+        .bw-dot { width: 10px; height: 10px; border: 2px solid #bbb; border-radius: 50%; background: #fff; }
+        .bw-dot.active { background: #666; }
+        .content-box { background: white; padding: 40px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        .content-box h1 { color: #2c3e50; margin-bottom: 20px; padding-bottom: 15px; border-bottom: 3px solid #3498db; }
+        .content-box h2 { color: #34495e; margin-top: 30px; margin-bottom: 15px; }
+        .content-box h3 { color: #555; margin-top: 20px; margin-bottom: 10px; }
+        .content-box a { color: #3498db; text-decoration: none; }
+        .content-box a:hover { text-decoration: underline; }
+        .source-links { display: flex; align-items: center; flex-wrap: wrap; gap: 10px; padding: 12px 0 16px 0; margin-bottom: 8px; border-bottom: 1px solid #ddd; }
+        .source-links-label { font-size: 0.85rem; font-weight: 600; color: #555; margin-right: 4px; }
+        .source-link-btn { display: inline-block; padding: 8px 16px; background: #2c3e50; color: #fff; text-decoration: none; border-radius: 6px; font-size: 0.85rem; font-weight: 500; border: 1px solid #1a252f; transition: background 0.2s, color 0.2s; }
+        .source-link-btn:hover { background: #34495e; color: #fff; }
+        .source-info { background: #e3f2fd; padding: 20px; margin: 0 0 30px 0; border-radius: 6px; border-left: 4px solid #2196f3; }
+        .source-info h3 { margin-top: 0; margin-bottom: 12px; color: #1976d2; font-size: 1.1rem; }
+        .source-info ul { margin: 0; padding-left: 20px; }
+        .source-info li { margin: 8px 0; }
+        .source-info a { color: #1976d2; word-break: break-all; font-size: 0.95rem; }
+        .footer-card { background: white; padding: 30px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); border-left: 5px solid #f39c12; max-width: 1800px; }
+        .footer-card h2 { color: #d68910; font-size: 1.3rem; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #f39c12; }
+        .footer-card p { color: #555; font-size: 0.95rem; line-height: 1.7; margin: 12px 0; }
+        .footer-card .copyright { color: #888; font-size: 0.85rem; margin-top: 20px; padding-top: 15px; border-top: 1px solid #eee; }
+        /* FAQ wireframe: click question to reveal answer */
+        .strategized-content .service-card.faq-item { text-align: left; }
+        .strategized-content .faq-question { display: flex; justify-content: space-between; align-items: center; gap: 10px; width: 100%; text-align: left; cursor: pointer; border: none; background: none; font: inherit; color: #333; font-size: 1rem; font-weight: 600; padding: 0; margin: 0; }
+        .strategized-content .faq-question:hover { color: #111; }
+        .strategized-content .faq-toggle { flex-shrink: 0; font-size: 1.1rem; font-weight: 700; color: #666; }
+        .strategized-content .faq-answer { display: none; margin-top: 10px; }
+        .strategized-content .faq-answer.is-open { display: block; }
+        .strategized-content .faq-answer p { font-size: 0.85rem; color: #666; line-height: 1.5; margin: 0 0 8px 0; }
+        .strategized-content .faq-answer p:last-child { margin-bottom: 0; }
+        .strategized-content .faq-answer a { color: #3498db; text-decoration: none; }
+        .strategized-content .faq-answer a:hover { text-decoration: underline; }
+        @media (max-width: 768px) { .sidebar { width: 100%; position: relative; height: auto; } .main-content { margin-left: 0; } }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <nav class="sidebar">
+            <h1>ODHC Content Review</h1>
+            <a href="index.html" style="background: #34495e; margin-bottom: 20px;">🏠 Home</a><h2>About</h2><ul><li><a href="about-mission-vision-and-values.html">Mission, Vision, and Values</a></li><li><a href="about-services-overview.html">Services</a></li><h3>Locations</h3><ul class="subsection"><li><a href="about-locations-mankato.html">Mankato</a></li><li><a href="about-locations-shakopee.html">Shakopee</a></li><li><span class="missing-page">School-Based Centers</span></li></ul><li><a href="about-meet-the-team.html">Meet the Team</a></li><li><a href="about-news-and-events.html">News and Events</a></li><li><a href="about-careers.html">Careers</a></li><li><a href="about-faq.html">FAQ</a></li></ul><h2>Patient Resources</h2><ul><li><a href="patient-resources-patient-portal.html">Patient Portal</a></li><li><a href="patient-resources-forms.html">Forms</a></li><li><a href="patient-resources-financial-assistance.html">Financial Assistance</a></li><li><a href="patient-resources-insurance-enrollment.html">Insurance Enrollment</a></li><li><a href="patient-resources-community-resources.html">Community Resources</a></li></ul><h2><a href="contact.html">Contact</a></h2><h2><a href="donate.html">Donate</a></h2><h2>Footer pages Utility</h2><ul><li><a href="footer-pages-privacy-policy.html">Privacy Policy</a></li><li><a href="footer-pages-faq.html">FAQ</a></li><li><span class="missing-page">Annual Report</span></li></ul>
+        </nav>
+        <main class="main-content">
+            <div class="source-links">
+                <span class="source-links-label">View on ODHC:</span>
+                <a href="https://odhc.org/frequently-asked-questions/" target="_blank" rel="noopener" class="source-link-btn">Frequently Asked Questions</a>
+            </div>
+            <div class="content-wrapper">
+                <div class="content-box">
+                    <div class="source-info"><h3>&#128196; Original Source Page(s):</h3><ul><li><a href="https://odhc.org/frequently-asked-questions/" target="_blank">https://odhc.org/frequently-asked-questions/</a></li></ul></div>
+                    <h1>About &gt; FAQ (SOURCED)</h1>
+                    <p><em>Content from ODHC website</em></p>
+                    <hr />
+                    <h2>Frequently Asked Questions</h2>
+
+                    <h3>What is Open Door Health Center?</h3>
+                    <p>We are a 501(c)(3) designated nonprofit, federally qualified community health center (FQHC). ODHC has been serving the area since 1983 and has been operating under the &ldquo;Open Door&rdquo; name since 1994. Though we started small, today we have more than 100 full-time staff members who provide medical, dental, and behavioral health care to more than 11,000 individuals each year. Our main site is located in Mankato, MN and we also have a dental clinic in Jordan, MN.</p>
+
+                    <h3>What does it mean to be an FQHC?</h3>
+                    <p>Federally Qualified Health Centers (FQHC) are also referred to as &ldquo;safety net clinics.&rdquo; Though our services are available to everyone and meet the same standards of care that you would find in any healthcare facility, our FQHC status entitles us to funding and reimbursements so that we serve individuals and families with greater need.</p>
+
+                    <h3>Do you use real health professionals?</h3>
+                    <p>Yes! Open Door Health Center employs board-certified medical and dental providers who also share our passion for providing quality, affordable, patient-centered care to all people.</p>
+
+                    <h3>What if I need to see a Specialist?</h3>
+                    <p>If you need to see a specialist, your Open Door provider will discuss various options with you at the time of your appointment, and a referral will be made based on individual preference and convenience. Referrals to specialty care can be made in each of our service counties or near our Mankato location.</p>
+
+                    <h3>Does status affect my eligibility to be seen at Open Door? Or to receive discounts?</h3>
+                    <p>No. Open Door welcomes all individuals regardless of status. Discounts are determined by income and household size. Status does not affect eligibility. In many cases, we can also help individuals to access programs that may help cover the cost of their healthcare regardless of status.</p>
+
+                    <h3>Are there any services available for individuals who can&rsquo;t access insurance coverage?</h3>
+                    <p>Open Door Health Center offers a sliding fee application for individuals who are uninsured or underinsured. Insurance status does not affect eligibility to receive care at Open Door nor is it a disqualifying factor from our sliding fee discount program.</p>
+
+                    <h3>Is this a free clinic?</h3>
+                    <p>Though we strive to make care as affordable as possible, unfortunately we are not able to see our patients free of charge. We ask all of our patients to pay something to help cover the cost of their visit. We do invoice patients and offer payment plans to help them as well.</p>
+
+                    <h3>How much will I pay at Open Door?</h3>
+                    <p>We provide medical care to our patients regardless of insurance. Additionally, we offer a sliding fee discount program based on several factors including income, household size, etc.</p>
+                    <p>We encourage interested patients to schedule a visit with one of our providers to discuss their needs. If you would like to know more about how your medical health options and financial details of treatment, please call us at (507) 388-2120 and ask for medical scheduling to make your first appointment with us.</p>
+
+                    <h3>What about insurance?</h3>
+                    <p>You do not need to have insurance in order to be seen at Open Door Health Center. We do accept most major insurance plans and we&rsquo;ll do the billing for you.</p>
+                    <p>Do you have a high insurance deductible that means you pay thousands out of pocket before they cover any services? You may qualify for a sliding fee scale discount until your insurance begins to pay.</p>
+
+                    <h3>What languages are spoken at Open Door?</h3>
+                    <p>We have providers and staff who speak Spanish and several other languages. We are also able to use a video interpreting service. Our patients appreciate being comfortably treated in their native languages.</p>
+
+                    <h3>Can I request Open Door informational materials?</h3>
+                    <p>Absolutely! We have brochures &amp; literature available in both English and Spanish.</p>
+                    <p>For more information or to request printed materials, please contact our Marketing Coordinator by phone: <strong>(507) 344-5504</strong> or by email: <a href="mailto:marketing@odhc.org">marketing@odhc.org</a></p>
+
+                    <h3>If I use Open Door, could I be taking the place of someone else who needs it more?</h3>
+                    <p>We welcome all individuals for our services! In fact, serving insured patients can even help subsidize operation costs in providing care for uninsured/underinsured individuals. We also know that many of our patients connect with us during times of economic hardships, but end up staying with us because they prefer our model of care.</p>
+
+                    <h3>Does Open Door Health Center offer Chiropractic Services?</h3>
+                    <p>Yes! Open Door Health Center does offer chiropractic services.</p>
+                    <p>For an appointment call <strong>(507) 388-2120</strong>. Fax: 507-388-3924</p>
+                    <hr />
+                </div>
+
+                <div class="strategized-content">
+                    <h2>Strategized Content</h2>
+
+                    <div class="bw-header" style="margin: 18px 0;">
+                        <div class="bw-header-row" aria-hidden="true">
+                            <div class="bw-logo">LOGO</div>
+                            <div class="bw-box" style="min-width: 220px;">OPEN DOOR HEALTH CENTER</div>
+                            <div class="bw-icon" title="Phone" aria-label="Phone">☎</div>
+                            <div style="flex: 1;"></div>
+                            <div class="bw-pill">Portal Login</div>
+                            <div class="bw-pill alt">Pay My Bill</div>
+                        </div>
+                    </div>
+
+                    <div class="bw-nav" style="margin: 0 0 22px 0;">
+                        <div class="bw-nav-shell" aria-hidden="true">
+                            <div class="bw-nav-item">About</div>
+                            <div class="bw-nav-item">Locations</div>
+                            <div class="bw-nav-item">Patient Resources</div>
+                            <div class="bw-nav-item">Contact</div>
+                            <div class="bw-nav-item">Donate</div>
+                            <div class="bw-nav-search"><div class="bw-search">Search…</div></div>
+                        </div>
+                    </div>
+
+                    <div class="bw-slideshow">
+                        <div class="bw-slideshow-image" aria-hidden="true">Hero image</div>
+                        <h3 style="margin-top: 0;">Frequently Asked Questions</h3>
+                        <p><strong>Get quick answers about Open Door Health Center&mdash;who we are, insurance and costs, services, and how to get care.</strong></p>
+                        <p>We are a federally qualified community health center serving Southern Minnesota. We accept most insurance and offer sliding fee discounts. No one is turned away due to inability to pay.</p>
+                        <div style="text-align: left; margin: 18px 0 6px 0;">
+                            <a href="#" class="cta-button">Schedule Appointment</a>
+                            <a href="#" class="cta-button secondary">Contact Us</a>
+                        </div>
+                        <div class="bw-slideshow-controls" aria-hidden="true">
+                            <div class="bw-arrow">‹</div>
+                            <div class="bw-dots"><div class="bw-dot active"></div><div class="bw-dot"></div><div class="bw-dot"></div></div>
+                            <div class="bw-arrow">›</div>
+                        </div>
+                    </div>
+
+                    <h3>About ODHC</h3>
+                    <div class="service-grid" style="grid-template-columns: 1fr;">
+                        <div class="service-card faq-item" style="text-align: left;">
+                            <button type="button" class="faq-question" aria-expanded="false"><span class="faq-question-text">What is Open Door Health Center?</span><span class="faq-toggle" aria-hidden="true">+</span></button>
+                            <div class="faq-answer"><p>We are a 501(c)(3) designated nonprofit, federally qualified community health center (FQHC). ODHC has been serving the area since 1983 and has been operating under the &ldquo;Open Door&rdquo; name since 1994. Though we started small, today we have more than 100 full-time staff members who provide medical, dental, and behavioral health care to more than 11,000 individuals each year. Our main site is located in Mankato, MN and we also have a dental clinic in Jordan, MN.</p></div>
+                        </div>
+                        <div class="service-card faq-item" style="text-align: left;">
+                            <button type="button" class="faq-question" aria-expanded="false"><span class="faq-question-text">What does it mean to be an FQHC?</span><span class="faq-toggle" aria-hidden="true">+</span></button>
+                            <div class="faq-answer"><p>Federally Qualified Health Centers (FQHC) are also referred to as &ldquo;safety net clinics.&rdquo; Though our services are available to everyone and meet the same standards of care that you would find in any healthcare facility, our FQHC status entitles us to funding and reimbursements so that we serve individuals and families with greater need.</p></div>
+                        </div>
+                        <div class="service-card faq-item" style="text-align: left;">
+                            <button type="button" class="faq-question" aria-expanded="false"><span class="faq-question-text">Do you use real health professionals?</span><span class="faq-toggle" aria-hidden="true">+</span></button>
+                            <div class="faq-answer"><p>Yes! Open Door Health Center employs board-certified medical and dental providers who also share our passion for providing quality, affordable, patient-centered care to all people.</p></div>
+                        </div>
+                        <div class="service-card faq-item" style="text-align: left;">
+                            <button type="button" class="faq-question" aria-expanded="false"><span class="faq-question-text">If I use Open Door, could I be taking the place of someone else who needs it more?</span><span class="faq-toggle" aria-hidden="true">+</span></button>
+                            <div class="faq-answer"><p>We welcome all individuals for our services! In fact, serving insured patients can even help subsidize operation costs in providing care for uninsured/underinsured individuals. We also know that many of our patients connect with us during times of economic hardships, but end up staying with us because they prefer our model of care.</p></div>
+                        </div>
+                    </div>
+
+                    <h3>Eligibility, Insurance &amp; Costs</h3>
+                    <div class="service-grid" style="grid-template-columns: 1fr;">
+                        <div class="service-card faq-item" style="text-align: left;">
+                            <button type="button" class="faq-question" aria-expanded="false"><span class="faq-question-text">Does status affect my eligibility to be seen at Open Door? Or to receive discounts?</span><span class="faq-toggle" aria-hidden="true">+</span></button>
+                            <div class="faq-answer"><p>No. Open Door welcomes all individuals regardless of status. Discounts are determined by income and household size. Status does not affect eligibility. In many cases, we can also help individuals to access programs that may help cover the cost of their healthcare regardless of status.</p></div>
+                        </div>
+                        <div class="service-card faq-item" style="text-align: left;">
+                            <button type="button" class="faq-question" aria-expanded="false"><span class="faq-question-text">Are there any services available for individuals who can&rsquo;t access insurance coverage?</span><span class="faq-toggle" aria-hidden="true">+</span></button>
+                            <div class="faq-answer"><p>Open Door Health Center offers a sliding fee application for individuals who are uninsured or underinsured. Insurance status does not affect eligibility to receive care at Open Door nor is it a disqualifying factor from our sliding fee discount program.</p></div>
+                        </div>
+                        <div class="service-card faq-item" style="text-align: left;">
+                            <button type="button" class="faq-question" aria-expanded="false"><span class="faq-question-text">Is this a free clinic?</span><span class="faq-toggle" aria-hidden="true">+</span></button>
+                            <div class="faq-answer"><p>Though we strive to make care as affordable as possible, unfortunately we are not able to see our patients free of charge. We ask all of our patients to pay something to help cover the cost of their visit. We do invoice patients and offer payment plans to help them as well.</p></div>
+                        </div>
+                        <div class="service-card faq-item" style="text-align: left;">
+                            <button type="button" class="faq-question" aria-expanded="false"><span class="faq-question-text">How much will I pay at Open Door?</span><span class="faq-toggle" aria-hidden="true">+</span></button>
+                            <div class="faq-answer"><p>We provide medical care to our patients regardless of insurance. Additionally, we offer a sliding fee discount program based on several factors including income, household size, etc.</p><p>We encourage interested patients to schedule a visit with one of our providers to discuss their needs. If you would like to know more about how your medical health options and financial details of treatment, please call us at (507) 388-2120 and ask for medical scheduling to make your first appointment with us.</p></div>
+                        </div>
+                        <div class="service-card faq-item" style="text-align: left;">
+                            <button type="button" class="faq-question" aria-expanded="false"><span class="faq-question-text">What about insurance?</span><span class="faq-toggle" aria-hidden="true">+</span></button>
+                            <div class="faq-answer"><p>You do not need to have insurance in order to be seen at Open Door Health Center. We do accept most major insurance plans and we&rsquo;ll do the billing for you.</p><p>Do you have a high insurance deductible that means you pay thousands out of pocket before they cover any services? You may qualify for a sliding fee scale discount until your insurance begins to pay.</p></div>
+                        </div>
+                    </div>
+
+                    <h3>Services &amp; More</h3>
+                    <div class="service-grid" style="grid-template-columns: 1fr;">
+                        <div class="service-card faq-item" style="text-align: left;">
+                            <button type="button" class="faq-question" aria-expanded="false"><span class="faq-question-text">What if I need to see a Specialist?</span><span class="faq-toggle" aria-hidden="true">+</span></button>
+                            <div class="faq-answer"><p>If you need to see a specialist, your Open Door provider will discuss various options with you at the time of your appointment, and a referral will be made based on individual preference and convenience. Referrals to specialty care can be made in each of our service counties or near our Mankato location.</p></div>
+                        </div>
+                        <div class="service-card faq-item" style="text-align: left;">
+                            <button type="button" class="faq-question" aria-expanded="false"><span class="faq-question-text">What languages are spoken at Open Door?</span><span class="faq-toggle" aria-hidden="true">+</span></button>
+                            <div class="faq-answer"><p>We have providers and staff who speak Spanish and several other languages. We are also able to use a video interpreting service. Our patients appreciate being comfortably treated in their native languages.</p></div>
+                        </div>
+                        <div class="service-card faq-item" style="text-align: left;">
+                            <button type="button" class="faq-question" aria-expanded="false"><span class="faq-question-text">Can I request Open Door informational materials?</span><span class="faq-toggle" aria-hidden="true">+</span></button>
+                            <div class="faq-answer"><p>Absolutely! We have brochures &amp; literature available in both English and Spanish.</p><p>For more information or to request printed materials, please contact our Marketing Coordinator by phone: <strong>(507) 344-5504</strong> or by email: <a href="mailto:marketing@odhc.org">marketing@odhc.org</a></p></div>
+                        </div>
+                        <div class="service-card faq-item" style="text-align: left;">
+                            <button type="button" class="faq-question" aria-expanded="false"><span class="faq-question-text">Does Open Door Health Center offer Chiropractic Services?</span><span class="faq-toggle" aria-hidden="true">+</span></button>
+                            <div class="faq-answer"><p>Yes! Open Door Health Center does offer chiropractic services.</p></div>
+                        </div>
+                    </div>
+
+                    <h3>Footer</h3>
+                    <div class="service-card" style="padding: 25px;">
+                        <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px;">
+                            <div>
+                                <h4>About</h4>
+                                <div style="text-align: left; font-size: 0.85rem; line-height: 1.6;">
+                                    <a href="about-mission-vision-and-values.html">Mission, Vision, and Values</a><br>
+                                    <a href="about-services-overview.html">Services</a><br>
+                                    <a href="about-meet-the-team.html">Meet the Team</a><br>
+                                    <a href="about-news-and-events.html">News and Events</a><br>
+                                    <a href="about-careers.html">Careers</a><br>
+                                    <a href="about-faq.html">FAQ</a><br>
+                                </div>
+                            </div>
+                            <div>
+                                <h4>Locations</h4>
+                                <div style="text-align: left; font-size: 0.85rem; line-height: 1.6;">
+                                    <a href="about-locations-mankato.html">Mankato</a><br>
+                                    <a href="about-locations-shakopee.html">Shakopee</a><br>
+                                    <span>School-Based Centers</span>
+                                </div>
+                            </div>
+                            <div>
+                                <h4>Patient Resources</h4>
+                                <div style="text-align: left; font-size: 0.85rem; line-height: 1.6;">
+                                    <a href="patient-resources-patient-portal.html">Patient Portal</a><br>
+                                    <a href="patient-resources-forms.html">Forms</a><br>
+                                    <a href="patient-resources-financial-assistance.html">Financial Assistance</a><br>
+                                    <a href="patient-resources-insurance-enrollment.html">Insurance Enrollment</a><br>
+                                    <a href="patient-resources-community-resources.html">Community Resources</a>
+                                </div>
+                            </div>
+                            <div>
+                                <h4>Contact &amp; More</h4>
+                                <div style="text-align: left; font-size: 0.85rem; line-height: 1.6;">
+                                    <a href="contact.html">Contact</a><br>
+                                    <a href="donate.html">Donate</a><br>
+                                    <a href="footer-pages-privacy-policy.html">Privacy Policy</a><br>
+                                    <a href="footer-pages-faq.html">FAQ</a><br>
+                                    <a href="footer-pages-annual-report.html">Annual Report</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-card">
+                <h2>📄 Footer Content</h2>
+                <p>Open Door Health Center is a Federally Qualified Health Center (FQHC). Open Door Health Center receives HHS funding and is a Health Center Program grantee under 42 U.S.C 254b, and is deemed a Public Health Service employer under 42 U.S.C. 233 (g)-(n)</p>
+                <p class="copyright">© Copyright - Open Door Health Center - powered by Enfold WordPress Theme</p>
+            </div>
+        </main>
+    </div>
+    <script>
+    (function() {
+        document.querySelectorAll('.faq-question').forEach(function(btn) {
+            btn.addEventListener('click', function() {
+                var answer = this.nextElementSibling;
+                var toggle = this.querySelector('.faq-toggle');
+                var isOpen = answer.classList.toggle('is-open');
+                this.setAttribute('aria-expanded', isOpen);
+                toggle.textContent = isOpen ? '\u2212' : '+';
+            });
+        });
+    })();
+    </script>
+</body>
+</html>
