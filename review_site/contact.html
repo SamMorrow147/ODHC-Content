@@ -65,7 +65,7 @@
         }
         
         .sidebar h3 {
-            font-size: 0.9rem;
+            font-size: 1rem;
             margin-top: 12px;
             margin-left: 10px;
             margin-bottom: 8px;
@@ -87,7 +87,7 @@
             padding: 8px 12px;
             border-radius: 4px;
             transition: all 0.3s;
-            font-size: 0.9rem;
+            font-size: 1rem;
         }
         
         .sidebar a:hover {
@@ -105,7 +105,7 @@
             opacity: 0.6;
             cursor: not-allowed;
             padding: 8px 12px;
-            font-size: 0.9rem;
+            font-size: 1rem;
             font-style: italic;
         }
         
@@ -123,9 +123,9 @@
         
         .content-wrapper {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 1fr 1.8fr;
             gap: 30px;
-            max-width: 1800px;
+            max-width: 2400px;
             margin-bottom: 30px;
         }
         
@@ -144,7 +144,7 @@
         
         .redirect-card h2 {
             color: #16a085;
-            font-size: 0.9rem;
+            font-size: 1rem;
             margin-bottom: 10px;
             padding-bottom: 6px;
             border-bottom: 1px solid #d0d0d0;
@@ -222,7 +222,7 @@
         }
         
         .mockup-tagline {
-            font-size: 0.9rem;
+            font-size: 1rem;
             opacity: 0.9;
         }
         
@@ -306,7 +306,7 @@
             border-radius: 25px;
             text-decoration: none;
             font-weight: 600;
-            font-size: 0.9rem;
+            font-size: 1rem;
             margin: 10px 5px;
             border: none;
         }
@@ -493,7 +493,7 @@
             align-items: center;
             justify-content: center;
             color: #666;
-            font-size: 0.9rem;
+            font-size: 1rem;
             margin: 10px 0;
         }
         
@@ -590,11 +590,39 @@
         .source-links {
             display: flex;
             align-items: center;
+            justify-content: space-between;
             flex-wrap: wrap;
             gap: 10px;
             padding: 12px 0 16px 0;
             margin-bottom: 8px;
             border-bottom: 1px solid #ddd;
+        }
+        
+        .source-links-left {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+                        .source-links-disclaimer {
+            font-size: 1rem;
+            color: #666;
+            font-style: normal;
+            text-align: center;
+            max-width: 1200px;
+            flex: 1 1 auto;
+            line-height: 1.6;
+            padding: 12px 16px;
+            background: #f9f9f9;
+                        border-radius: 4px;
+        }
+        
+        .source-links-disclaimer strong {
+            display: block;
+            margin-bottom: 6px;
+            color: #333;
+            font-size: 1.1rem;
         }
         
         .source-links-label {
@@ -649,7 +677,7 @@
         .source-info a {
             color: #1976d2;
             word-break: break-all;
-            font-size: 0.95rem;
+            font-size: 1.1rem;
         }
         .image-gallery {
             display: grid;
@@ -692,6 +720,11 @@
             border-left: 4px solid #ffc107;
         }
         
+        @media (max-width: 1200px) {
+            .content-wrapper { grid-template-columns: 1fr; }
+            .content-wrapper.three-col { grid-template-columns: 1fr; }
+        }
+        
         @media (max-width: 768px) {
             .sidebar {
                 width: 100%;
@@ -701,6 +734,277 @@
             
             .main-content {
                 margin-left: 0;
+            }
+        }
+        
+        /* Strategized Content / Wireframe Styles */
+        .strategized-content {
+            background: #ffffff;
+            padding: 24px;
+            border-radius: 8px;
+            box-shadow: none;
+            border: 2px solid #ddd;
+            min-width: 0;
+            overflow-wrap: break-word;
+        }
+        
+        .strategized-content h2 {
+            color: #333;
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #ccc;
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            align-items: center;
+        }
+        
+        .strategized-content .cop-label { font-weight: normal; }
+        .strategized-content .cop-page-name { text-align: center; }
+        .strategized-content .cop-wireframe { text-align: center; font-weight: normal; }
+        .strategized-content h3 {
+            color: #333;
+            font-size: 1.5rem;
+            margin-top: 30px;
+            margin-bottom: 18px;
+            text-align: center;
+            letter-spacing: 0.2px;
+        }
+        
+        .strategized-content h4 {
+            color: #333;
+            font-size: 1.1rem;
+            margin-top: 18px;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+        
+        .strategized-content p {
+            font-size: 1rem;
+            line-height: 1.7;
+            margin-bottom: 14px;
+        }
+        
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .service-card {
+            background: #fff;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            padding: 24px;
+            text-align: center;
+        }
+        
+        .service-card p {
+            font-size: 1rem;
+            line-height: 1.7;
+            margin-bottom: 12px;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: #999;
+            color: white;
+            padding: 12px 28px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin: 5px;
+            border: 2px solid #666;
+        }
+        
+        .cta-button:hover {
+            background: #999;
+            box-shadow: none;
+            transform: none;
+        }
+        
+        .cta-button.secondary {
+            background: #999;
+            box-shadow: none;
+        }
+        
+        /* B/W Header Wireframe */
+        .bw-header-nav { padding: 16px; background: #fff; }
+        .bw-header-nav .bw-nav-shell { margin-top: 12px; padding-top: 12px; border-top: 1px solid #e8e8e8; border: none; border-radius: 0; }
+        .bw-header-row {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+        
+        .bw-box {
+            border: 2px solid #bbb;
+            border-radius: 10px;
+            padding: 10px 12px;
+            background: #fff;
+            color: #333;
+            font-size: 0.85rem;
+            line-height: 1.2;
+            font-weight: 600;
+            min-height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+        
+        .bw-header-nav .bw-box { min-width: 100px; font-size: 0.75rem; padding: 6px 10px; min-height: 36px; }
+        .bw-phone { font-size: 0.8rem; font-weight: 600; white-space: nowrap; }
+        
+        .bw-pill {
+            border: 3px solid #666;
+            border-radius: 28px;
+            padding: 10px 18px;
+            background: #f5f5f5;
+            color: #333;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            min-height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            white-space: nowrap;
+        }
+        
+        .bw-pill.alt {
+            border-color: #999;
+        }
+        
+        .bw-nav-shell {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+        
+        .bw-nav-item {
+            padding: 8px 10px;
+            border-radius: 10px;
+            border: 2px solid #ddd;
+            font-weight: 700;
+            color: #333;
+            font-size: 0.85rem;
+            background: #f5f5f5;
+        }
+        
+        .bw-nav-has-dropdown { position: relative; }
+        .bw-nav-item.bw-nav-has-dropdown { border: none; border-radius: 0; padding: 0; background: transparent; }
+        .bw-nav-trigger { font: inherit; color: inherit; cursor: pointer; padding: 8px 10px; border-radius: 10px; border: 2px solid #ddd; font-weight: 700; font-size: 0.85rem; background: #f5f5f5; display: flex; align-items: center; gap: 4px; }
+        .bw-nav-trigger:hover { background: #ebebeb; }
+        .bw-nav-chevron { font-size: 0.7em; opacity: 0.8; }
+        .bw-nav-dropdown { display: none; position: absolute; top: 100%; left: 0; margin-top: 4px; min-width: 220px; background: #fff; border: 2px solid #bbb; border-radius: 10px; padding: 8px 0; box-shadow: 0 4px 12px rgba(0,0,0,0.12); z-index: 50; }
+        .bw-nav-has-dropdown.is-open .bw-nav-dropdown { display: block; }
+        .bw-nav-dropdown a, .bw-nav-dropdown .bw-nav-disabled { display: block; padding: 10px 14px; font-size: 0.85rem; color: #333; text-decoration: none; font-weight: 600; }
+        .bw-nav-dropdown a:hover { background: #f0f0f0; }
+        .bw-nav-link { text-decoration: none; color: inherit; }
+        
+        .bw-nav-search {
+            margin-left: auto;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .bw-search {
+            width: min(240px, 100%);
+            max-width: 100%;
+            height: 36px;
+            border: 2px solid #bbb;
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            padding: 0 16px;
+            color: #666;
+            font-weight: 600;
+            background: #fff;
+        }
+        
+        .bw-slideshow {
+            border: 2px solid #bbb;
+            border-radius: 14px;
+            background: #fff;
+            padding: 20px 20px 32px 20px;
+            margin: 14px 0 18px 0;
+            text-align: left;
+            overflow: hidden;
+        }
+        
+        .bw-slideshow-image {
+            min-height: 200px;
+            margin-bottom: 16px;
+            background: #f0f0f0;
+            border: 2px dashed #bbb;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            font-size: 1rem;
+            font-weight: 500;
+        }
+        
+        .bw-footer-disclosure {
+            margin-top: 24px;
+            padding: 16px;
+            border-top: 1px solid #e0e0e0;
+            font-size: 1rem;
+            color: #555;
+            background: #f8f8f8;
+            border-radius: 4px;
+        }
+        
+        .partner-rotator {
+            margin: 30px 0;
+            padding: 20px;
+            background: #f9f9f9;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+        }
+
+        .partner-rotator-label {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 16px;
+            text-align: center;
+        }
+
+        .partner-rotator-track {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 15px;
+            width: 100%;
+        }
+
+        .partner-rotator-logo {
+            width: 60px;
+            height: 60px;
+            border: 2px dashed #bbb;
+            background: #f5f5f5;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+            color: #666;
+            font-size: 0.7rem;
+            font-weight: 700;
+        }
+
+        @media (max-width: 768px) {
+            .partner-rotator-track {
+                grid-template-columns: repeat(3, 1fr);
             }
         }
     </style>
@@ -743,8 +1047,14 @@
         </nav>
         <main class="main-content">
             <div class="source-links">
-                <span class="source-links-label">Sourced from current website:</span>
-                <a href="https://odhc.org/contact/" target="_blank" rel="noopener" class="source-link-btn">Contact</a>
+                <div class="source-links-left">
+                    <span class="source-links-label">Sourced from current website:</span>
+                    <a href="https://odhc.org/contact/" target="_blank" rel="noopener" class="source-link-btn">Contact</a>
+                </div>
+                <div class="source-links-disclaimer">
+                    <strong>Content Interpretation &amp; Low-Fidelity Wireframe</strong><br>
+                    This environment is for content sourcing, organization, and structure only. It is not a design. The goal at this stage is to verify that no critical pages, sections, or content are missing before visual design and UX styling begin.
+                </div>
             </div>
             <div class="content-wrapper">
                 <div class="content-box">
@@ -787,11 +1097,196 @@
 <h3>Language Assistance</h3>
 <p>Language assistance services are available free of charge ensuring you receive the highest quality of care.</p>
 <hr />
-                <div class="bw-footer-disclosure" style="margin-top: 24px; padding: 16px; border-top: 1px solid #e0e0e0; font-size: 0.9rem; color: #555; background: #f8f8f8; border-radius: 4px;">
+                <div class="bw-footer-disclosure" style="margin-top: 24px; padding: 16px; border-top: 1px solid #e0e0e0; font-size: 1rem; color: #555; background: #f8f8f8; border-radius: 4px;">
                     <p style="margin: 0 0 8px 0;">Open Door Health Center is a Federally Qualified Health Center (FQHC). Open Door Health Center receives HHS funding and is a Health Center Program grantee under 42 U.S.C 254b, and is deemed a Public Health Service employer under 42 U.S.C. 233 (g)-(n)</p>
-                    <p style="margin: 0; font-size: 0.85rem; color: #888;">© Copyright - Open Door Health Center - powered by Enfold WordPress Theme</p>
+                    <p style="margin: 0; font-size: 0.85rem; color: #888;">© Copyright - Open Door Health Center</p>
                 </div>
                 </div>
+            
+            <div class="strategized-content">
+                <h2><span class="cop-label">Content Organization Proposal</span><span class="cop-page-name">Contact</span><span class="cop-wireframe">Wireframe</span></h2>
+
+                <div class="bw-header-nav" style="margin: 18px 0 22px 0;">
+                    <div class="bw-header-row" aria-hidden="true">
+                        <div class="bw-box">ODHC LOGO</div>
+                        <span class="bw-phone">(507) 388-2120</span>
+                        <div style="flex: 1;"></div>
+                        <div class="bw-pill">Portal Login</div>
+                        <div class="bw-pill alt">Pay My Bill</div>
+                    </div>
+                    <div class="bw-nav-shell" aria-label="Main navigation">
+                        <div class="bw-nav-item bw-nav-has-dropdown">
+                            <button type="button" class="bw-nav-trigger" aria-expanded="false" aria-haspopup="true">About <span class="bw-nav-chevron" aria-hidden="true">▾</span></button>
+                            <div class="bw-nav-dropdown">
+                                <a href="about-mission-vision-and-values.html">Mission, Vision, and Values</a>
+                                <a href="about-services-overview.html">Services</a>
+                                <a href="about-meet-the-team.html">Meet the Team</a>
+                                <a href="about-news-and-events.html">News and Events</a>
+                                <a href="about-careers.html">Careers</a>
+                            </div>
+                        </div>
+                        <div class="bw-nav-item bw-nav-has-dropdown">
+                            <button type="button" class="bw-nav-trigger" aria-expanded="false" aria-haspopup="true">Locations <span class="bw-nav-chevron" aria-hidden="true">▾</span></button>
+                            <div class="bw-nav-dropdown">
+                                <a href="about-locations-mankato.html">Mankato</a>
+                                <a href="about-locations-shakopee.html">Shakopee</a>
+                            </div>
+                        </div>
+                        <div class="bw-nav-item bw-nav-has-dropdown">
+                            <button type="button" class="bw-nav-trigger" aria-expanded="false" aria-haspopup="true">Patient Resources <span class="bw-nav-chevron" aria-hidden="true">▾</span></button>
+                            <div class="bw-nav-dropdown">
+                                <a href="patient-resources-patient-portal.html">Patient Portal</a>
+                                <a href="patient-resources-forms.html">Forms</a>
+                                <a href="patient-resources-financial-assistance.html">Financial Assistance</a>
+                                <a href="patient-resources-insurance-enrollment.html">Insurance Enrollment</a>
+                                <a href="patient-resources-community-resources.html">Community Resources</a>
+                            </div>
+                        </div>
+                        <a href="contact.html" class="bw-nav-item bw-nav-link">Contact</a>
+                        <a href="donate.html" class="bw-nav-item bw-nav-link">Donate</a>
+                        <div class="bw-nav-search">
+                            <div class="bw-search">Search…</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bw-slideshow">
+                    <div class="bw-slideshow-image" aria-hidden="true">Hero image</div>
+                    <h3 style="margin-top: 0;">Contact Open Door Health Center</h3>
+                    <p style="font-size: 1.05rem; line-height: 1.7; margin-bottom: 14px;"><strong>We're here to help. Reach out to schedule an appointment, ask questions, or learn more about our services.</strong></p>
+                    <p style="font-size: 1.05rem; line-height: 1.7;">Our team is ready to assist you with all your healthcare needs. Call us, visit us, or connect with us online.</p>
+                </div>
+                
+                <h3>Our Locations</h3>
+                <div class="service-grid" style="grid-template-columns: 1fr 1fr;">
+                    <div class="service-card" style="text-align: left; padding: 28px;">
+                        <h4>Mankato</h4>
+                        <p style="font-size: 1.05rem; line-height: 1.7; margin-bottom: 12px;"><strong>309 Holly Lane<br>Mankato, MN 56001</strong></p>
+                        <p style="font-size: 1.05rem; line-height: 1.7; margin-bottom: 12px;"><strong>Phone:</strong> (507) 388-2120</p>
+                        <p style="font-size: 1.05rem; line-height: 1.7; margin-bottom: 12px;"><strong>Services:</strong> Medical | Dental | Behavioral Health</p>
+                        <p style="font-size: 1.05rem; line-height: 1.7; margin-bottom: 20px;"><strong>Hours:</strong><br>
+                        Monday–Wednesday &amp; Friday: 8am–5pm<br>
+                        Thursday: 9am–5pm</p>
+                        <div style="margin-top: 20px;">
+                            <a href="about-locations-mankato.html" class="cta-button secondary">View Mankato</a>
+                        </div>
+                    </div>
+                    <div class="service-card" style="text-align: left; padding: 28px;">
+                        <h4>Shakopee</h4>
+                        <p style="font-size: 1.05rem; line-height: 1.7; margin-bottom: 12px;"><strong>Full-service care: medical, dental, and behavioral health.</strong></p>
+                        <p style="font-size: 1.05rem; line-height: 1.7; margin-bottom: 20px;">Now open in Shakopee! We're bringing the same quality, affordable healthcare to the Shakopee area.</p>
+                        <div style="margin-top: 20px;">
+                            <a href="about-locations-shakopee.html" class="cta-button secondary">View Shakopee</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <h3>Contact Form</h3>
+                <div class="service-card" style="text-align: left; margin-bottom: 30px; padding: 30px;">
+                    <p style="margin-bottom: 20px; font-size: 1.05rem;"><strong>Send us a message:</strong></p>
+                    <div style="border: 2px dashed #bbb; padding: 30px; border-radius: 8px; background: #f9f9f9;">
+                        <p style="margin-bottom: 20px; color: #666; font-size: 1rem;">[Contact form fields: Name, Email, Phone, Message, Submit button]</p>
+                        <div style="display: flex; gap: 15px; margin-top: 20px; margin-bottom: 20px;">
+                            <div style="flex: 1; height: 50px; border: 2px solid #bbb; border-radius: 6px; background: #fff;"></div>
+                            <div style="flex: 1; height: 50px; border: 2px solid #bbb; border-radius: 6px; background: #fff;"></div>
+                        </div>
+                        <div style="height: 50px; border: 2px solid #bbb; border-radius: 6px; background: #fff; margin-top: 15px; margin-bottom: 20px;"></div>
+                        <div style="height: 180px; border: 2px solid #bbb; border-radius: 6px; background: #fff; margin-top: 15px; margin-bottom: 20px;"></div>
+                        <div style="width: 150px; height: 50px; border: 2px solid #666; border-radius: 6px; background: #f5f5f5; margin-top: 15px;"></div>
+                    </div>
+                </div>
+                
+                <h3>Connect With Us</h3>
+                <div class="service-card" style="text-align: left; margin-bottom: 30px; padding: 28px;">
+                    <p style="font-size: 1.05rem; margin-bottom: 14px;"><strong>Patient Portal:</strong> Access your medical records, test results, and communicate with your care team</p>
+                    <p style="font-size: 1.05rem; margin-bottom: 14px;"><strong>Pay My Bill:</strong> Make a payment online</p>
+                    <p style="font-size: 1.05rem; margin-bottom: 20px;"><strong>Stay In Touch:</strong> Join our mailing list for Open Door Health Centers News &amp; Updates</p>
+                    <div style="margin-top: 20px;">
+                        <a href="#" class="cta-button">Patient Portal</a>
+                        <a href="#" class="cta-button secondary">Pay My Bill</a>
+                    </div>
+                </div>
+                
+                <h3>Social Media</h3>
+                <div style="display: flex; gap: 15px; margin-bottom: 30px;">
+                    <div class="bw-box" style="min-width: 120px; padding: 14px 18px; font-size: 1.1rem;">Facebook</div>
+                    <div class="bw-box" style="min-width: 120px; padding: 14px 18px; font-size: 1.1rem;">Instagram</div>
+                </div>
+                
+                <h3>Dental Emergencies</h3>
+                <div class="service-card" style="text-align: left; margin-bottom: 30px; padding: 28px;">
+                    <p style="font-size: 1.05rem; line-height: 1.7;">If you have a dental emergency that is causing excessive pain, fever, or swelling, please call <strong>(507) 388-2120</strong> to be screened for an emergency dental appointment.</p>
+                    <div style="margin-top: 20px;">
+                        <a href="tel:5073882120" class="cta-button">Call Now</a>
+                    </div>
+                </div>
+                
+                <h3>Language Assistance</h3>
+                <div class="service-card" style="text-align: left; margin-bottom: 30px; padding: 28px;">
+                    <p style="font-size: 1.05rem; line-height: 1.7;">Language assistance services are available free of charge ensuring you receive the highest quality of care.</p>
+                </div>
+                
+                <h3>Footer</h3>
+                <div class="service-card" style="padding: 25px;">
+                    <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px;">
+                        <div>
+                            <h4>About</h4>
+                            <div style="text-align: left; font-size: 0.85rem; line-height: 1.6;">
+                                <a href="about-mission-vision-and-values.html">Mission, Vision, and Values</a><br>
+                                <a href="about-services-overview.html">Services</a><br>
+                                <a href="about-meet-the-team.html">Meet the Team</a><br>
+                                <a href="about-news-and-events.html">News and Events</a><br>
+                            </div>
+                        </div>
+                        <div>
+                            <h4>Locations</h4>
+                            <div style="text-align: left; font-size: 0.85rem; line-height: 1.6;">
+                                <a href="about-locations-mankato.html">Mankato</a><br>
+                                <a href="about-locations-shakopee.html">Shakopee</a><br>
+                                <span>School-Based Centers</span>
+                            </div>
+                        </div>
+                        <div>
+                            <h4>Patient Resources</h4>
+                            <div style="text-align: left; font-size: 0.85rem; line-height: 1.6;">
+                                <a href="patient-resources-patient-portal.html">Patient Portal</a><br>
+                                <a href="patient-resources-forms.html">Forms</a><br>
+                                    <a href="patient-resources-financial-assistance.html">Financial Assistance</a><br>
+                                    <a href="patient-resources-insurance-enrollment.html">Insurance Enrollment</a><br>
+                                    <a href="patient-resources-community-resources.html">Community Resources</a>
+                            </div>
+                        </div>
+                        <div>
+                            <h4>Contact &amp; More</h4>
+                            <div style="text-align: left; font-size: 0.85rem; line-height: 1.6;">
+                                <a href="contact.html">Contact</a><br>
+                                <a href="donate.html">Donate</a><br>
+                                <a href="about-careers.html">Careers</a><br>
+                                <a href="footer-pages-privacy-policy.html">Privacy Policy</a><br>
+                                <a href="about-faq.html">FAQ</a><br>
+                                <a href="footer-pages-annual-report.html">Annual Report</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="partner-rotator" aria-label="Partner logos (rotating)">
+                    <div class="partner-rotator-label">Health Partners (rotating logos)</div>
+                    <div class="partner-rotator-track" aria-hidden="true">
+                        <div class="partner-rotator-logo">LOGO</div>
+                        <div class="partner-rotator-logo">LOGO</div>
+                        <div class="partner-rotator-logo">LOGO</div>
+                        <div class="partner-rotator-logo">LOGO</div>
+                        <div class="partner-rotator-logo">LOGO</div>
+                        <div class="partner-rotator-logo">LOGO</div>
+                    </div>
+                </div>
+                
+                <div class="bw-footer-disclosure" style="margin-top: 24px; padding: 16px; border-top: 1px solid #e0e0e0; font-size: 1rem; color: #555; background: #f8f8f8; border-radius: 4px;">
+                    <p style="margin: 0 0 8px 0;">Open Door Health Center is a Federally Qualified Health Center (FQHC). Open Door Health Center receives HHS funding and is a Health Center Program grantee under 42 U.S.C 254b, and is deemed a Public Health Service employer under 42 U.S.C. 233 (g)-(n)</p>
+                    <p style="margin: 0; font-size: 0.85rem; color: #888;">© Copyright - Open Door Health Center</p>
+                </div>
+            </div>
+            </div>
             
         </main>
     </div>

@@ -13,13 +13,13 @@
         .sidebar h2 { font-size: 1rem; margin-top: 20px; margin-bottom: 10px; color: #ecf0f1; text-transform: uppercase; letter-spacing: 1px; }
         .sidebar h2 a { color: inherit; font-size: 1rem; text-decoration: none; display: block; padding: 6px 12px 6px 0; border-radius: 4px; }
         .sidebar h2 a:hover { background: #34495e; color: white; padding-left: 16px; }
-        .sidebar h3 { font-size: 0.9rem; margin-top: 12px; margin-left: 10px; margin-bottom: 8px; color: #bdc3c7; }
+        .sidebar h3 { font-size: 1rem; margin-top: 12px; margin-left: 10px; margin-bottom: 8px; color: #bdc3c7; }
         .sidebar ul { list-style: none; }
         .sidebar li { margin: 5px 0; }
-        .sidebar a { color: #bdc3c7; text-decoration: none; display: block; padding: 8px 12px; border-radius: 4px; transition: all 0.3s; font-size: 0.9rem; }
+        .sidebar a { color: #bdc3c7; text-decoration: none; display: block; padding: 8px 12px; border-radius: 4px; transition: all 0.3s; font-size: 1rem; }
         .sidebar a:hover { background: #34495e; color: white; padding-left: 16px; }
         .sidebar .subsection { margin-left: 15px; }
-        .sidebar .missing-page { color: #e74c3c; opacity: 0.6; cursor: not-allowed; padding: 8px 12px; font-size: 0.9rem; font-style: italic; }
+        .sidebar .missing-page { color: #e74c3c; opacity: 0.6; cursor: not-allowed; padding: 8px 12px; font-size: 1rem; font-style: italic; }
         .sidebar .missing-page::after { content: " (no content yet)"; font-size: 0.75rem; color: #c0392b; }
         .main-content { flex: 1; margin-left: 320px; padding: 40px; }
         .content-wrapper { display: grid; grid-template-columns: 1fr 1.8fr; gap: 30px; max-width: 2400px; margin-bottom: 30px; }
@@ -27,14 +27,14 @@
         .strategized-content h2 { color: #333; font-size: 1.3rem; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 2px solid #ccc;  display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; }
                 .strategized-content .cop-label { font-weight: normal; }
         .strategized-content .cop-page-name { text-align: center; }
-        .strategized-content .cop-wireframe { text-align: right; font-weight: normal; }
+        .strategized-content .cop-wireframe { text-align: center; font-weight: normal; }
         .strategized-content h3 { color: #333; font-size: 1.35rem; margin-top: 25px; margin-bottom: 12px; text-align: center; letter-spacing: 0.2px; }
-        .strategized-content h4 { color: #333; font-size: 0.95rem; margin-top: 15px; margin-bottom: 8px; font-weight: 600; }
-        .strategized-content p { color: #555; line-height: 1.8; margin-bottom: 12px; font-size: 0.95rem; }
+        .strategized-content h4 { color: #333; font-size: 1.1rem; margin-top: 15px; margin-bottom: 8px; font-weight: 600; }
+        .strategized-content p { color: #555; line-height: 1.8; margin-bottom: 12px; font-size: 1.1rem; }
         .strategized-content ul { margin: 15px 0; padding-left: 0; list-style: none; }
         .strategized-content li { color: #555; margin: 10px 0; padding-left: 25px; position: relative; line-height: 1.6; }
         .strategized-content li:before { content: "•"; position: absolute; left: 0; color: #666; font-weight: bold; font-size: 1.1rem; }
-        .cta-button { display: inline-block; background: #999; color: white; padding: 12px 28px; border-radius: 25px; text-decoration: none; font-weight: 600; font-size: 0.95rem; margin: 15px 10px 15px 0; border: 2px solid #666; }
+        .cta-button { display: inline-block; background: #999; color: white; padding: 12px 28px; border-radius: 25px; text-decoration: none; font-weight: 600; font-size: 1.1rem; margin: 15px 10px 15px 0; border: 2px solid #666; }
         .cta-button:hover { background: #999; }
         .cta-button.secondary { background: #999; }
         .cta-button.secondary:hover { background: #999; }
@@ -64,7 +64,7 @@
         .bw-nav-trigger:hover { background: #ebebeb; }
         .bw-nav-chevron { font-size: 0.7em; opacity: 0.8; }
         .bw-nav-dropdown { display: none; position: absolute; top: 100%; left: 0; margin-top: 4px; min-width: 220px; background: #fff; border: 2px solid #bbb; border-radius: 10px; padding: 8px 0; box-shadow: 0 4px 12px rgba(0,0,0,0.12); z-index: 50; }
-        .bw-nav-has-dropdown:hover .bw-nav-dropdown, .bw-nav-has-dropdown.is-open .bw-nav-dropdown, .bw-nav-has-dropdown:focus-within .bw-nav-dropdown { display: block; }
+        .bw-nav-has-dropdown.is-open .bw-nav-dropdown { display: block; }
         .bw-nav-dropdown a, .bw-nav-dropdown .bw-nav-disabled { display: block; padding: 10px 14px; font-size: 0.85rem; color: #333; text-decoration: none; font-weight: 600; }
         .bw-nav-dropdown a:hover { background: #f0f0f0; }
         .bw-nav-disabled { color: #999; cursor: not-allowed; font-style: italic; }
@@ -72,7 +72,7 @@
         .bw-nav-search { margin-left: auto; display: flex; align-items: center; gap: 10px; }
         .bw-search { width: 200px; height: 36px; border: 2px solid #bbb; border-radius: 18px; display: flex; align-items: center; justify-content: center; color: #666; font-weight: 600; background: #fff; }
         .bw-slideshow { border: 2px solid #bbb; border-radius: 14px; background: #fff; padding: 16px 16px 12px 16px; margin: 14px 0 18px 0; text-align: left; }
-        .bw-slideshow-image { min-height: 200px; margin-bottom: 16px; background: #f0f0f0; border: 2px dashed #bbb; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #999; font-size: 0.9rem; font-weight: 500; }
+        .bw-slideshow-image { min-height: 200px; margin-bottom: 16px; background: #f0f0f0; border: 2px dashed #bbb; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #999; font-size: 1rem; font-weight: 500; }
         .bw-slideshow-controls { display: flex; align-items: center; justify-content: space-between; margin-top: 10px; padding-top: 10px; border-top: 1px solid #e3e3e3; }
         .bw-arrow { width: 38px; height: 30px; border: 2px solid #bbb; border-radius: 10px; display: flex; align-items: center; justify-content: center; background: #f5f5f5; color: #333; font-weight: 800; user-select: none; }
         .bw-dots { display: flex; align-items: center; gap: 8px; }
@@ -84,7 +84,43 @@
         .content-box h3 { color: #555; margin-top: 20px; margin-bottom: 10px; }
         .content-box a { color: #3498db; text-decoration: none; }
         .content-box a:hover { text-decoration: underline; }
-        .source-links { display: flex; align-items: center; flex-wrap: wrap; gap: 10px; padding: 12px 0 16px 0; margin-bottom: 8px; border-bottom: 1px solid #ddd; }
+        .source-links {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 10px;
+            padding: 12px 0 16px 0;
+            margin-bottom: 8px;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .source-links-left {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+                        .source-links-disclaimer {
+            font-size: 1rem;
+            color: #666;
+            font-style: normal;
+            text-align: center;
+            max-width: 1200px;
+            flex: 1 1 auto;
+            line-height: 1.6;
+            padding: 12px 16px;
+            background: #f9f9f9;
+                        border-radius: 4px;
+        }
+        
+        .source-links-disclaimer strong {
+            display: block;
+            margin-bottom: 6px;
+            color: #333;
+            font-size: 1.1rem;
+        }
         .source-links-label { font-size: 0.85rem; font-weight: 600; color: #555; margin-right: 4px; }
         .source-link-btn { display: inline-block; padding: 8px 16px; background: #2c3e50; color: #fff; text-decoration: none; border-radius: 6px; font-size: 0.85rem; font-weight: 500; border: 1px solid #1a252f; transition: background 0.2s, color 0.2s; }
         .source-link-btn:hover { background: #34495e; color: #fff; }
@@ -140,8 +176,14 @@
         </nav>
         <main class="main-content">
             <div class="source-links">
-                <span class="source-links-label">Sourced from current website:</span>
+                <div class="source-links-left">
+                    <span class="source-links-label">Sourced from current website:</span>
                 <a href="https://odhc.org/frequently-asked-questions/" target="_blank" rel="noopener" class="source-link-btn">Frequently Asked Questions</a>
+                </div>
+                <div class="source-links-disclaimer">
+                    <strong>Content Interpretation &amp; Low-Fidelity Wireframe</strong><br>
+                    This environment is for content sourcing, organization, and structure only. It is not a design. The goal at this stage is to verify that no critical pages, sections, or content are missing before visual design and UX styling begin.
+                </div>
             </div>
             <div class="content-wrapper">
                 <div class="content-box">
@@ -380,9 +422,9 @@
                         </div>
                     </div>
                 </div>
-                <div class="bw-footer-disclosure" style="margin-top: 24px; padding: 16px; border-top: 1px solid #e0e0e0; font-size: 0.9rem; color: #555; background: #f8f8f8; border-radius: 4px;">
+                <div class="bw-footer-disclosure" style="margin-top: 24px; padding: 16px; border-top: 1px solid #e0e0e0; font-size: 1rem; color: #555; background: #f8f8f8; border-radius: 4px;">
                     <p style="margin: 0 0 8px 0;">Open Door Health Center is a Federally Qualified Health Center (FQHC). Open Door Health Center receives HHS funding and is a Health Center Program grantee under 42 U.S.C 254b, and is deemed a Public Health Service employer under 42 U.S.C. 233 (g)-(n)</p>
-                    <p style="margin: 0; font-size: 0.85rem; color: #888;">© Copyright - Open Door Health Center - powered by Enfold WordPress Theme</p>
+                    <p style="margin: 0; font-size: 0.85rem; color: #888;">© Copyright - Open Door Health Center</p>
                 </div>
             </div>
             
