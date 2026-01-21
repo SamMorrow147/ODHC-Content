@@ -51,6 +51,7 @@
 
         .sidebar h2 a {
             color: inherit;
+            font-size: 1rem;
             text-decoration: none;
             display: block;
             padding: 6px 12px 6px 0;
@@ -147,11 +148,14 @@
             margin-bottom: 20px;
             padding-bottom: 10px;
             border-bottom: 2px solid #ccc;
-            display: flex;
-            justify-content: space-between;
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
             align-items: center;
         }
         
+                .strategized-content .cop-label { font-weight: normal; }
+        .strategized-content .cop-page-name { text-align: center; }
+        .strategized-content .cop-wireframe { text-align: right; font-weight: normal; }
         .strategized-content h3 {
             color: #333;
             font-size: 1.35rem;
@@ -301,8 +305,100 @@
             margin: 0;
         }
         
+        .service-row {
+            display: flex;
+            gap: 24px;
+            align-items: stretch;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+        }
+        
+        .service-row--alt {
+            flex-direction: row-reverse;
+        }
+        
+        .service-row-text {
+            flex: 1 1 280px;
+            min-width: 0;
+        }
+        
+        .service-row-image {
+            flex: 1 1 280px;
+            min-height: 160px;
+            background: #f0f0f0;
+            border: 2px dashed #bbb;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            font-size: 0.9rem;
+            align-self: stretch;
+        }
+        
+        .strategized-content .service-row h2 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #333;
+            margin: 0 0 8px 0;
+        }
+        
+        .strategized-content .service-row p {
+            font-size: 0.95rem;
+            color: #555;
+            line-height: 1.8;
+            margin: 0 0 12px 0;
+        }
+        
+        .strategized-content .service-row-text ul {
+            margin: 8px 0 0 0;
+            padding-left: 0;
+            list-style: none;
+        }
+        
+        .strategized-content .service-row-text li {
+            color: #555;
+            margin: 6px 0;
+            padding-left: 25px;
+            position: relative;
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+        
+        .strategized-content .service-row-text li:before {
+            content: "\2022";
+            position: absolute;
+            left: 0;
+            color: #666;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+        
+        .services-intro {
+            margin-bottom: 24px;
+        }
+        
+        .services-intro p {
+            font-size: 0.95rem;
+            color: #555;
+            line-height: 1.8;
+            margin: 0 0 12px 0;
+        }
+        
+        .services-intro p:last-child {
+            margin-bottom: 0;
+        }
+        
+        .service-divider {
+            border: none;
+            border-top: 1px solid #ddd;
+            margin: 20px 0;
+        }
+        
         /* B/W Header Wireframe Styles */
-        .bw-header {
+        .bw-header-nav { padding: 16px; background: #fff; }
+        .bw-header-nav .bw-nav-shell { margin-top: 12px; padding-top: 12px; border-top: 1px solid #e8e8e8; border: none; border-radius: 0; }
+                .bw-header {
             background: #fff;
             padding: 16px;
             border-bottom: 2px solid #ddd;
@@ -351,6 +447,8 @@
             font-weight: 500;
         }
 
+        .bw-header-nav .bw-box { min-width: 100px; font-size: 0.75rem; padding: 6px 10px; min-height: 36px; }
+        .bw-phone { font-size: 0.8rem; font-weight: 600; white-space: nowrap; }
         .bw-icon {
             width: 44px;
             height: 44px;
@@ -393,13 +491,9 @@
         }
 
         .bw-nav-shell {
-            border: 2px solid #bbb;
-            border-radius: 14px;
-            padding: 14px 16px;
             display: flex;
             align-items: center;
             gap: 14px;
-            background: #fff;
             flex-wrap: wrap;
         }
 
@@ -413,6 +507,18 @@
             background: #f5f5f5;
         }
 
+
+        .bw-nav-has-dropdown { position: relative; }
+        .bw-nav-item.bw-nav-has-dropdown { border: none; border-radius: 0; padding: 0; background: transparent; }
+        .bw-nav-trigger { font: inherit; color: inherit; cursor: pointer; padding: 8px 10px; border-radius: 10px; border: 2px solid #ddd; font-weight: 700; font-size: 0.85rem; background: #f5f5f5; display: flex; align-items: center; gap: 4px; }
+        .bw-nav-trigger:hover { background: #ebebeb; }
+        .bw-nav-chevron { font-size: 0.7em; opacity: 0.8; }
+        .bw-nav-dropdown { display: none; position: absolute; top: 100%; left: 0; margin-top: 4px; min-width: 220px; background: #fff; border: 2px solid #bbb; border-radius: 10px; padding: 8px 0; box-shadow: 0 4px 12px rgba(0,0,0,0.12); z-index: 50; }
+        .bw-nav-has-dropdown:hover .bw-nav-dropdown, .bw-nav-has-dropdown.is-open .bw-nav-dropdown, .bw-nav-has-dropdown:focus-within .bw-nav-dropdown { display: block; }
+        .bw-nav-dropdown a, .bw-nav-dropdown .bw-nav-disabled { display: block; padding: 10px 14px; font-size: 0.85rem; color: #333; text-decoration: none; font-weight: 600; }
+        .bw-nav-dropdown a:hover { background: #f0f0f0; }
+        .bw-nav-disabled { color: #999; cursor: not-allowed; font-style: italic; }
+        .bw-nav-link { text-decoration: none; color: inherit; }
         .bw-nav-search {
             margin-left: auto;
             display: flex;
@@ -495,18 +601,7 @@
 
         .bw-dot.active {
             background: #666;
-        }
-        
-        .footer-card {
-            background: white;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            border-left: 5px solid #f39c12;
-            max-width: 1800px;
-        }
-        
-        .redirect-card {
+        }.redirect-card {
             background: #f8f9fa;
             padding: 15px 20px;
             border-radius: 6px;
@@ -1025,30 +1120,6 @@
             word-break: break-all;
             font-size: 0.95rem;
         }
-        
-        .footer-card h2 {
-            color: #d68910;
-            font-size: 1.3rem;
-            margin-bottom: 15px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid #f39c12;
-        }
-        
-        .footer-card p {
-            color: #555;
-            font-size: 0.95rem;
-            line-height: 1.7;
-            margin: 12px 0;
-        }
-        
-        .footer-card .copyright {
-            color: #888;
-            font-size: 0.85rem;
-            margin-top: 20px;
-            padding-top: 15px;
-            border-top: 1px solid #eee;
-        }
-        
         .image-gallery {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
@@ -1100,6 +1171,11 @@
             .main-content {
                 margin-left: 0;
             }
+            
+            .service-row,
+            .service-row--alt {
+                flex-direction: column;
+            }
         }
     </style>
 </head>
@@ -1107,38 +1183,110 @@
     <div class="container">
         <nav class="sidebar">
             <h1>ODHC Content Review</h1>
-            <a href="index.html" style="background: #34495e; margin-bottom: 20px;">🏠 Home</a><h2>About</h2><ul><li><a href="about-mission-vision-and-values.html">Mission, Vision, and Values</a></li><li><a href="about-services-overview.html">Services</a></li><h3>Locations</h3><ul class="subsection"><li><a href="about-locations-mankato.html">Mankato</a></li><li><a href="about-locations-shakopee.html">Shakopee</a></li><li><span class="missing-page">School-Based Centers</span></li></ul><li><a href="about-meet-the-team.html">Meet the Team</a></li><li><a href="about-news-and-events.html">News and Events</a></li><li><a href="about-careers.html">Careers</a></li><li><a href="about-faq.html">FAQ</a></li></ul><h2>Patient Resources</h2><ul><li><a href="patient-resources-patient-portal.html">Patient Portal</a></li><li><a href="patient-resources-forms.html">Forms</a></li><li><a href="patient-resources-financial-assistance.html">Financial Assistance</a></li><li><a href="patient-resources-insurance-enrollment.html">Insurance Enrollment</a></li><li><a href="patient-resources-community-resources.html">Community Resources</a></li></ul><h2><a href="contact.html">Contact</a></h2><h2><a href="donate.html">Donate</a></h2><h2>Footer pages Utility</h2><ul><li><a href="footer-pages-privacy-policy.html">Privacy Policy</a></li><li><a href="footer-pages-faq.html">FAQ</a></li><li><span class="missing-page">Annual Report</span></li></ul>
+            <h2><a href="index.html">Home</a></h2>
+            <h2>About</h2>
+            <ul>
+                <li><a href="about-mission-vision-and-values.html">Mission, Vision, and Values</a></li>
+                <li><a href="about-services-overview.html">Services</a></li>
+                <li><a href="about-meet-the-team.html">Meet the Team</a></li>
+                <li><a href="about-news-and-events.html">News and Events</a></li>
+                <li><a href="about-careers.html">Careers</a></li>
+            </ul>
+            <h2>Locations</h2>
+            <ul>
+                <li><a href="about-locations-mankato.html">Mankato</a></li>
+                <li><a href="about-locations-shakopee.html">Shakopee</a></li>
+                <li><span class="missing-page">School-Based Centers</span></li>
+            </ul>
+            <h2>Patient Resources</h2>
+            <ul>
+                <li><a href="patient-resources-patient-portal.html">Patient Portal</a></li>
+                <li><a href="patient-resources-forms.html">Forms</a></li>
+                <li><a href="patient-resources-financial-assistance.html">Financial Assistance</a></li>
+                <li><a href="patient-resources-insurance-enrollment.html">Insurance Enrollment</a></li>
+                <li><a href="patient-resources-community-resources.html">Community Resources</a></li>
+            </ul>
+            <h2><a href="contact.html">Contact</a></h2>
+            <h2><a href="donate.html">Donate</a></h2>
+            <h2>Footer pages Utility</h2>
+            <ul>
+                <li><a href="footer-pages-privacy-policy.html">Privacy Policy</a></li>
+                <li><a href="about-faq.html">FAQ</a></li>
+                <li><a href="footer-pages-annual-report.html">Annual Report</a></li>
+            </ul>
         </nav>
         <main class="main-content">
             <div class="source-links">
-                <span class="source-links-label">View on ODHC:</span>
+                <span class="source-links-label">Sourced from current website:</span>
                 <a href="https://odhc.org/medical-health/" target="_blank" rel="noopener" class="source-link-btn">Medical Health</a>
                 <a href="https://odhc.org/dental-health/" target="_blank" rel="noopener" class="source-link-btn">Dental Health</a>
                 <a href="https://odhc.org/behavioral-health/" target="_blank" rel="noopener" class="source-link-btn">Behavioral Health</a>
                 <a href="https://odhc.org/the-patient-experience/" target="_blank" rel="noopener" class="source-link-btn">The Patient Experience</a>
+                <a href="https://odhc.org/chiropractic/" target="_blank" rel="noopener" class="source-link-btn">Chiropractic Care</a>
             </div>
             <div class="content-wrapper">
                 <div class="content-box">
-                    <h1>About &gt; Services &gt; Overview (SOURCED)</h1>
+                    <h1>About &gt; Services</h1>
 <p><em>Content from ODHC website</em></p>
 <hr />
 <h2>Our Services</h2>
 <p>Open Door Health Center provides comprehensive healthcare services under one roof. Our integrated approach ensures that all aspects of your health are addressed with quality, compassionate care.</p>
-<h3>Medical Health</h3>
-<p>Our caring staff are focused on all of your health care needs. We provide primary care services including preventive care, chronic disease management, acute illness treatment, and more.</p>
-<p><a href="medical.md">Learn more about Medical Health →</a></p>
-<h3>Dental Health</h3>
-<p>We offer affordable dental care in several clinics in southern Minnesota. From preventive care to emergency services, our dental team is here to help maintain your oral health.</p>
-<p><a href="dental.md">Learn more about Dental Health →</a></p>
-<h3>Behavioral Health</h3>
-<p>Helping individuals and families with a wide variety of mental health needs. Our licensed therapists provide confidential counseling and therapy services in a supportive environment.</p>
-<p><a href="behavioral-health.md">Learn more about Behavioral Health →</a></p>
+<h3>Medical Services</h3>
+<p>At Open Door Health Center, an experienced team of family practice medical providers offer exams and treatment for all ages. We offer a team-based approach. Our caring doctors and Nurse Practitioners are focused on all of your health care needs. These services include:</p>
+<ul>
+<li>Acute same day visits (when available)</li>
+<li>Immunizations</li>
+<li>Preventive exams</li>
+<li>Chronic disease management (diabetes, high blood pressure, heart disease, COPD, asthma, etc.)</li>
+</ul>
+<p>If you have questions about the availability of a specific service or a treatment that is not listed, please contact the location at which the appointment will be made to determine what care ODHC can provide.</p>
+<p>Same day medical does not take the place of an emergency room or an urgent care clinic; if you need immediate assistance please dial 9-1-1 or visit the nearest emergency room.</p>
+<p><strong>For an appointment call (507) 388-2120. Fax: 507-388-3924.</strong> If this is an emergency, please dial 9-1-1.</p>
+<p><strong>Payment and Insurance:</strong> For those without insurance or with high deductible insurance, we offer a sliding fee discount program based on income and household size. We accept private and state insurance including: Aetna, Blue Cross Blue Shield of MN, Delta Dental, Delta Dental Blue Plus and U Care, Health Partners, Medica, Medicare, Medicaid, Preferred One, Prime West Health, Principal, South Country Health Alliance, U Care, United Health Care. Please discuss with your insurance company whether we are an in-network provider for your plan. <a href="patient-resources-financial-assistance.html">Learn about financial assistance</a>.</p>
+
+<h3>Dental Services</h3>
+<p>Dental Services – Mankato and Jordan. We offer affordable dental care in both Mankato and Jordan, Minnesota. Please note that the Jordan office will be relocating to Shakopee in Spring 2026. Open Door dentists, dental therapists, hygienists, and dental assistants are caring and experienced professionals who use the latest equipment and techniques.</p>
+<ul>
+<li>Cleanings and exams</li>
+<li>Digital x-rays</li>
+<li>Fillings and simple extractions</li>
+<li>Dentures, partials, and crowns</li>
+<li>Treatment for gum disease and other chronic conditions</li>
+</ul>
+<p><strong>Dental Emergencies:</strong> If you have a dental emergency that is causing excessive pain, fever, or swelling, please call (507) 388-2120 to be screened for an emergency dental appointment. Our screening staff will place you into the schedule, if possible.</p>
+<p><strong>Locations:</strong> <strong>Mankato</strong> – Medical | Dental | Behavioral – 309 Holly Lane, Mankato, MN 56001 – (507) 388-2120 – Monday–Wednesday &amp; Friday: 8am–5pm, Thursday: 9am–5pm. <strong>Jordan</strong> – Dental Only – 115 Broadway St. S, Ste #600, Jordan, MN 55352 – (952) 492-6342 – Monday–Wednesday &amp; Friday: 8am–5pm, Thursday: 9am–5pm – Relocating to Shakopee in Spring 2026.</p>
+<p><strong>Insurance and Payment:</strong> We accept many private insurance plans including Delta Dental. Minnesota Care and Medical Assistance (MA) are also accepted. For those without insurance or with high deductibles, our sliding fee discount program may help make dental care affordable.</p>
+
+<h3>Behavioral Health Services</h3>
+<p>Our compassionate and experienced professionals help individuals and families with a wide variety of mental health concerns. Licensed therapists have advanced training to help individuals with relationship difficulties, depression, anxiety, loss, challenges with drugs and alcohol, trauma and other stressors.</p>
+<ul>
+<li>Mental health assessments</li>
+<li>Individual, family, and couples therapy</li>
+<li>Individualized treatment plans</li>
+<li>Integrated care for total wellness</li>
+</ul>
+<p><strong>Behavioral Health Consultants:</strong> Our behavioral health consultants work with our medical and dental teams to provide integrated behavioral health services. Our consultants accompany our patients during medical and dental consultations and procedures in order to help our patients achieve total wellness.</p>
+<p><strong>Play Therapists:</strong> Open Door's behavioral health team provides play therapy as an option to help children resolve their problems, better express themselves, and grow as individuals. According to the Association for Play Therapy, play therapy has been used for: behavioral problems (anger management, grief and loss, divorce and abandonment, crisis and trauma) and behavioral disorders (anxiety, depression, ADHD, autism or pervasive developmental, academic and social developmental, physical and learning disabilities, conduct disorders).</p>
+
 <h3>Insurance Enrollment</h3>
 <p>We provide free assistance with health insurance enrollment, helping you navigate options and enroll in the plan that's right for you.</p>
-<p><a href="insurance-enrollment.md">Learn more about Insurance Enrollment →</a></p>
+<p><a href="patient-resources-insurance-enrollment.html">Learn more about Insurance Enrollment</a></p>
+
 <h3>Chiropractic Care</h3>
-<p>Comprehensive chiropractic services for pain relief and wellness, addressing back pain, neck pain, and other musculoskeletal issues.</p>
-<p><a href="chiropractic-care.md">Learn more about Chiropractic Care →</a></p>
+<p>At Open Door Health Center, an experienced chiropractor offers exams and treatment for all ages. Our caring provider is focused on all of your health care needs, and provides treatments for:</p>
+<ul>
+<li>Colic</li>
+<li>Chronic ear infections</li>
+<li>Neck pain</li>
+<li>Back pain</li>
+<li>Low back pain</li>
+<li>Sciatica</li>
+<li>Headaches</li>
+<li>TMJ</li>
+<li>Neurological pain</li>
+<li>Any other musculoskeletal pain</li>
+</ul>
+
 <hr />
 <h2>Why Choose Open Door Health Center?</h2>
 <ul>
@@ -1150,44 +1298,70 @@
 </ul>
 <hr />
 <h2>The Patient Experience</h2>
-<p><a href="assets/pdfs/Office-Sign-Right-to-Receive-a-Good-Faith-Estimate-of-Expected-Charges-Notice-00410.pdf">View your right to receive a Good Faith Estimate of expected services here.</a></p>
-<p>Under the law, health care providers need to give <strong>patients who don't have insurance or who are not using insurance</strong> an estimate of their bill for health care items and services before those items or services are provided. <a href="assets/pdfs/Office-Sign-Right-to-Receive-a-Good-Faith-Estimate-of-Expected-Charges-Notice-00410.pdf">Read the full document.</a></p>
-<p><a href="assets/pdfs/GFE-Spanish.pdf">Lea el documento completo.</a></p>
+<p><a href="assets/pdfs/Office-Sign-Right-to-Receive-a-Good-Faith-Estimate-of-Expected-Charges-Notice-00410%20(1).pdf">View your right to receive a Good Faith Estimate of expected services here.</a></p>
+<p>Under the law, health care providers need to give <strong>patients who don't have insurance or who are not using insurance</strong> an estimate of their bill for health care items and services before those items or services are provided. <a href="assets/pdfs/Office-Sign-Right-to-Receive-a-Good-Faith-Estimate-of-Expected-Charges-Notice-00410%20(1).pdf">Read the full document.</a></p>
+<p><a href="assets/pdfs/GFE-Spanish%20(1).pdf">Lea el documento completo.</a></p>
 <hr />
 <p><strong>Open Door Health Center is a designated Minnesota Health Care Home.</strong></p>
 <p>A certified Health Care Home is a primary care clinic that provides patient-centered, team-based care. This means that our care team is hard at work to meet all of your needs. We provide medical, dental, and behavioral health services. We also provide assistance with insurance enrollment.</p>
 <p>When you come in for services as a patient, we will make sure that you are connected with all the resources you need to focus on your health. If you need assistance overcoming barriers to health and well-being, ask anyone on the Open Door team. We will get you the help you need.</p>
 <p>Visit our <a href="patient-resources-community-resources.html">Community Resources</a> for more information.</p>
-<p><a href="assets/pdfs/Office-Sign-Right-to-Receive-a-Good-Faith-Estimate-of-Expected-Charges-Notice-00410.pdf">View your right to receive a Good Faith Estimate of expected services here.</a></p>
+<p><a href="assets/pdfs/Office-Sign-Right-to-Receive-a-Good-Faith-Estimate-of-Expected-Charges-Notice-00410%20(1).pdf">View your right to receive a Good Faith Estimate of expected services here.</a></p>
 <hr />
 <h2>Schedule an Appointment</h2>
 <p>Call us today to schedule an appointment: <strong>(507) 388-2120</strong></p>
 <hr />
+<h2>In an Emergency</h2>
+<p>If you or a family member are experiencing any of the following symptoms, please call 9-1-1 or go to the Emergency Department at your local hospital:</p>
+<ul>
+<li>Chest pain, heart attack, difficulty breathing</li>
+<li>Stroke or numbness on one side</li>
+<li>Severe bleeding or abdominal pain</li>
+<li>Major head trauma or loss of consciousness</li>
+</ul>
+<hr />
                 </div>
-    
-            <div class="strategized-content">
-                <h2>
-                    Strategized Content
-                </h2>
 
-                <div class="bw-header" style="margin: 18px 0;">
-                    <div class="bw-header-row" aria-hidden="true">
-                        <div class="bw-logo">LOGO</div>
-                        <div class="bw-box" style="min-width: 220px;">OPEN DOOR HEALTH CENTER</div>
-                        <div class="bw-icon" title="Phone" aria-label="Phone">☎</div>
+            <div class="strategized-content">
+                <h2><span class="cop-label">Content Organization Proposal</span><span class="cop-page-name">Services</span><span class="cop-wireframe">Wireframe</span></h2>
+
+                <div class="bw-header-nav" style="margin: 18px 0 22px 0;">
+                    <div class="bw-header-row" aria-hidden="true">                        <div class="bw-box">ODHC LOGO</div>
+                        <span class="bw-phone">(507) 388-2120</span>
                         <div style="flex: 1;"></div>
                         <div class="bw-pill">Portal Login</div>
                         <div class="bw-pill alt">Pay My Bill</div>
                     </div>
-                </div>
-
-                <div class="bw-nav" style="margin: 0 0 22px 0;">
-                    <div class="bw-nav-shell" aria-hidden="true">
-                        <div class="bw-nav-item">About</div>
-                        <div class="bw-nav-item">Locations</div>
-                        <div class="bw-nav-item">Patient Resources</div>
-                        <div class="bw-nav-item">Contact</div>
-                        <div class="bw-nav-item">Donate</div>
+                        <div class="bw-nav-shell" aria-label="Main navigation">
+                        <div class="bw-nav-item bw-nav-has-dropdown">
+                            <button type="button" class="bw-nav-trigger" aria-expanded="false" aria-haspopup="true">About <span class="bw-nav-chevron" aria-hidden="true">▾</span></button>
+                            <div class="bw-nav-dropdown">
+                                <a href="about-mission-vision-and-values.html">Mission, Vision, and Values</a>
+                                <a href="about-services-overview.html">Services</a>
+                                <a href="about-meet-the-team.html">Meet the Team</a>
+                                <a href="about-news-and-events.html">News and Events</a>
+                                <a href="about-careers.html">Careers</a>
+                                </div>
+                            </div>
+                            <div class="bw-nav-item bw-nav-has-dropdown">
+                                <button type="button" class="bw-nav-trigger" aria-expanded="false" aria-haspopup="true">Locations <span class="bw-nav-chevron" aria-hidden="true">▾</span></button>
+                            <div class="bw-nav-dropdown">
+                                <a href="about-locations-mankato.html">Mankato</a>
+                                <a href="about-locations-shakopee.html">Shakopee</a>
+</div>
+                        </div>
+                        <div class="bw-nav-item bw-nav-has-dropdown">
+                            <button type="button" class="bw-nav-trigger" aria-expanded="false" aria-haspopup="true">Patient Resources <span class="bw-nav-chevron" aria-hidden="true">▾</span></button>
+                            <div class="bw-nav-dropdown">
+                                <a href="patient-resources-patient-portal.html">Patient Portal</a>
+                                <a href="patient-resources-forms.html">Forms</a>
+                                <a href="patient-resources-financial-assistance.html">Financial Assistance</a>
+                                <a href="patient-resources-insurance-enrollment.html">Insurance Enrollment</a>
+                                <a href="patient-resources-community-resources.html">Community Resources</a>
+                            </div>
+                        </div>
+                        <a href="contact.html" class="bw-nav-item bw-nav-link">Contact</a>
+                        <a href="donate.html" class="bw-nav-item bw-nav-link">Donate</a>
                         <div class="bw-nav-search">
                             <div class="bw-search">Search…</div>
                         </div>
@@ -1196,67 +1370,111 @@
                 
                 <div class="bw-slideshow">
                     <div class="bw-slideshow-image" aria-hidden="true">Hero image</div>
-                    <h3 style="margin-top: 0;">All Your Healthcare Needs, One Place</h3>
-                    <p><strong>Quality medical, dental, and behavioral health care for your whole family—coordinated and affordable.</strong></p>
-                    <p>When all your healthcare providers work together in one location, you get better care. Your medical doctor, dentist, and therapist can coordinate your treatment for the best outcomes.</p>
+                    <h3 style="margin-top: 0;">Comprehensive Care, All Under One Roof</h3>
+                    <p><strong>Quality medical, dental, behavioral health, and chiropractic services for individuals and families.</strong></p>
+                    <p>Open Door Health Center provides comprehensive healthcare services under one roof. Our integrated approach ensures that all aspects of your health are addressed with quality, compassionate care by experienced medical, dental, behavioral health, and chiropractic providers.</p>
                     
                     <div style="text-align: left; margin: 18px 0 6px 0;">
                         <a href="#" class="cta-button">Schedule Appointment</a>
                         <a href="#" class="cta-button secondary">Contact Us</a>
                     </div>
 
-                    <div class="bw-slideshow-controls" aria-hidden="true">
-                        <div class="bw-arrow">‹</div>
-                        <div class="bw-dots">
-                            <div class="bw-dot active"></div>
-                            <div class="bw-dot"></div>
-                            <div class="bw-dot"></div>
-                        </div>
-                        <div class="bw-arrow">›</div>
-                    </div>
                 </div>
                 
                 <h3>Our Services</h3>
-                <div class="service-grid">
-                    <div class="service-card">
-                        <h4>Medical Health</h4>
-                        <p>Primary care for all ages—checkups, chronic disease management, and preventive care for your whole family.</p>
-                        <div style="margin-top: 12px;">
-                            <a href="about-services-medical.html" class="cta-button secondary" style="font-size: 0.85rem; padding: 8px 20px;">Learn More</a>
-                        </div>
-                    </div>
-                    
-                    <div class="service-card">
-                        <h4>Dental Health</h4>
-                        <p>Cleanings, exams, fillings, extractions, and emergency dental care—affordable and accessible.</p>
-                        <div style="margin-top: 12px;">
-                            <a href="about-services-dental.html" class="cta-button secondary" style="font-size: 0.85rem; padding: 8px 20px;">Learn More</a>
-                        </div>
-                    </div>
-                    
-                    <div class="service-card">
-                        <h4>Behavioral Health</h4>
-                        <p>Confidential counseling and therapy for individuals and families—depression, anxiety, stress, and more.</p>
-                        <div style="margin-top: 12px;">
-                            <a href="about-services-behavioral-health.html" class="cta-button secondary" style="font-size: 0.85rem; padding: 8px 20px;">Learn More</a>
-                        </div>
-                    </div>
+                <div class="services-intro">
+                    <p>We provide comprehensive, community-based health services that support whole-person care for children, adults, and families. Our team offers integrated medical, dental, and behavioral health services along with assistance navigating insurance coverage and community resources.</p>
+                    <p>Our goal is to make quality health care accessible, affordable, and coordinated for everyone in our community.</p>
                 </div>
+                <hr class="service-divider" />
                 
-                <div class="service-grid" style="grid-template-columns: 1fr 1fr;">
-                    <div class="service-card">
-                        <h4>Insurance Enrollment</h4>
-                        <p>Free help understanding your options and applying for coverage that fits your budget.</p>
-                        <div style="margin-top: 12px;">
-                            <a href="about-services-insurance-enrollment.html" class="cta-button secondary" style="font-size: 0.85rem; padding: 8px 20px;">Get Help</a>
-                        </div>
+                <div class="service-row">
+                    <div class="service-row-text">
+                        <h2>Medical Services</h2>
+                        <p>At Open Door Health Center, an experienced team of family practice medical providers offer exams and treatment for all ages. We offer a team-based approach, and our caring doctors and Nurse Practitioners are focused on all of your health care needs.</p>
+                        <p>Services include:</p>
+                        <ul>
+                            <li>Acute same day visits (when available)</li>
+                            <li>Immunizations</li>
+                            <li>Preventive exams</li>
+                            <li>Chronic disease management (diabetes, high blood pressure, heart disease, COPD, asthma, etc.)</li>
+                        </ul>
+                        <p>If you have questions about the availability of a specific service or a treatment that is not listed, please contact the location at which the appointment will be made to determine what care ODHC can provide.</p>
+                        <p>Same day medical does not take the place of an emergency room or an urgent care clinic; if you need immediate assistance please dial 9-1-1 or visit the nearest emergency room.</p>
                     </div>
-                    
-                    <div class="service-card">
-                        <h4>Chiropractic Care</h4>
-                        <p>Natural pain relief for back/neck pain, headaches, sports injuries, and more.</p>
-                        <div style="margin-top: 12px;">
-                            <a href="about-services-chiropractic-care.html" class="cta-button secondary" style="font-size: 0.85rem; padding: 8px 20px;">Learn More</a>
+                    <div class="service-row-image" aria-hidden="true">Image placeholder</div>
+                </div>
+                <hr class="service-divider" />
+                
+                <div class="service-row service-row--alt">
+                    <div class="service-row-text">
+                        <h2>Dental Services</h2>
+                        <p>Open Door dentists, dental therapists, hygienists, and dental assistants are caring and experienced professionals who use the latest equipment and techniques to provide affordable dental care.</p>
+                        <p>Services include:</p>
+                        <ul>
+                            <li>Cleanings and exams</li>
+                            <li>Digital x-rays</li>
+                            <li>Fillings and simple extractions</li>
+                            <li>Dentures, partials, and crowns</li>
+                            <li>Treatment for gum disease and other chronic conditions</li>
+                        </ul>
+                    </div>
+                    <div class="service-row-image" aria-hidden="true">Image placeholder</div>
+                </div>
+                <hr class="service-divider" />
+                
+                <div class="service-row">
+                    <div class="service-row-text">
+                        <h2>Behavioral Health Services</h2>
+                        <p>Our compassionate and experienced professionals help individuals and families with a wide variety of mental health concerns. Licensed therapists have advanced training to help individuals with relationship difficulties, depression, anxiety, loss, challenges with drugs and alcohol, trauma and other stressors.</p>
+                        <p>Services include:</p>
+                        <ul>
+                            <li>Mental health assessments</li>
+                            <li>Individual, family, and couples therapy</li>
+                            <li>Individualized treatment plans</li>
+                            <li>Integrated care for total wellness</li>
+                        </ul>
+                        <p><strong>Behavioral Health Consultants:</strong> Our behavioral health consultants work with our medical and dental teams to provide integrated behavioral health services. Our consultants accompany our patients during medical and dental consultations and procedures in order to help our patients achieve total wellness.</p>
+                        <p><strong>Play Therapists:</strong> Open Door's behavioral health team provides play therapy as an option to help children resolve their problems, better express themselves, and grow as individuals. According to the Association for Play Therapy, play therapy has been used as a primary intervention or as supportive therapy for behavioral problems (anger management, grief and loss, divorce and abandonment, crisis and trauma) and behavioral disorders (anxiety, depression, ADHD, autism or pervasive developmental, academic and social developmental, physical and learning disabilities, conduct disorders).</p>
+                    </div>
+                    <div class="service-row-image" aria-hidden="true">Image placeholder</div>
+                </div>
+                <hr class="service-divider" />
+                
+                <div class="service-row service-row--alt">
+                    <div class="service-row-text">
+                        <h2>Chiropractic Care</h2>
+                        <p>At Open Door Health Center, an experienced chiropractor offers exams and treatment for all ages. Our caring provider focuses on musculoskeletal health and provides treatment for a wide range of conditions, including:</p>
+                        <ul>
+                            <li>Colic</li>
+                            <li>Chronic ear infections</li>
+                            <li>Neck pain</li>
+                            <li>Back pain</li>
+                            <li>Low back pain</li>
+                            <li>Sciatica</li>
+                            <li>Headaches</li>
+                            <li>TMJ</li>
+                            <li>Neurological pain</li>
+                            <li>Other musculoskeletal pain</li>
+                        </ul>
+                    </div>
+                    <div class="service-row-image" aria-hidden="true">Image placeholder</div>
+                </div>
+                <hr class="service-divider" />
+                
+                <div class="service-row service-row--alt">
+                    <div class="service-row-image" aria-hidden="true">Image placeholder</div>
+                    <div class="service-row-text">
+                        <h2>Insurance Enrollment</h2>
+                        <p>We offer free assistance with health insurance enrollment through MNsure, Medical Assistance (MA), and MinnesotaCare. Our certified enrollment specialists can help individuals, families, and children apply for coverage and understand their options.</p>
+                        <p>We can help with:</p>
+                        <ul>
+                            <li>MNsure navigation</li>
+                            <li>Medical Assistance (MA) and MinnesotaCare enrollment</li>
+                            <li>Bilingual enrollment support</li>
+                        </ul>
+                        <div style="margin-top: 16px;">
+                            <a href="patient-resources-insurance-enrollment.html" class="cta-button secondary">Learn More About Insurance Enrollment</a>
                         </div>
                     </div>
                 </div>
@@ -1264,9 +1482,58 @@
                 <h3>Affordable Care for Everyone</h3>
                 <div class="service-grid" style="grid-template-columns: 1fr;">
                     <div class="service-card" style="text-align: left;">
-                        <p><strong>We accept most insurance, Minnesota Care, and Medical Assistance.</strong> Our sliding fee discount program means no one is turned away due to inability to pay.</p>
-                        <p style="margin-top: 10px;">All services are coordinated—your providers work together to give you the best care possible.</p>
+                        <p>We accept most insurance, MinnesotaCare, and Medical Assistance. Our sliding fee discount program means no one is turned away due to inability to pay.</p>
+                        <p>All services are coordinated, and your providers work together to give you the best care possible.</p>
+                        <h4>Accepted Insurance</h4>
+                        <p>We accept both private and state insurance plans. If you have insurance from one of the providers listed below, your services are likely covered. Please discuss with your insurance company whether we are an in-network provider for your plan.</p>
+                        <p>Insurance plans include:</p>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 8px;">
+                            <ul style="margin: 0;">
+                                <li>Aetna</li>
+                                <li>Blue Cross Blue Shield of MN</li>
+                                <li>Delta Dental</li>
+                                <li>Delta Dental Blue Plus and UCare</li>
+                                <li>Health Partners</li>
+                                <li>Medica</li>
+                                <li>Medicare</li>
+                            </ul>
+                            <ul style="margin: 0;">
+                                <li>Medicaid</li>
+                                <li>Preferred One</li>
+                                <li>Prime West Health</li>
+                                <li>Principal</li>
+                                <li>South Country Health Alliance</li>
+                                <li>UCare</li>
+                                <li>United Health Care</li>
+                            </ul>
+                        </div>
+                        <h4>Sliding Fee Discount Program</h4>
+                        <p>For those without insurance or with high deductible insurance, we offer a sliding fee discount program based on factors such as income and household size.</p>
+                        <p>To help determine eligibility, we offer multiple levels of discounts. This process includes a brief, in-person conversation so we can understand your situation and determine how we can best assist you.</p>
+                        <div style="margin-top: 16px;">
+                            <a href="patient-resources-financial-assistance.html" class="cta-button secondary">View Financial Assistance</a>
+                        </div>
                     </div>
+                </div>
+                
+                <hr class="service-divider" />
+                
+                <div class="service-row service-row--alt">
+                    <div class="service-row-text">
+                        <h2>Community Resources</h2>
+                        <p>Connecting patients with local support programs, social resources, and community organizations.</p>
+                        <p>Community resource support helps address social factors that impact health and well-being.</p>
+                        <p>Includes universally provided FQHC social support such as:</p>
+                        <ul>
+                            <li>Referrals to community organizations</li>
+                            <li>Social service navigation</li>
+                            <li>Resource coordination</li>
+                        </ul>
+                        <div style="margin-top: 16px;">
+                            <a href="patient-resources-community-resources.html" class="cta-button secondary">View Community Resources</a>
+                        </div>
+                    </div>
+                    <div class="service-row-image" aria-hidden="true">Image placeholder</div>
                 </div>
                 
                 <h3>Two Locations to Serve You</h3>
@@ -1274,11 +1541,36 @@
                     <div class="service-card" style="text-align: left;">
                         <h4>Mankato</h4>
                         <p>Full service: medical, dental, behavioral health, and chiropractic care.</p>
+                        <div style="margin-top: 16px;">
+                            <a href="about-locations-mankato.html" class="cta-button secondary">View Mankato</a>
+                        </div>
                     </div>
                     <div class="service-card" style="text-align: left;">
                         <h4>Shakopee</h4>
                         <p>Full-service care: medical, dental, and behavioral health.</p>
+                        <div style="margin-top: 16px;">
+                            <a href="about-locations-shakopee.html" class="cta-button secondary">View Shakopee</a>
+                        </div>
                     </div>
+                </div>
+
+                <h3>Schedule an Appointment</h3>
+                <div class="service-card" style="padding: 20px; text-align: center;">
+                    <p style="margin: 0;">Call us today to schedule an appointment: <strong>(507) 388-2120</strong></p>
+                    <div style="margin-top: 16px;">
+                        <a href="tel:5073882120" class="cta-button">Call Now</a>
+                    </div>
+                </div>
+
+                <h3>In an Emergency</h3>
+                <div class="service-card" style="padding: 20px; text-align: left;">
+                    <p style="margin: 0 0 12px 0;">If you or a family member are experiencing any of the following symptoms, please call 9-1-1 or go to the Emergency Department at your local hospital:</p>
+                    <ul style="margin: 0; padding-left: 20px;">
+                        <li>Chest pain, heart attack, difficulty breathing</li>
+                        <li>Stroke or numbness on one side</li>
+                        <li>Severe bleeding or abdominal pain</li>
+                        <li>Major head trauma or loss of consciousness</li>
+                    </ul>
                 </div>
 
                 <h3>Footer</h3>
@@ -1318,21 +1610,56 @@
                                 <a href="donate.html">Donate</a><br>
                                 <a href="about-careers.html">Careers</a><br>
                                 <a href="footer-pages-privacy-policy.html">Privacy Policy</a><br>
-                                <a href="footer-pages-faq.html">FAQ</a><br>
+                                <a href="about-faq.html">FAQ</a><br>
                                 <a href="footer-pages-annual-report.html">Annual Report</a>
                             </div>
                         </div>
                     </div>
                 </div>
+                <div class="bw-footer-disclosure" style="margin-top: 24px; padding: 16px; border-top: 1px solid #e0e0e0; font-size: 0.9rem; color: #555; background: #f8f8f8; border-radius: 4px;">
+                    <p style="margin: 0 0 8px 0;">Open Door Health Center is a Federally Qualified Health Center (FQHC). Open Door Health Center receives HHS funding and is a Health Center Program grantee under 42 U.S.C 254b, and is deemed a Public Health Service employer under 42 U.S.C. 233 (g)-(n)</p>
+                    <p style="margin: 0; font-size: 0.85rem; color: #888;">© Copyright - Open Door Health Center - powered by Enfold WordPress Theme</p>
+                </div>
             </div>
             
-            <div class="footer-card">
-                <h2>📄 Footer Content</h2>
-                <p>Open Door Health Center is a Federally Qualified Health Center (FQHC). Open Door Health Center receives HHS funding and is a Health Center Program grantee under 42 U.S.C 254b, and is deemed a Public Health Service employer under 42 U.S.C. 233 (g)-(n)</p>
-                <p class="copyright">© Copyright - Open Door Health Center - powered by Enfold WordPress Theme</p>
-            </div>
+            
             
         </main>
     </div>
+
+    <script>
+    (function() {
+        var shell = document.querySelector('.bw-nav-shell');
+        if (!shell) return;
+        shell.querySelectorAll('.bw-nav-trigger').forEach(function(btn) {
+            btn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                var parent = this.closest('.bw-nav-has-dropdown');
+                var isOpen = parent.classList.toggle('is-open');
+                this.setAttribute('aria-expanded', isOpen);
+                shell.querySelectorAll('.bw-nav-has-dropdown').forEach(function(d) {
+                    if (d !== parent) { d.classList.remove('is-open'); var t = d.querySelector('.bw-nav-trigger'); if (t) t.setAttribute('aria-expanded', 'false'); }
+                });
+            });
+        });
+        document.addEventListener('click', function(e) {
+            if (!shell) return;
+            if (e.target.closest('.bw-nav-dropdown a')) return;
+            shell.querySelectorAll('.bw-nav-has-dropdown.is-open').forEach(function(d) {
+                d.classList.remove('is-open');
+                var t = d.querySelector('.bw-nav-trigger'); if (t) t.setAttribute('aria-expanded', 'false');
+            });
+        });
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                if (!shell) return;
+                shell.querySelectorAll('.bw-nav-has-dropdown.is-open').forEach(function(d) {
+                    d.classList.remove('is-open');
+                    var t = d.querySelector('.bw-nav-trigger'); if (t) t.setAttribute('aria-expanded', 'false');
+                });
+            }
+        });
+    })();
+    </script>
 </body>
 </html>

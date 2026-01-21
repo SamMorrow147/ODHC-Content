@@ -51,6 +51,7 @@
 
         .sidebar h2 a {
             color: inherit;
+            font-size: 1rem;
             text-decoration: none;
             display: block;
             padding: 6px 12px 6px 0;
@@ -118,21 +119,20 @@
             flex: 1;
             min-width: 0;
             margin-left: 320px;
-            padding: 24px clamp(16px, 3vw, 40px);
+            padding: 40px;
         }
         
         .content-wrapper {
             display: grid;
-            grid-template-columns: minmax(0, 1fr) minmax(0, 1.8fr);
-            gap: 24px;
-            width: 100%;
-            max-width: min(1500px, 100%);
+            grid-template-columns: 1fr 1.8fr;
+            gap: 30px;
+            max-width: 2400px;
             margin-bottom: 30px;
         }
         
         .content-wrapper.three-col {
-            grid-template-columns: repeat(3, minmax(0, 1fr));
-            max-width: min(1500px, 100%);
+            grid-template-columns: 1fr 1fr 1fr;
+            max-width: 2400px;
         }
         
         @media (max-width: 1200px) {
@@ -166,11 +166,14 @@
             margin-bottom: 20px;
             padding-bottom: 10px;
             border-bottom: 2px solid #ccc;
-            display: flex;
-            justify-content: space-between;
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
             align-items: center;
         }
         
+        .strategized-content .cop-label { font-weight: normal; }
+        .strategized-content .cop-page-name { text-align: center; }
+        .strategized-content .cop-wireframe { text-align: right; font-weight: normal; }
         .strategized-content h3 {
             color: #333;
             font-size: 1.35rem;
@@ -342,18 +345,7 @@
             color: #666;
             line-height: 1.5;
             margin: 0;
-        }
-        
-        .footer-card {
-            background: white;
-            padding: 24px;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            border-left: 5px solid #f39c12;
-            max-width: min(1500px, 100%);
-        }
-        
-        .redirect-card {
+        }.redirect-card {
             background: #f8f9fa;
             padding: 15px 20px;
             border-radius: 6px;
@@ -587,7 +579,9 @@
         }
 
         /* Simple B/W header wireframe (labels in boxes + logo circle) */
-        .bw-header {
+        .bw-header-nav { padding: 16px; background: #fff; }
+        .bw-header-nav .bw-nav-shell { margin-top: 12px; padding-top: 12px; border-top: 1px solid #e8e8e8; border: none; border-radius: 0; }
+                .bw-header {
             background: #fff;
             padding: 16px;
             border-bottom: 2px solid #ddd;
@@ -636,6 +630,8 @@
             font-weight: 500;
         }
 
+        .bw-header-nav .bw-box { min-width: 100px; font-size: 0.75rem; padding: 6px 10px; min-height: 36px; }
+        .bw-phone { font-size: 0.8rem; font-weight: 600; white-space: nowrap; }
         .bw-icon {
             width: 44px;
             height: 44px;
@@ -678,13 +674,9 @@
         }
 
         .bw-nav-shell {
-            border: 2px solid #bbb;
-            border-radius: 14px;
-            padding: 14px 16px;
             display: flex;
             align-items: center;
             gap: 14px;
-            background: #fff;
             flex-wrap: wrap;
         }
 
@@ -698,6 +690,18 @@
             background: #f5f5f5;
         }
 
+        .bw-nav-has-dropdown { position: relative; }
+        .bw-nav-item.bw-nav-has-dropdown { border: none; border-radius: 0; padding: 0; background: transparent; }
+        .bw-nav-trigger { font: inherit; color: inherit; cursor: pointer; padding: 8px 10px; border-radius: 10px; border: 2px solid #ddd; font-weight: 700; font-size: 0.85rem; background: #f5f5f5; display: flex; align-items: center; gap: 4px; }
+        .bw-nav-trigger:hover { background: #ebebeb; }
+        .bw-nav-chevron { font-size: 0.7em; opacity: 0.8; }
+        .bw-nav-dropdown { display: none; position: absolute; top: 100%; left: 0; margin-top: 4px; min-width: 220px; background: #fff; border: 2px solid #bbb; border-radius: 10px; padding: 8px 0; box-shadow: 0 4px 12px rgba(0,0,0,0.12); z-index: 50; }
+        .bw-nav-has-dropdown:hover .bw-nav-dropdown, .bw-nav-has-dropdown.is-open .bw-nav-dropdown, .bw-nav-has-dropdown:focus-within .bw-nav-dropdown { display: block; }
+        .bw-nav-dropdown a, .bw-nav-dropdown .bw-nav-disabled { display: block; padding: 10px 14px; font-size: 0.85rem; color: #333; text-decoration: none; font-weight: 600; }
+        .bw-nav-dropdown a:hover { background: #f0f0f0; }
+        .bw-nav-disabled { color: #999; cursor: not-allowed; font-style: italic; }
+        .bw-nav-link { text-decoration: none; color: inherit; }
+
         .bw-nav-search {
             margin-left: auto;
             display: flex;
@@ -706,14 +710,15 @@
         }
 
         .bw-search {
-            width: min(200px, 100%);
+            width: min(240px, 100%);
             max-width: 100%;
             height: 36px;
             border: 2px solid #bbb;
             border-radius: 18px;
             display: flex;
             align-items: center;
-            justify-content: center;
+            justify-content: flex-start;
+            padding: 0 16px;
             color: #666;
             font-weight: 600;
             background: #fff;
@@ -724,9 +729,27 @@
             border: 2px solid #bbb;
             border-radius: 14px;
             background: #fff;
-            padding: 16px 16px 12px 16px;
+            padding: 20px 20px 32px 20px;
             margin: 14px 0 18px 0;
             text-align: left;
+            overflow: hidden;
+        }
+        .bw-slideshow-viewport {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+        }
+        .bw-slideshow-slide-area {
+            position: relative;
+            width: 100%;
+            min-height: 540px;
+        }
+        .bw-slideshow-slide-area .bw-slide {
+            position: absolute; top: 0; left: 0; right: 0;
+            opacity: 0; transition: opacity 0.5s ease; pointer-events: none;
+        }
+        .bw-slideshow-slide-area .bw-slide.active {
+            opacity: 1; pointer-events: auto; z-index: 1;
         }
 
         .bw-slideshow-image {
@@ -747,37 +770,43 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            margin-top: 10px;
-            padding-top: 10px;
+            flex-shrink: 0;
+            position: relative;
+            z-index: 10;
+            margin-top: -60px;
+            padding: 4px 0 0 0;
             border-top: 1px solid #e3e3e3;
         }
 
         .bw-arrow {
-            width: 38px;
-            height: 30px;
-            border: 2px solid #bbb;
-            border-radius: 10px;
+            width: 32px;
+            height: 26px;
+            border: 1px solid #bbb;
+            border-radius: 6px;
             display: flex;
             align-items: center;
             justify-content: center;
             background: #f5f5f5;
             color: #333;
             font-weight: 800;
+            font-size: 0.9rem;
             user-select: none;
+            cursor: pointer;
         }
 
         .bw-dots {
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
         }
 
         .bw-dot {
-            width: 8px;
-            height: 8px;
-            border: 2px solid #bbb;
+            width: 6px;
+            height: 6px;
+            border: 1px solid #bbb;
             border-radius: 50%;
             background: #fff;
+            cursor: pointer;
         }
 
         .bw-dot.active {
@@ -1075,29 +1104,6 @@
             font-size: 0.95rem;
         }
         
-        .footer-card h2 {
-            color: #d68910;
-            font-size: 1.3rem;
-            margin-bottom: 15px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid #f39c12;
-        }
-        
-        .footer-card p {
-            color: #555;
-            font-size: 0.95rem;
-            line-height: 1.7;
-            margin: 12px 0;
-        }
-        
-        .footer-card .copyright {
-            color: #888;
-            font-size: 0.85rem;
-            margin-top: 20px;
-            padding-top: 15px;
-            border-top: 1px solid #eee;
-        }
-        
         .image-gallery {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
@@ -1156,105 +1162,139 @@
     <div class="container">
         <nav class="sidebar">
             <h1>ODHC Content Review</h1>
-            <a href="index.html" style="background: #34495e; margin-bottom: 20px;">🏠 Home</a><h2>About</h2><ul><li><a href="about-mission-vision-and-values.html">Mission, Vision, and Values</a></li><li><a href="about-services-overview.html">Services</a></li><h3>Locations</h3><ul class="subsection"><li><a href="about-locations-mankato.html">Mankato</a></li><li><a href="about-locations-shakopee.html">Shakopee</a></li><li><span class="missing-page">School-Based Centers</span></li></ul><li><a href="about-meet-the-team.html">Meet the Team</a></li><li><a href="about-news-and-events.html">News and Events</a></li><li><a href="about-careers.html">Careers</a></li><li><a href="about-faq.html">FAQ</a></li></ul><h2>Patient Resources</h2><ul><li><a href="patient-resources-patient-portal.html">Patient Portal</a></li><li><a href="patient-resources-forms.html">Forms</a></li><li><a href="patient-resources-financial-assistance.html">Financial Assistance</a></li><li><a href="patient-resources-insurance-enrollment.html">Insurance Enrollment</a></li><li><a href="patient-resources-community-resources.html">Community Resources</a></li></ul><h2><a href="contact.html">Contact</a></h2><h2><a href="donate.html">Donate</a></h2><h2>Footer pages Utility</h2><ul><li><a href="footer-pages-privacy-policy.html">Privacy Policy</a></li><li><a href="footer-pages-faq.html">FAQ</a></li><li><span class="missing-page">Annual Report</span></li></ul>
+            <h2><a href="index.html">Home</a></h2>
+            <h2>About</h2>
+            <ul>
+                <li><a href="about-mission-vision-and-values.html">Mission, Vision, and Values</a></li>
+                <li><a href="about-services-overview.html">Services</a></li>
+                <li><a href="about-meet-the-team.html">Meet the Team</a></li>
+                <li><a href="about-news-and-events.html">News and Events</a></li>
+                <li><a href="about-careers.html">Careers</a></li>
+            </ul>
+            <h2>Locations</h2>
+            <ul>
+                <li><a href="about-locations-mankato.html">Mankato</a></li>
+                <li><a href="about-locations-shakopee.html">Shakopee</a></li>
+                <li><span class="missing-page">School-Based Centers</span></li>
+            </ul>
+            <h2>Patient Resources</h2>
+            <ul>
+                <li><a href="patient-resources-patient-portal.html">Patient Portal</a></li>
+                <li><a href="patient-resources-forms.html">Forms</a></li>
+                <li><a href="patient-resources-financial-assistance.html">Financial Assistance</a></li>
+                <li><a href="patient-resources-insurance-enrollment.html">Insurance Enrollment</a></li>
+                <li><a href="patient-resources-community-resources.html">Community Resources</a></li>
+            </ul>
+            <h2><a href="contact.html">Contact</a></h2>
+            <h2><a href="donate.html">Donate</a></h2>
+            <h2>Footer pages Utility</h2>
+            <ul>
+                <li><a href="footer-pages-privacy-policy.html">Privacy Policy</a></li>
+                <li><a href="about-faq.html">FAQ</a></li>
+                <li><a href="footer-pages-annual-report.html">Annual Report</a></li>
+            </ul>
         </nav>
         <main class="main-content">
             <div class="source-links">
-                <span class="source-links-label">View on ODHC:</span>
+                <span class="source-links-label">Sourced from current website:</span>
                 <a href="https://odhc.org" target="_blank" rel="noopener" class="source-link-btn">ODHC Home</a>
             </div>
             <div class="content-wrapper">
                 <div class="content-box">
-                    <h1>Quality Healthcare for Everyone in Southern Minnesota</h1>
-                    <p><strong>Affordable medical, dental, and behavioral health care for people of all ages.</strong></p>
-                    <p>Open Door Health Center is an independently owned, nonprofit community health center. We accept most private insurance, Minnesota Care, and Medical Assistance. Sliding fee discounts are available for those who qualify.</p>
-                    <p><strong>Call to schedule:</strong> (507) 388-2120</p>
+                    <h1>ODHC Home (Verified Content)</h1>
 
-                    <h2>1. Hero Section</h2>
-                    <h3>Value Proposition</h3>
-                    <p>Quality, compassionate care for your whole family. We treat the whole person with coordinated medical, dental, and behavioral health services under one roof.</p>
-                    <p><strong>Primary CTA:</strong> Book Appointment</p>
-                    <p><strong>Secondary CTA:</strong> Contact Us</p>
+                    <h2>Slideshow Panel 1</h2>
+                    <p><strong>QUALITY CARE<br>YOU CAN AFFORD.</strong></p>
+                    <p><a href="patient-resources-financial-assistance.html">CLICK TO READ OUR NO-SURPRISE BILLING INFO.</a></p>
+                    <p><a href="patient-resources-financial-assistance.html">View our sliding fee discount program and other financial assistance options.</a></p>
 
-                    <h2>2. Locations</h2>
-                    <h3>Mankato (Full Service)</h3>
-                    <p>309 Holly Lane, Mankato, MN 56001</p>
-                    <p>(507) 388-2120</p>
-                    <p>Monday-Wednesday & Friday: 8am-5pm<br>Thursday: 9am-5pm</p>
-                    <p><strong>Services:</strong> Medical, Dental, Behavioral Health</p>
+                    <h2>Slideshow Panel 2</h2>
+                    <p><strong>BACK TO BEING HEALTHY</strong></p>
+                    <p>Schedule an appointment to be seen with one of our qualified, compassionate providers.</p>
+                    <p><a href="contact.html">Schedule an appointment</a></p>
 
-                    <h3>Jordan / Shakopee (Dental Only)</h3>
-                    <p>115 Broadway St. S, Ste #600, Jordan, MN 55352</p>
-                    <p>(952) 492-6342</p>
-                    <p>Monday-Wednesday & Friday: 8am-5pm<br>Thursday: 9am-5pm</p>
-                    <p><strong>Note:</strong> Relocating to Shakopee in Spring 2026</p>
-
-                    <h2>3. Services</h2>
+                    <h2>Services</h2>
                     <h3>Medical Health</h3>
-                    <p>Primary care for adults and children, preventive care, chronic disease management, immunizations, and women's health services.</p>
+                    <p>Our caring staff are focused on all of your health care needs</p>
+                    <p><a href="about-services-medical.html">Learn More</a></p>
 
                     <h3>Dental Health</h3>
-                    <p>Preventive care, cleanings, fillings, extractions, pediatric dentistry, and emergency dental care.</p>
+                    <p>We offer affordable dental care in several clinics in southern Minnesota.</p>
+                    <p><a href="about-services-dental.html">Learn More</a></p>
 
                     <h3>Behavioral Health</h3>
-                    <p>Individual and family counseling, assessments, depression and anxiety treatment, stress management, and trauma-informed care.</p>
+                    <p>Helping individuals and families with a wide variety of mental health needs</p>
+                    <p><a href="about-services-behavioral-health.html">Learn more</a></p>
 
-                    <h2>4. Trust Indicators</h2>
-                    <ul>
-                        <li><strong>Insurance Accepted:</strong> Most private plans, Minnesota Care, and Medical Assistance</li>
-                        <li><strong>Sliding Fee Program:</strong> Discounts based on income and household size</li>
-                        <li><strong>No One Turned Away:</strong> Care regardless of ability to pay</li>
-                        <li><strong>Language Services:</strong> Free assistance available</li>
-                    </ul>
+                    <h2>About Open Door</h2>
+                    <p>Open Door Health Center (ODHC) is an independently owned and operated, nonprofit community health center, providing quality and affordable medical, dental, and behavioral health care to all people in Southern Minnesota.</p>
+                    <p>Many private insurance plans are accepted, as well as Minnesota Care and Medical Assistance (MA). Individuals with high deductible insurance and those without insurance may be eligible for discounts based on our sliding fee program.</p>
+                    <p><a href="about-services-overview.html">Learn More</a></p>
 
-                    <h2>5. Additional Services</h2>
-                    <p><strong>Insurance Enrollment Help:</strong> Guidance to find coverage that fits your needs.</p>
-                    <p><strong>Chiropractic Care:</strong> Natural pain relief and whole-body wellness support.</p>
+                    <h2>Locations &amp; Hours</h2>
+                    <h3>Mankato Location</h3>
+                    <p><strong>Medical Dental Behavioral</strong></p>
+                    <p>Monday: 8 am - 5 pm<br>Tuesday: 8 am - 5 pm<br>Wednesday: 8 am - 5 pm<br>Thursday: 9 am - 5 pm<br>Friday: 8 am - 5 pm</p>
+                    <p>309 Holly Lane, Mankato, MN 56001<br><a href="tel:+15073882120">(507) 388-2120</a></p>
 
-                    <h2>6. Why Choose Open Door?</h2>
-                    <ul>
-                        <li><strong>Community-Focused:</strong> Independent nonprofit serving Southern Minnesota families</li>
-                        <li><strong>Comprehensive Care:</strong> Medical, dental, and behavioral health in one place</li>
-                        <li><strong>Affordable:</strong> Sliding fee discounts and broad insurance acceptance</li>
-                        <li><strong>Integrated Care:</strong> Coordinated treatment across services</li>
-                    </ul>
+                    <h3>Jordan Location</h3>
+                    <p><strong>Dental Only.</strong></p>
+                    <p>Monday: 8 am - 5 pm<br>Tuesday: 8 am - 5 pm<br>Wednesday: 8 am - 5 pm<br>Thursday: 9 am - 5 pm<br>Friday: 8 am - 5 pm</p>
+                    <p>(Relocating to Shakopee in Spring 2026)</p>
+                    <p>115 Broadway St. S, Ste #600, Jordan, MN 55352<br><a href="tel:+19524926342">(952) 492-6342</a></p>
 
-                    <h2>7. Patient Resources</h2>
-                    <p>Quick access to what you need:</p>
-                    <ul>
-                        <li><strong>Patient Portal:</strong> Access your records and communicate with your care team</li>
-                        <li><strong>Forms:</strong> Download and complete forms before your visit</li>
-                        <li><strong>Financial Assistance:</strong> Learn about sliding fee discounts and payment help</li>
-                        <li><strong>Community Resources:</strong> Local support services and partnerships</li>
-                    </ul>
+                    <h3>Dental Emergencies</h3>
+                    <p>Call <a href="tel:+15073882120">(507) 388-2120</a> to be screened for an emergency dental appointment.</p>
 
-                    <h2>8. Footer (Required Disclosure)</h2>
-                    <p>Open Door Health Center is a Federally Qualified Health Center (FQHC). Open Door Health Center receives HHS funding and is a Health Center Program grantee under 42 U.S.C 254b, and is deemed a Public Health Service employer under 42 U.S.C. 233 (g)-(n).</p>
+                    <h2>WE SPEAK YOUR LANGUAGE!</h2>
+                    <p>Language assistance services are available free of charge ensuring you receive the highest quality of care. Open the <a href="#">PDF</a> below for more information.</p>
+                    <p><a href="#">Language Assistance Available</a></p>
+                    <p>Call us for an appointment at <a href="tel:+15073882120">(507) 388-2120</a>.</p>
+
+                    <h3>OUR PARTNERS</h3>
+                    <p style="border: 2px dashed #ccc; padding: 24px; text-align: center; color: #666; margin: 12px 0;">Partner logos</p>
                 </div>
     
             <div class="strategized-content">
-                <h2>
-                    Strategized Content
-                </h2>
+                <h2><span class="cop-label">Content Organization Proposal</span><span class="cop-page-name">Homepage</span><span class="cop-wireframe">Wireframe</span></h2>
 
-                <div class="bw-header" style="margin: 18px 0;">
-                    <div class="bw-header-row" aria-hidden="true">
-                        <div class="bw-logo">LOGO</div>
-                        <div class="bw-box">OPEN DOOR HEALTH CENTER</div>
-                        <div class="bw-icon" title="Phone" aria-label="Phone">☎</div>
+                <div class="bw-header-nav" style="margin: 18px 0 22px 0;">
+                    <div class="bw-header-row" aria-hidden="true">                        <div class="bw-box">ODHC LOGO</div>
+                        <span class="bw-phone">(507) 388-2120</span>
                         <div style="flex: 1;"></div>
                         <div class="bw-pill">Portal Login</div>
                         <div class="bw-pill alt">Pay My Bill</div>
                     </div>
-                </div>
-
-                <div class="bw-nav" style="margin: 0 0 22px 0;">
-                    <div class="bw-nav-shell" aria-hidden="true">
-                        <div class="bw-nav-item">About</div>
-                        <div class="bw-nav-item">Locations</div>
-                        <div class="bw-nav-item">Patient Resources</div>
-                        <div class="bw-nav-item">Contact</div>
-                        <div class="bw-nav-item">Donate</div>
+                        <div class="bw-nav-shell" aria-label="Main navigation">
+                        <div class="bw-nav-item bw-nav-has-dropdown">
+                            <button type="button" class="bw-nav-trigger" aria-expanded="false" aria-haspopup="true">About <span class="bw-nav-chevron" aria-hidden="true">▾</span></button>
+                            <div class="bw-nav-dropdown">
+                                <a href="about-mission-vision-and-values.html">Mission, Vision, and Values</a>
+                                <a href="about-services-overview.html">Services</a>
+                                <a href="about-meet-the-team.html">Meet the Team</a>
+                                <a href="about-news-and-events.html">News and Events</a>
+                                <a href="about-careers.html">Careers</a>
+                                </div>
+                            </div>
+                            <div class="bw-nav-item bw-nav-has-dropdown">
+                                <button type="button" class="bw-nav-trigger" aria-expanded="false" aria-haspopup="true">Locations <span class="bw-nav-chevron" aria-hidden="true">▾</span></button>
+                            <div class="bw-nav-dropdown">
+                                <a href="about-locations-mankato.html">Mankato</a>
+                                <a href="about-locations-shakopee.html">Shakopee</a>
+</div>
+                        </div>
+                        <div class="bw-nav-item bw-nav-has-dropdown">
+                            <button type="button" class="bw-nav-trigger" aria-expanded="false" aria-haspopup="true">Patient Resources <span class="bw-nav-chevron" aria-hidden="true">▾</span></button>
+                            <div class="bw-nav-dropdown">
+                                <a href="patient-resources-patient-portal.html">Patient Portal</a>
+                                <a href="patient-resources-forms.html">Forms</a>
+                                <a href="patient-resources-financial-assistance.html">Financial Assistance</a>
+                                <a href="patient-resources-insurance-enrollment.html">Insurance Enrollment</a>
+                                <a href="patient-resources-community-resources.html">Community Resources</a>
+                            </div>
+                        </div>
+                        <a href="contact.html" class="bw-nav-item bw-nav-link">Contact</a>
+                        <a href="donate.html" class="bw-nav-item bw-nav-link">Donate</a>
                         <div class="bw-nav-search">
                             <div class="bw-search">Search…</div>
                         </div>
@@ -1262,24 +1302,43 @@
                 </div>
                 
                 <div class="bw-slideshow">
-                    <div class="bw-slideshow-image" aria-hidden="true">Hero image</div>
-                    <h3 style="margin-top: 0;">Now Open in Shakopee</h3>
-                    <p><strong>Full-service care for Shakopee-area families — medical, dental, and behavioral health, with the same Open Door commitment to access and affordability.</strong></p>
-                    <p>We’re an independent nonprofit community health center. We accept most insurance and offer sliding fee discounts for those who qualify.</p>
-                    
-                    <div style="text-align: left; margin: 18px 0 6px 0;">
-                        <a href="#" class="cta-button">Book Appointment</a>
-                        <a href="#" class="cta-button secondary">Contact Us</a>
-                    </div>
-
-                    <div class="bw-slideshow-controls" aria-hidden="true">
-                        <div class="bw-arrow">‹</div>
-                        <div class="bw-dots">
-                            <div class="bw-dot active"></div>
-                            <div class="bw-dot"></div>
-                            <div class="bw-dot"></div>
+                    <div class="bw-slideshow-viewport" id="bw-home-slideshow-viewport">
+                        <div class="bw-slideshow-slide-area">
+                            <div class="bw-slide active">
+                                <div class="bw-slideshow-image" aria-hidden="true">Hero image</div>
+                                <h3 style="margin-top: 0; text-align: left;">Now Open in Shakopee</h3>
+                                <p><strong>Full-service care for Shakopee-area families, medical, dental, and behavioral health, with the same Open Door commitment to access and affordability.</strong></p>
+                                <p>We're an independent nonprofit community health center. We accept most insurance and offer sliding fee discounts for those who qualify.</p>
+                                <div style="text-align: left; margin: 18px 0 6px 0;">
+                                    <a href="contact.html" class="cta-button">Book Appointment</a>
+                                    <a href="contact.html" class="cta-button secondary">Contact Us</a>
+                                </div>
+                            </div>
+                            <div class="bw-slide">
+                                <div class="bw-slideshow-image" aria-hidden="true">Hero image</div>
+                                <h3 style="margin-top: 0; text-align: left;">QUALITY CARE YOU CAN AFFORD.</h3>
+                                <p>We believe cost shouldn't prevent you from getting the care you need. Open Door accepts most insurance plans and offers a sliding fee discount program and other financial assistance options based on income and family size. Our team can also help with insurance enrollment and coverage questions.</p>
+                                <div style="text-align: left; margin: 18px 0 6px 0;">
+                                    <a href="patient-resources-financial-assistance.html" class="cta-button">Financial Assistance</a>
+                                    <a href="patient-resources-insurance-enrollment.html" class="cta-button secondary">Insurance Enrollment</a>
+                                </div>
+                            </div>
+                            <div class="bw-slide">
+                                <div class="bw-slideshow-image" aria-hidden="true">Hero image</div>
+                                <h3 style="margin-top: 0; text-align: left;">BACK TO BEING HEALTHY</h3>
+                                <p>Schedule an appointment with one of our qualified, compassionate providers and get back to feeling your best. We're here to listen, answer questions, and support your health needs.</p>
+                                <p><a href="contact.html" class="cta-button">Schedule an appointment</a></p>
+                            </div>
                         </div>
-                        <div class="bw-arrow">›</div>
+                        <div class="bw-slideshow-controls">
+                            <button type="button" class="bw-arrow" id="bw-slideshow-prev" aria-label="Previous slide">‹</button>
+                            <div class="bw-dots">
+                                <button type="button" class="bw-dot active" data-slide="0" aria-label="Go to slide 1"></button>
+                                <button type="button" class="bw-dot" data-slide="1" aria-label="Go to slide 2"></button>
+                                <button type="button" class="bw-dot" data-slide="2" aria-label="Go to slide 3"></button>
+                            </div>
+                            <button type="button" class="bw-arrow" id="bw-slideshow-next" aria-label="Next slide">›</button>
+                        </div>
                     </div>
                 </div>
                 
@@ -1339,7 +1398,7 @@
                     </div>
                     <div class="service-card">
                         <h4>Chiropractic Care</h4>
-                        <p>Support for back/neck pain and movement — with a whole-person approach.</p>
+                        <p>Support for back/neck pain and movement, with a whole-person approach.</p>
                     </div>
                 </div>
                 
@@ -1355,7 +1414,7 @@
                     </div>
                     <div class="service-card">
                         <h4>Community-Focused</h4>
-                        <p>Independent nonprofit. We serve families—not shareholders.</p>
+                        <p>Independent nonprofit. We serve families, not shareholders.</p>
                     </div>
                     <div class="service-card">
                         <h4>Telehealth Available</h4>
@@ -1372,7 +1431,7 @@
                     </div>
                     <div class="service-card" style="text-align: left;">
                         <h4>Tools to Manage Your Care</h4>
-                        <p>Access your patient portal, download forms, learn about financial assistance, and connect to community resources—all the tools you need in one place.</p>
+                        <p>Access your patient portal, download forms, learn about financial assistance, and connect to community resources, all the tools you need in one place.</p>
                     </div>
                 </div>
 
@@ -1380,7 +1439,7 @@
                 <div class="service-grid" style="grid-template-columns: 1fr 1fr;">
                     <div class="service-card" style="text-align: left;">
                         <h4>Beyond Medical Care</h4>
-                        <p>Our Community Health Workers connect you to essential resources—food assistance, housing support, employment help, and more. We partner with local organizations to address all barriers to wellness.</p>
+                        <p>Our Community Health Workers connect you to essential resources, food assistance, housing support, employment help, and more. We partner with local organizations to address all barriers to wellness.</p>
                     </div>
                     <div class="service-card" style="padding: 0; overflow: hidden; display: flex; align-items: center; justify-content: center;">
                         <div style="width: 100%; height: 100%; min-height: 140px; background: #f5f5f5; border: 2px dashed #bbb; display: flex; align-items: center; justify-content: center; color: #666; font-weight: 600;">
@@ -1437,22 +1496,77 @@
                                 <a href="donate.html">Donate</a><br>
                                 <a href="about-careers.html">Careers</a><br>
                                 <a href="footer-pages-privacy-policy.html">Privacy Policy</a><br>
-                                <a href="footer-pages-faq.html">FAQ</a><br>
+                                <a href="about-faq.html">FAQ</a><br>
                                 <a href="footer-pages-annual-report.html">Annual Report</a>
                             </div>
                         </div>
                     </div>
                 </div>
+                <div class="bw-footer-disclosure" style="margin-top: 24px; padding: 16px; border-top: 1px solid #e0e0e0; font-size: 0.9rem; color: #555; background: #f8f8f8; border-radius: 4px;">
+                    <p style="margin: 0 0 8px 0;">Open Door Health Center is a Federally Qualified Health Center (FQHC). Open Door Health Center receives HHS funding and is a Health Center Program grantee under 42 U.S.C 254b, and is deemed a Public Health Service employer under 42 U.S.C. 233 (g)-(n)</p>
+                    <p style="margin: 0; font-size: 0.85rem; color: #888;">© Copyright - Open Door Health Center - powered by Enfold WordPress Theme</p>
+                </div>
             </div>
             
             
-            <div class="footer-card">
-                <h2>📄 Footer Content</h2>
-                <p>Open Door Health Center is a Federally Qualified Health Center (FQHC). Open Door Health Center receives HHS funding and is a Health Center Program grantee under 42 U.S.C 254b, and is deemed a Public Health Service employer under 42 U.S.C. 233 (g)-(n)</p>
-                <p class="copyright">© Copyright - Open Door Health Center - powered by Enfold WordPress Theme</p>
-            </div>
             
         </main>
     </div>
+    <script>
+    (function() {
+        var shell = document.querySelector('.bw-nav-shell');
+        if (!shell) return;
+        shell.querySelectorAll('.bw-nav-trigger').forEach(function(btn) {
+            btn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                var parent = this.closest('.bw-nav-has-dropdown');
+                var isOpen = parent.classList.toggle('is-open');
+                this.setAttribute('aria-expanded', isOpen);
+                shell.querySelectorAll('.bw-nav-has-dropdown').forEach(function(d) {
+                    if (d !== parent) { d.classList.remove('is-open'); d.querySelector('.bw-nav-trigger').setAttribute('aria-expanded', 'false'); }
+                });
+            });
+        });
+        document.addEventListener('click', function(e) {
+            if (e.target.closest('.bw-nav-dropdown a')) return;
+            shell.querySelectorAll('.bw-nav-has-dropdown.is-open').forEach(function(d) {
+                d.classList.remove('is-open');
+                var t = d.querySelector('.bw-nav-trigger'); if (t) t.setAttribute('aria-expanded', 'false');
+            });
+        });
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                shell.querySelectorAll('.bw-nav-has-dropdown.is-open').forEach(function(d) {
+                    d.classList.remove('is-open');
+                    var t = d.querySelector('.bw-nav-trigger'); if (t) t.setAttribute('aria-expanded', 'false');
+                });
+            }
+        });
+    })();
+    </script>
+    <script>
+    (function() {
+        var viewport = document.getElementById('bw-home-slideshow-viewport');
+        if (!viewport) return;
+        var slideshow = viewport.closest('.bw-slideshow');
+        var slides = viewport.querySelectorAll('.bw-slide');
+        var dots = slideshow ? slideshow.querySelectorAll('.bw-dot') : [];
+        var total = slides.length;
+        if (total === 0) return;
+        var idx = 0;
+        function showSlide(i) {
+            idx = (i + total) % total;
+            slides.forEach(function(s, k) { s.classList.toggle('active', k === idx); });
+            dots.forEach(function(d, k) { d.classList.toggle('active', k === idx); });
+        }
+        var prev = document.getElementById('bw-slideshow-prev');
+        var next = document.getElementById('bw-slideshow-next');
+        if (prev) prev.addEventListener('click', function() { showSlide(idx - 1); });
+        if (next) next.addEventListener('click', function() { showSlide(idx + 1); });
+        dots.forEach(function(d, k) {
+            d.addEventListener('click', function() { showSlide(k); });
+        });
+    })();
+    </script>
 </body>
 </html>

@@ -51,6 +51,7 @@
 
         .sidebar h2 a {
             color: inherit;
+            font-size: 1rem;
             text-decoration: none;
             display: block;
             padding: 6px 12px 6px 0;
@@ -147,11 +148,14 @@
             margin-bottom: 20px;
             padding-bottom: 10px;
             border-bottom: 2px solid #ccc;
-            display: flex;
-            justify-content: space-between;
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
             align-items: center;
         }
         
+                .strategized-content .cop-label { font-weight: normal; }
+        .strategized-content .cop-page-name { text-align: center; }
+        .strategized-content .cop-wireframe { text-align: right; font-weight: normal; }
         .strategized-content h3 {
             color: #333;
             font-size: 1.1rem;
@@ -262,18 +266,7 @@
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 0.5px;
-        }
-        
-        .footer-card {
-            background: white;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: none;
-            border-left: 5px solid #f39c12;
-            max-width: 1800px;
-        }
-        
-        .redirect-card {
+        }.redirect-card {
             background: #f8f9fa;
             padding: 15px 20px;
             border-radius: 6px;
@@ -792,30 +785,6 @@
             word-break: break-all;
             font-size: 0.95rem;
         }
-        
-        .footer-card h2 {
-            color: #d68910;
-            font-size: 1.3rem;
-            margin-bottom: 15px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid #f39c12;
-        }
-        
-        .footer-card p {
-            color: #555;
-            font-size: 0.95rem;
-            line-height: 1.7;
-            margin: 12px 0;
-        }
-        
-        .footer-card .copyright {
-            color: #888;
-            font-size: 0.85rem;
-            margin-top: 20px;
-            padding-top: 15px;
-            border-top: 1px solid #eee;
-        }
-        
         .image-gallery {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
@@ -874,11 +843,41 @@
     <div class="container">
         <nav class="sidebar">
             <h1>ODHC Content Review</h1>
-            <a href="index.html" style="background: #34495e; margin-bottom: 20px;">🏠 Home</a><h2>About</h2><ul><li><a href="about-mission-vision-and-values.html">Mission, Vision, and Values</a></li><li><a href="about-services-overview.html">Services</a></li><h3>Locations</h3><ul class="subsection"><li><a href="about-locations-mankato.html">Mankato</a></li><li><a href="about-locations-shakopee.html">Shakopee</a></li><li><span class="missing-page">School-Based Centers</span></li></ul><li><a href="about-meet-the-team.html">Meet the Team</a></li><li><a href="about-news-and-events.html">News and Events</a></li><li><a href="about-careers.html">Careers</a></li><li><a href="about-faq.html">FAQ</a></li></ul><h2>Patient Resources</h2><ul><li><a href="patient-resources-patient-portal.html">Patient Portal</a></li><li><a href="patient-resources-forms.html">Forms</a></li><li><a href="patient-resources-financial-assistance.html">Financial Assistance</a></li><li><a href="patient-resources-insurance-enrollment.html">Insurance Enrollment</a></li><li><a href="patient-resources-community-resources.html">Community Resources</a></li></ul><h2><a href="contact.html">Contact</a></h2><h2><a href="donate.html">Donate</a></h2><h2>Footer pages Utility</h2><ul><li><a href="footer-pages-privacy-policy.html">Privacy Policy</a></li><li><a href="footer-pages-faq.html">FAQ</a></li><li><span class="missing-page">Annual Report</span></li></ul>
+            <h2><a href="index.html">Home</a></h2>
+            <h2>About</h2>
+            <ul>
+                <li><a href="about-mission-vision-and-values.html">Mission, Vision, and Values</a></li>
+                <li><a href="about-services-overview.html">Services</a></li>
+                <li><a href="about-meet-the-team.html">Meet the Team</a></li>
+                <li><a href="about-news-and-events.html">News and Events</a></li>
+                <li><a href="about-careers.html">Careers</a></li>
+            </ul>
+            <h2>Locations</h2>
+            <ul>
+                <li><a href="about-locations-mankato.html">Mankato</a></li>
+                <li><a href="about-locations-shakopee.html">Shakopee</a></li>
+                <li><span class="missing-page">School-Based Centers</span></li>
+            </ul>
+            <h2>Patient Resources</h2>
+            <ul>
+                <li><a href="patient-resources-patient-portal.html">Patient Portal</a></li>
+                <li><a href="patient-resources-forms.html">Forms</a></li>
+                <li><a href="patient-resources-financial-assistance.html">Financial Assistance</a></li>
+                <li><a href="patient-resources-insurance-enrollment.html">Insurance Enrollment</a></li>
+                <li><a href="patient-resources-community-resources.html">Community Resources</a></li>
+            </ul>
+            <h2><a href="contact.html">Contact</a></h2>
+            <h2><a href="donate.html">Donate</a></h2>
+            <h2>Footer pages Utility</h2>
+            <ul>
+                <li><a href="footer-pages-privacy-policy.html">Privacy Policy</a></li>
+                <li><a href="about-faq.html">FAQ</a></li>
+                <li><a href="footer-pages-annual-report.html">Annual Report</a></li>
+            </ul>
         </nav>
         <main class="main-content">
             <div class="source-links">
-                <span class="source-links-label">View on ODHC:</span>
+                <span class="source-links-label">Sourced from current website:</span>
                 <a href="https://odhc.org/dental-health/" target="_blank" rel="noopener" class="source-link-btn">Dental Health</a>
             </div>
             <div class="content-wrapper">
@@ -916,9 +915,7 @@
                 </div>
             
             <div class="strategized-content">
-                <h2>
-                    Strategized Content
-                </h2>
+                <h2><span class="cop-label">Content Organization Proposal</span><span class="cop-page-name">Dental Health</span><span class="cop-wireframe">Wireframe</span></h2>
                 
                 <h3>Affordable Dental Care for Your Whole Family</h3>
                 <p><strong>Keep your smile healthy with comprehensive dental services at two convenient locations.</strong></p>
@@ -928,7 +925,7 @@
                 </div>
                 
                 <h3>Quality Dental Care You Can Afford</h3>
-                <p>From routine cleanings to emergency care, our experienced dental team provides the services you need to maintain a healthy smile—at prices that fit your budget.</p>
+                <p>From routine cleanings to emergency care, our experienced dental team provides the services you need to maintain a healthy smile, at prices that fit your budget.</p>
                 
                 <h3>Dental Services We Offer</h3>
                 <ul>
@@ -983,14 +980,14 @@
                 <div style="text-align: center; margin-top: 30px;">
                     <div class="phone-highlight">Call (507) 388-2120 to Schedule</div>
                 </div>
+                <div class="bw-footer-disclosure" style="margin-top: 24px; padding: 16px; border-top: 1px solid #e0e0e0; font-size: 0.9rem; color: #555; background: #f8f8f8; border-radius: 4px;">
+                    <p style="margin: 0 0 8px 0;">Open Door Health Center is a Federally Qualified Health Center (FQHC). Open Door Health Center receives HHS funding and is a Health Center Program grantee under 42 U.S.C 254b, and is deemed a Public Health Service employer under 42 U.S.C. 233 (g)-(n)</p>
+                    <p style="margin: 0; font-size: 0.85rem; color: #888;">© Copyright - Open Door Health Center - powered by Enfold WordPress Theme</p>
+                </div>
             </div>
             </div>
             
-            <div class="footer-card">
-                <h2>📄 Footer Content</h2>
-                <p>Open Door Health Center is a Federally Qualified Health Center (FQHC). Open Door Health Center receives HHS funding and is a Health Center Program grantee under 42 U.S.C 254b, and is deemed a Public Health Service employer under 42 U.S.C. 233 (g)-(n)</p>
-                <p class="copyright">© Copyright - Open Door Health Center - powered by Enfold WordPress Theme</p>
-            </div>
+            
             
         </main>
     </div>

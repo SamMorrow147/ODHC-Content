@@ -51,6 +51,7 @@
 
         .sidebar h2 a {
             color: inherit;
+            font-size: 1rem;
             text-decoration: none;
             display: block;
             padding: 6px 12px 6px 0;
@@ -122,25 +123,81 @@
         
         .content-wrapper {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 1fr 1.8fr;
             gap: 30px;
-            max-width: 1800px;
+            max-width: 2400px;
             margin-bottom: 30px;
         }
         
         .content-wrapper.three-col {
-            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-columns: 1fr 1.8fr;
             max-width: 2400px;
         }
         
-        .footer-card {
-            background: white;
+        @media (max-width: 1200px) {
+            .content-wrapper { grid-template-columns: 1fr; }
+        }
+        
+        /* Content Organization Proposal (wireframe) */
+        .strategized-content {
+            background: #fff;
             padding: 30px;
             border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            border-left: 5px solid #f39c12;
-            max-width: 1800px;
+            box-shadow: none;
+            border: 2px solid #ddd;
         }
+        .strategized-content h2 {
+            color: #333;
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #ccc;
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            align-items: center;
+        }
+        .strategized-content .cop-label { font-weight: normal; }
+        .strategized-content .cop-page-name { text-align: center; }
+        .strategized-content .cop-wireframe { text-align: right; font-weight: normal; }
+        .strategized-content h3 { color: #333; font-size: 1.35rem; margin-top: 25px; margin-bottom: 12px; text-align: center; }
+        .strategized-content h4 { color: #333; font-size: 0.95rem; margin-top: 15px; margin-bottom: 8px; font-weight: 600; }
+        .strategized-content p { color: #555; line-height: 1.8; margin-bottom: 12px; font-size: 0.95rem; }
+        .strategized-content ul { margin: 15px 0; padding-left: 0; list-style: none; }
+        .strategized-content li { color: #555; margin: 10px 0; padding-left: 25px; position: relative; line-height: 1.6; }
+        .strategized-content li:before { content: "•"; position: absolute; left: 0; color: #666; font-weight: bold; font-size: 1.1rem; }
+        .strategized-content .cta-button { background: #999; color: #fff; border-color: #666; }
+        .strategized-content .cta-button:hover { background: #999; }
+        .strategized-content .cta-button.secondary { background: #999; border-color: #666; color: #333; }
+        .strategized-content .cta-button.secondary:hover { background: #999; }
+        .strategized-content .service-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin: 20px 0; }
+        .strategized-content .service-card { background: #fff; border: 2px solid #bbb; border-radius: 8px; padding: 18px; text-align: center; }
+        .strategized-content .service-card h4 { color: #333; font-size: 1rem; margin: 10px 0 8px 0; }
+        .strategized-content .service-card p { font-size: 0.85rem; color: #666; line-height: 1.5; margin: 0; }
+        .strategized-content .phone-highlight { font-size: 1.1rem; font-weight: 700; color: #333; text-align: center; margin: 14px 0 6px 0; padding: 12px; background: #f5f5f5; border-radius: 8px; border: 1px solid #ddd; }
+        .bw-header-nav { padding: 16px; background: #fff; }
+        .bw-header-nav .bw-nav-shell { margin-top: 12px; padding-top: 12px; border-top: 1px solid #e8e8e8; border: none; border-radius: 0; }
+        .bw-header-row { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+        .bw-box { border: 2px solid #bbb; border-radius: 10px; padding: 10px 12px; background: #fff; color: #333; font-size: 0.85rem; line-height: 1.2; font-weight: 600; min-height: 44px; display: flex; align-items: center; justify-content: center; text-align: center; }
+        .bw-header-nav .bw-box { min-width: 100px; font-size: 0.75rem; padding: 6px 10px; min-height: 36px; }
+        .bw-phone { font-size: 0.8rem; font-weight: 600; white-space: nowrap; }
+        .bw-pill { border: 3px solid #666; border-radius: 28px; padding: 10px 18px; background: #f5f5f5; color: #333; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase; font-size: 0.8rem; min-height: 44px; display: flex; align-items: center; justify-content: center; white-space: nowrap; }
+        .bw-pill.alt { border-color: #999; }
+        .bw-nav-shell { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+        .bw-nav-item { padding: 8px 10px; border-radius: 10px; border: 2px solid #ddd; font-weight: 700; color: #333; font-size: 0.85rem; background: #f5f5f5; }
+        .bw-nav-has-dropdown { position: relative; }
+        .bw-nav-item.bw-nav-has-dropdown { border: none; border-radius: 0; padding: 0; background: transparent; }
+        .bw-nav-trigger { font: inherit; color: inherit; cursor: pointer; padding: 8px 10px; border-radius: 10px; border: 2px solid #ddd; font-weight: 700; font-size: 0.85rem; background: #f5f5f5; display: flex; align-items: center; gap: 4px; }
+        .bw-nav-trigger:hover { background: #ebebeb; }
+        .bw-nav-chevron { font-size: 0.7em; opacity: 0.8; }
+        .bw-nav-dropdown { display: none; position: absolute; top: 100%; left: 0; margin-top: 4px; min-width: 220px; background: #fff; border: 2px solid #bbb; border-radius: 10px; padding: 8px 0; box-shadow: 0 4px 12px rgba(0,0,0,0.12); z-index: 50; }
+        .bw-nav-has-dropdown:hover .bw-nav-dropdown, .bw-nav-has-dropdown.is-open .bw-nav-dropdown, .bw-nav-has-dropdown:focus-within .bw-nav-dropdown { display: block; }
+        .bw-nav-dropdown a, .bw-nav-dropdown .bw-nav-disabled { display: block; padding: 10px 14px; font-size: 0.85rem; color: #333; text-decoration: none; font-weight: 600; }
+        .bw-nav-dropdown a:hover { background: #f0f0f0; }
+        .bw-nav-link { text-decoration: none; color: inherit; }
+        .bw-nav-search { margin-left: auto; display: flex; align-items: center; gap: 10px; }
+        .bw-search { width: 200px; height: 36px; border: 2px solid #bbb; border-radius: 18px; display: flex; align-items: center; justify-content: center; color: #666; font-weight: 600; background: #fff; }
+        .bw-slideshow { border: 2px solid #bbb; border-radius: 14px; background: #fff; padding: 16px; margin: 14px 0 18px 0; text-align: left; }
+        .bw-slideshow-image { min-height: 200px; margin-bottom: 16px; background: #f0f0f0; border: 2px dashed #bbb; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #999; font-size: 0.9rem; }
         
         .redirect-card {
             background: #f8f9fa;
@@ -597,6 +654,32 @@
             text-decoration: underline;
         }
         
+        .cta-button {
+            display: inline-block;
+            background: #2c3e50;
+            color: white;
+            padding: 12px 28px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            margin: 10px 10px 10px 0;
+            border: 2px solid #1a252f;
+            transition: background 0.2s, color 0.2s;
+        }
+        .cta-button:hover {
+            background: #34495e;
+            color: white;
+        }
+        .cta-button.secondary {
+            background: #fff;
+            color: #2c3e50;
+            border: 2px solid #2c3e50;
+        }
+        .cta-button.secondary:hover {
+            background: #f5f5f5;
+        }
+        
         .source-links {
             display: flex;
             align-items: center;
@@ -661,30 +744,6 @@
             word-break: break-all;
             font-size: 0.95rem;
         }
-        
-        .footer-card h2 {
-            color: #d68910;
-            font-size: 1.3rem;
-            margin-bottom: 15px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid #f39c12;
-        }
-        
-        .footer-card p {
-            color: #555;
-            font-size: 0.95rem;
-            line-height: 1.7;
-            margin: 12px 0;
-        }
-        
-        .footer-card .copyright {
-            color: #888;
-            font-size: 0.85rem;
-            margin-top: 20px;
-            padding-top: 15px;
-            border-top: 1px solid #eee;
-        }
-        
         .image-gallery {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
@@ -743,45 +802,254 @@
     <div class="container">
         <nav class="sidebar">
             <h1>ODHC Content Review</h1>
-            <a href="index.html" style="background: #34495e; margin-bottom: 20px;">🏠 Home</a><h2>About</h2><ul><li><a href="about-mission-vision-and-values.html">Mission, Vision, and Values</a></li><li><a href="about-services-overview.html">Services</a></li><h3>Locations</h3><ul class="subsection"><li><a href="about-locations-mankato.html">Mankato</a></li><li><a href="about-locations-shakopee.html">Shakopee</a></li><li><span class="missing-page">School-Based Centers</span></li></ul><li><a href="about-meet-the-team.html">Meet the Team</a></li><li><a href="about-news-and-events.html">News and Events</a></li><li><a href="about-careers.html">Careers</a></li><li><a href="about-faq.html">FAQ</a></li></ul><h2>Patient Resources</h2><ul><li><a href="patient-resources-patient-portal.html">Patient Portal</a></li><li><a href="patient-resources-forms.html">Forms</a></li><li><a href="patient-resources-financial-assistance.html">Financial Assistance</a></li><li><a href="patient-resources-insurance-enrollment.html">Insurance Enrollment</a></li><li><a href="patient-resources-community-resources.html">Community Resources</a></li></ul><h2><a href="contact.html">Contact</a></h2><h2><a href="donate.html">Donate</a></h2><h2>Footer pages Utility</h2><ul><li><a href="footer-pages-privacy-policy.html">Privacy Policy</a></li><li><a href="footer-pages-faq.html">FAQ</a></li><li><span class="missing-page">Annual Report</span></li></ul>
+            <h2><a href="index.html">Home</a></h2>
+            <h2>About</h2>
+            <ul>
+                <li><a href="about-mission-vision-and-values.html">Mission, Vision, and Values</a></li>
+                <li><a href="about-services-overview.html">Services</a></li>
+                <li><a href="about-meet-the-team.html">Meet the Team</a></li>
+                <li><a href="about-news-and-events.html">News and Events</a></li>
+                <li><a href="about-careers.html">Careers</a></li>
+            </ul>
+            <h2>Locations</h2>
+            <ul>
+                <li><a href="about-locations-mankato.html">Mankato</a></li>
+                <li><a href="about-locations-shakopee.html">Shakopee</a></li>
+                <li><span class="missing-page">School-Based Centers</span></li>
+            </ul>
+            <h2>Patient Resources</h2>
+            <ul>
+                <li><a href="patient-resources-patient-portal.html">Patient Portal</a></li>
+                <li><a href="patient-resources-forms.html">Forms</a></li>
+                <li><a href="patient-resources-financial-assistance.html">Financial Assistance</a></li>
+                <li><a href="patient-resources-insurance-enrollment.html">Insurance Enrollment</a></li>
+                <li><a href="patient-resources-community-resources.html">Community Resources</a></li>
+            </ul>
+            <h2><a href="contact.html">Contact</a></h2>
+            <h2><a href="donate.html">Donate</a></h2>
+            <h2>Footer pages Utility</h2>
+            <ul>
+                <li><a href="footer-pages-privacy-policy.html">Privacy Policy</a></li>
+                <li><a href="about-faq.html">FAQ</a></li>
+                <li><a href="footer-pages-annual-report.html">Annual Report</a></li>
+            </ul>
         </nav>
         <main class="main-content">
             <div class="source-links">
-                <span class="source-links-label">View on ODHC:</span>
+                <span class="source-links-label">Sourced from current website:</span>
                 <a href="https://odhc.org/patient-portal/" target="_blank" rel="noopener" class="source-link-btn">Patient Portal</a>
             </div>
             <div class="content-wrapper">
                 <div class="content-box">
-                    <h1>Patient Resources &gt; Patient Portal (SOURCED)</h1>
-<p><em>Content from ODHC website</em></p>
-<hr />
-<h2>Patient Portal</h2>
-<h3>Access Your Health Information Online</h3>
-<p>The Open Door Health Center Patient Portal gives you secure, convenient access to your health information anytime, anywhere.</p>
-<h3>What You Can Do</h3>
-<p>With the patient portal, you can:
-- View your medical records and test results
-- Request prescription refills
-- Schedule appointments
-- Communicate with your care team
-- Update your contact information
-- View billing statements
-- Review visit summaries</p>
-<h3>How to Access</h3>
-<p>To access the patient portal, you'll need to register for an account. Contact our office at <strong>(507) 388-2120</strong> to get started.</p>
-<h3>Secure and Confidential</h3>
-<p>Your health information is protected with industry-standard security measures. Your portal access is private and confidential.</p>
-<h3>Need Help?</h3>
-<p>If you have questions about the patient portal or need assistance accessing your account, please call us at (507) 388-2120 and our staff will be happy to help you.</p>
-<hr />
+                    <h1>Patient Resources &gt; Patient Portal</h1>
+                    <p><em>Content from ODHC website</em></p>
+                    <hr />
+
+                    <h2>FollowMyHealth</h2>
+                    <h2>Patient Portal</h2>
+
+                    <h3>What is FollowMyHealth?</h3>
+                    <p>FollowMyHealth is an online tool that gives you anywhere, anytime access to your personal health records. This allows you to take a proactive role in managing your care. Many healthcare providers and physicians use FollowMyHealth as their main engagement platform. While your platform may have a different name, the technology is the same. FollowMyHealth is available online 24 hours a day, 7 days a week via any computer, tablet, or smartphone.</p>
+
+                    <h3>With FollowMyHealth You Can:</h3>
+                    <ul>
+                        <li>Review your medical records online in a safe, secure environment</li>
+                        <li>Communicate privately with providers via secure messaging</li>
+                        <li>View test and lab results</li>
+                        <li>Read medical notes from your provider</li>
+                        <li>Update your health information (allergies, medications, conditions, etc.)</li>
+                    </ul>
+
+                    <h3>Portal Disclosure Statement:</h3>
+                    <p>The FollowMyHealth patient portal will not have any dental records or dental health history available. If you wish to obtain a copy of your dental records you may contact Open Door for a Release of Information (ROI) form that will initiate the process. Open Door Health Center has 30 days to release the records once the ROI is completed.</p>
+
+                    <div style="margin-top: 20px;">
+                        <a href="https://followmyhealth.my.site.com/support/s/" target="_blank" rel="noopener" class="cta-button" title="https://followmyhealth.my.site.com/support/s/">Follow My Health FAQ</a>
+                        <a href="assets/pdfs/FMH_portal_welcome_instructions.pdf" target="_blank" rel="noopener" class="cta-button secondary" title="assets/pdfs/FMH_portal_welcome_instructions.pdf">FMH Portal Welcome Instructions</a>
+                        <a href="https://signnow.com/s/YM6CUxwa" target="_blank" rel="noopener" class="cta-button secondary" title="https://signnow.com/s/YM6CUxwa">Request Access</a>
+                    </div>
                 </div>
-            <div class="footer-card">
-                <h2>📄 Footer Content</h2>
-                <p>Open Door Health Center is a Federally Qualified Health Center (FQHC). Open Door Health Center receives HHS funding and is a Health Center Program grantee under 42 U.S.C 254b, and is deemed a Public Health Service employer under 42 U.S.C. 233 (g)-(n)</p>
-                <p class="copyright">© Copyright - Open Door Health Center - powered by Enfold WordPress Theme</p>
+
+                <div class="strategized-content">
+                    <h2><span class="cop-label">Content Organization Proposal</span><span class="cop-page-name">Patient Portal</span><span class="cop-wireframe">Wireframe</span></h2>
+
+                    <div class="bw-header-nav" style="margin: 18px 0 22px 0;">
+                        <div class="bw-header-row" aria-hidden="true">
+                            <div class="bw-box">ODHC LOGO</div>
+                            <span class="bw-phone">(507) 388-2120</span>
+                            <div style="flex: 1;"></div>
+                            <div class="bw-pill">Portal Login</div>
+                            <div class="bw-pill alt">Pay My Bill</div>
+                        </div>
+                        <div class="bw-nav-shell" aria-label="Main navigation">
+                            <div class="bw-nav-item bw-nav-has-dropdown">
+                                <button type="button" class="bw-nav-trigger" aria-expanded="false" aria-haspopup="true">About <span class="bw-nav-chevron" aria-hidden="true">▾</span></button>
+                                <div class="bw-nav-dropdown">
+                                    <a href="about-mission-vision-and-values.html">Mission, Vision, and Values</a>
+                                    <a href="about-services-overview.html">Services</a>
+                                    <a href="about-meet-the-team.html">Meet the Team</a>
+                                    <a href="about-news-and-events.html">News and Events</a>
+                                    <a href="about-careers.html">Careers</a>
+                                </div>
+                            </div>
+                            <div class="bw-nav-item bw-nav-has-dropdown">
+                                <button type="button" class="bw-nav-trigger" aria-expanded="false" aria-haspopup="true">Locations <span class="bw-nav-chevron" aria-hidden="true">▾</span></button>
+                                <div class="bw-nav-dropdown">
+                                    <a href="about-locations-mankato.html">Mankato</a>
+                                    <a href="about-locations-shakopee.html">Shakopee</a>
+                                </div>
+                            </div>
+                            <div class="bw-nav-item bw-nav-has-dropdown">
+                                <button type="button" class="bw-nav-trigger" aria-expanded="false" aria-haspopup="true">Patient Resources <span class="bw-nav-chevron" aria-hidden="true">▾</span></button>
+                                <div class="bw-nav-dropdown">
+                                    <a href="patient-resources-patient-portal.html">Patient Portal</a>
+                                    <a href="patient-resources-forms.html">Forms</a>
+                                    <a href="patient-resources-financial-assistance.html">Financial Assistance</a>
+                                    <a href="patient-resources-insurance-enrollment.html">Insurance Enrollment</a>
+                                    <a href="patient-resources-community-resources.html">Community Resources</a>
+                                </div>
+                            </div>
+                            <a href="contact.html" class="bw-nav-item bw-nav-link">Contact</a>
+                            <a href="donate.html" class="bw-nav-item bw-nav-link">Donate</a>
+                            <div class="bw-nav-search">
+                                <div class="bw-search">Search…</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bw-slideshow">
+                        <div class="bw-slideshow-image" aria-hidden="true">Hero image</div>
+                        <h3 style="margin-top: 0;">FollowMyHealth Patient Portal</h3>
+                        <p><strong>Access your personal health records anytime, anywhere.</strong> FollowMyHealth is an online tool that gives you 24/7 access via any computer, tablet, or smartphone. Take a proactive role in managing your care.</p>
+                        <div style="text-align: left; margin: 18px 0 6px 0;">
+                            <a href="https://followmyhealth.my.site.com/support/s/" target="_blank" rel="noopener" class="cta-button">Follow My Health FAQ</a>
+                            <a href="assets/pdfs/FMH_portal_welcome_instructions.pdf" target="_blank" rel="noopener" class="cta-button secondary">FMH Portal Welcome Instructions</a>
+                            <a href="https://signnow.com/s/YM6CUxwa" target="_blank" rel="noopener" class="cta-button secondary">Request Access</a>
+                        </div>
+                    </div>
+
+                    <h3>What is FollowMyHealth?</h3>
+                    <p>FollowMyHealth is an online tool that gives you anywhere, anytime access to your personal health records. Many healthcare providers use it as their main engagement platform. While your platform may have a different name, the technology is the same. Available 24/7 via any computer, tablet, or smartphone.</p>
+
+                    <h3>With FollowMyHealth You Can:</h3>
+                    <div class="service-grid" style="grid-template-columns: 1fr 1fr;">
+                        <div class="service-card" style="text-align: left;">
+                            <ul style="margin: 0;">
+                                <li>Review your medical records online in a safe, secure environment</li>
+                                <li>Communicate privately with providers via secure messaging</li>
+                                <li>View test and lab results</li>
+                            </ul>
+                        </div>
+                        <div class="service-card" style="text-align: left;">
+                            <ul style="margin: 0;">
+                                <li>Read medical notes from your provider</li>
+                                <li>Update your health information (allergies, medications, conditions, etc.)</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <h3>Portal Disclosure Statement</h3>
+                    <p>The FollowMyHealth patient portal does not include dental records or dental health history. To obtain a copy of your dental records, contact Open Door for a Release of Information (ROI) form. ODHC has 30 days to release the records once the ROI is completed.</p>
+
+                    <h3>Get Started</h3>
+                    <div class="service-grid" style="grid-template-columns: 1fr;">
+                        <div class="service-card" style="text-align: center;">
+                            <p>Need help or want to request portal access? Use the links below.</p>
+                            <div style="text-align: center; margin-top: 16px;">
+                                <a href="https://followmyhealth.my.site.com/support/s/" target="_blank" rel="noopener" class="cta-button">Follow My Health FAQ</a>
+                                <a href="assets/pdfs/FMH_portal_welcome_instructions.pdf" target="_blank" rel="noopener" class="cta-button secondary">FMH Portal Welcome Instructions</a>
+                                <a href="https://signnow.com/s/YM6CUxwa" target="_blank" rel="noopener" class="cta-button secondary">Request Access</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h3>Footer</h3>
+                    <div class="service-card" style="padding: 25px;">
+                        <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px;">
+                            <div>
+                                <h4>About</h4>
+                                <div style="text-align: left; font-size: 0.85rem; line-height: 1.6;">
+                                    <a href="about-mission-vision-and-values.html">Mission, Vision, and Values</a><br>
+                                    <a href="about-services-overview.html">Services</a><br>
+                                    <a href="about-meet-the-team.html">Meet the Team</a><br>
+                                    <a href="about-news-and-events.html">News and Events</a><br>
+                                </div>
+                            </div>
+                            <div>
+                                <h4>Locations</h4>
+                                <div style="text-align: left; font-size: 0.85rem; line-height: 1.6;">
+                                    <a href="about-locations-mankato.html">Mankato</a><br>
+                                    <a href="about-locations-shakopee.html">Shakopee</a><br>
+                                    <span>School-Based Centers</span>
+                                </div>
+                            </div>
+                            <div>
+                                <h4>Patient Resources</h4>
+                                <div style="text-align: left; font-size: 0.85rem; line-height: 1.6;">
+                                    <a href="patient-resources-patient-portal.html">Patient Portal</a><br>
+                                    <a href="patient-resources-forms.html">Forms</a><br>
+                                    <a href="patient-resources-financial-assistance.html">Financial Assistance</a><br>
+                                    <a href="patient-resources-insurance-enrollment.html">Insurance Enrollment</a><br>
+                                    <a href="patient-resources-community-resources.html">Community Resources</a>
+                                </div>
+                            </div>
+                            <div>
+                                <h4>Contact &amp; More</h4>
+                                <div style="text-align: left; font-size: 0.85rem; line-height: 1.6;">
+                                    <a href="contact.html">Contact</a><br>
+                                    <a href="donate.html">Donate</a><br>
+                                    <a href="about-careers.html">Careers</a><br>
+                                    <a href="footer-pages-privacy-policy.html">Privacy Policy</a><br>
+                                    <a href="about-faq.html">FAQ</a><br>
+                                    <a href="footer-pages-annual-report.html">Annual Report</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bw-footer-disclosure" style="margin-top: 24px; padding: 16px; border-top: 1px solid #e0e0e0; font-size: 0.9rem; color: #555; background: #f8f8f8; border-radius: 4px;">
+                        <p style="margin: 0 0 8px 0;">Open Door Health Center is a Federally Qualified Health Center (FQHC). Open Door Health Center receives HHS funding and is a Health Center Program grantee under 42 U.S.C 254b, and is deemed a Public Health Service employer under 42 U.S.C. 233 (g)-(n)</p>
+                        <p style="margin: 0; font-size: 0.85rem; color: #888;">© Copyright - Open Door Health Center - powered by Enfold WordPress Theme</p>
+                    </div>
+                </div>
             </div>
             
         </main>
     </div>
+
+    <script>
+    (function() {
+        var shell = document.querySelector('.bw-nav-shell');
+        if (!shell) return;
+        shell.querySelectorAll('.bw-nav-trigger').forEach(function(btn) {
+            btn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                var parent = this.closest('.bw-nav-has-dropdown');
+                var isOpen = parent.classList.toggle('is-open');
+                this.setAttribute('aria-expanded', isOpen);
+                shell.querySelectorAll('.bw-nav-has-dropdown').forEach(function(d) {
+                    if (d !== parent) { d.classList.remove('is-open'); var t = d.querySelector('.bw-nav-trigger'); if (t) t.setAttribute('aria-expanded', 'false'); }
+                });
+            });
+        });
+        document.addEventListener('click', function(e) {
+            if (!shell) return;
+            if (e.target.closest('.bw-nav-dropdown a')) return;
+            shell.querySelectorAll('.bw-nav-has-dropdown.is-open').forEach(function(d) {
+                d.classList.remove('is-open');
+                var t = d.querySelector('.bw-nav-trigger'); if (t) t.setAttribute('aria-expanded', 'false');
+            });
+        });
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                if (!shell) return;
+                shell.querySelectorAll('.bw-nav-has-dropdown.is-open').forEach(function(d) {
+                    d.classList.remove('is-open');
+                    var t = d.querySelector('.bw-nav-trigger'); if (t) t.setAttribute('aria-expanded', 'false');
+                });
+            }
+        });
+    })();
+    </script>
 </body>
 </html>
