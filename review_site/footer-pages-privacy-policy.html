@@ -169,7 +169,8 @@
         .bw-nav-dropdown a, .bw-nav-dropdown .bw-nav-disabled { display: block; padding: 10px 14px; font-size: 0.85rem; color: #333; text-decoration: none; font-weight: 600; }
         .bw-nav-dropdown a:hover { background: #f0f0f0; }
         .bw-nav-disabled { color: #999; cursor: not-allowed; font-style: italic; }
-        .bw-nav-link { text-decoration: none; color: inherit; }
+        .bw-nav-link { text-decoration: none; color: #333; }
+        a.bw-nav-item { color: #333; }
         .bw-nav-search { margin-left: auto; display: flex; align-items: center; gap: 10px; }
         .bw-search { width: min(200px, 100%); height: 36px; border: 2px solid #bbb; border-radius: 18px; display: flex; align-items: center; justify-content: center; color: #666; font-weight: 600; background: #fff; }
         .bw-slideshow { border: 2px solid #bbb; border-radius: 14px; background: #fff; padding: 16px; margin: 14px 0 18px 0; text-align: left; }
@@ -597,9 +598,10 @@
         
         .content-box h1 {
             color: #2c3e50;
+            font-size: 1.35rem;
             margin-bottom: 20px;
             padding-bottom: 15px;
-            border-bottom: 3px solid #3498db;
+            border-bottom: 3px solid #ccc;
         }
         
         .content-box h2 {
@@ -885,7 +887,7 @@
                 <h2><span class="cop-label">Content Organization Proposal</span><span class="cop-page-name">Privacy Policy</span><span class="cop-wireframe">Wireframe</span></h2>
                 <div class="bw-header-nav" style="margin: 18px 0 22px 0;">
                     <div class="bw-header-row" aria-hidden="true">
-                        <div class="bw-box">ODHC LOGO</div>
+                        <a href="index.html" style="text-decoration: none;"><div class="bw-box">ODHC LOGO</div></a>
                         <span class="bw-phone">(507) 388-2120</span>
                         <div style="flex: 1;"></div>
                         <div class="bw-pill">Portal Login</div>
@@ -977,11 +979,55 @@
 <p><strong>CHANGES TO THIS NOTICE:</strong> The effective date of this notice is October 28, 2019. We reserve the right to change this notice. We reserve the right to make the revised or changed notice effective for medical information we already have about you, as well as any information we receive in the future. If the terms of this notice are changed, ODHC will provide you with a revised notice upon request, and we will post the revised notice on our website and in designated locations at ODHC.</p>
 <p><strong>COMPLAINTS or QUESTIONS:</strong> If you believe your privacy rights have been violated, you may file a complaint with us or with the Secretary of the Department of Health and Human Services. To file a complaint with ODHC, or to ask a question about this notice, contact the Compliance Manager. All complaints must be submitted in writing. You will not be penalized for filing a complaint.</p>
 <p><strong>OTHER USES &amp; DISCLOSURES OF PROTECTED HEALTH INFORMATION:</strong> We are required to obtain a written authorization from you for most uses and disclosures of psychotherapy notes, uses and disclosures of protected health information for marketing purposes and disclosures that constitute a sale of protected health information. Except as described in this Notice, ODHC will not use or disclose your protected health information without a specific written authorization from you. If you provide us with this written authorization to use or disclose medical information about you may revoke that authorization, in writing, at any time. If you revoke your authorization, we will no longer use or disclose medical information about you for the reasons covered by your written authorization, except to the extent we have already relied on your authorization. We are unable to take back any disclosures we have already made with your permission, and we are required to retain our records of the care that we provided you.</p>
+
+                <h3>Footer</h3>
+                <div class="service-card" style="padding: 25px;">
+                    <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px;">
+                        <div>
+                            <h4>About</h4>
+                            <div style="text-align: left; font-size: 0.85rem; line-height: 1.6;">
+                                <a href="about-mission-vision-and-values.html">Mission, Vision, and Values</a><br>
+                                <a href="about-services-overview.html">Services</a><br>
+                                <a href="about-meet-the-team.html">Meet the Team</a><br>
+                                <a href="about-news-and-events.html">News and Events</a><br>
+                            </div>
+                        </div>
+                        <div>
+                            <h4>Locations</h4>
+                            <div style="text-align: left; font-size: 0.85rem; line-height: 1.6;">
+                                <a href="about-locations-mankato.html">Mankato</a><br>
+                                <a href="about-locations-shakopee.html">Shakopee</a><br>
+                                <span>School-Based Centers</span>
+                            </div>
+                        </div>
+                        <div>
+                            <h4>Patient Resources</h4>
+                            <div style="text-align: left; font-size: 0.85rem; line-height: 1.6;">
+                                <a href="patient-resources-patient-portal.html">Patient Portal</a><br>
+                                <a href="patient-resources-forms.html">Forms</a><br>
+                                    <a href="patient-resources-financial-assistance.html">Financial Assistance</a><br>
+                                    <a href="patient-resources-insurance-enrollment.html">Insurance Enrollment</a><br>
+                                    <a href="patient-resources-community-resources.html">Community Resources</a>
+                            </div>
+                        </div>
+                        <div>
+                            <h4>Contact &amp; More</h4>
+                            <div style="text-align: left; font-size: 0.85rem; line-height: 1.6;">
+                                <a href="contact.html">Contact</a><br>
+                                <a href="donate.html">Donate</a><br>
+                                <a href="about-careers.html">Careers</a><br>
+                                <a href="footer-pages-privacy-policy.html">Privacy Policy</a><br>
+                                <a href="about-faq.html">FAQ</a><br>
+                                <a href="footer-pages-annual-report.html">Annual Report</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <div class="bw-footer-disclosure" style="margin-top: 24px; padding: 16px; border-top: 1px solid #e0e0e0; font-size: 1rem; color: #555; background: #f8f8f8; border-radius: 4px;">
                     <p style="margin: 0 0 8px 0;">Open Door Health Center is a Federally Qualified Health Center (FQHC). Open Door Health Center receives HHS funding and is a Health Center Program grantee under 42 U.S.C 254b, and is deemed a Public Health Service employer under 42 U.S.C. 233 (g)-(n)</p>
                     <p style="margin: 0; font-size: 0.85rem; color: #888;">© Copyright - Open Door Health Center</p>
+                </div>
             </div>
-        </div>
             </div>
             
     <div class="redirect-card">

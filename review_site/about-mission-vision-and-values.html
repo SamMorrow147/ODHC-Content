@@ -428,7 +428,8 @@
         .bw-nav-dropdown a, .bw-nav-dropdown .bw-nav-disabled { display: block; padding: 10px 14px; font-size: 0.85rem; color: #333; text-decoration: none; font-weight: 600; }
         .bw-nav-dropdown a:hover { background: #f0f0f0; }
         .bw-nav-disabled { color: #999; cursor: not-allowed; font-style: italic; }
-        .bw-nav-link { text-decoration: none; color: inherit; }
+        .bw-nav-link { text-decoration: none; color: #333; }
+        a.bw-nav-item { color: #333; }
         .bw-nav-search {
             margin-left: auto;
             display: flex;
@@ -932,9 +933,10 @@
         
         .content-box h1 {
             color: #2c3e50;
+            font-size: 1.35rem;
             margin-bottom: 20px;
             padding-bottom: 15px;
-            border-bottom: 3px solid #3498db;
+            border-bottom: 3px solid #ccc;
         }
         
         .content-box h2 {
@@ -1224,7 +1226,7 @@
                 <h2><span class="cop-label">Content Organization Proposal</span><span class="cop-page-name">Mission, Vision, and Values</span><span class="cop-wireframe">Wireframe</span></h2>
 
                 <div class="bw-header-nav" style="margin: 18px 0 22px 0;">
-                    <div class="bw-header-row" aria-hidden="true">                        <div class="bw-box">ODHC LOGO</div>
+                    <div class="bw-header-row" aria-hidden="true">                        <a href="index.html" style="text-decoration: none;"><div class="bw-box">ODHC LOGO</div></a>
                         <span class="bw-phone">(507) 388-2120</span>
                         <div style="flex: 1;"></div>
                         <div class="bw-pill">Portal Login</div>

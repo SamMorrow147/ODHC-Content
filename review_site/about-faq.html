@@ -68,7 +68,8 @@
         .bw-nav-dropdown a, .bw-nav-dropdown .bw-nav-disabled { display: block; padding: 10px 14px; font-size: 0.85rem; color: #333; text-decoration: none; font-weight: 600; }
         .bw-nav-dropdown a:hover { background: #f0f0f0; }
         .bw-nav-disabled { color: #999; cursor: not-allowed; font-style: italic; }
-        .bw-nav-link { text-decoration: none; color: inherit; }
+        .bw-nav-link { text-decoration: none; color: #333; }
+        a.bw-nav-item { color: #333; }
         .bw-nav-search { margin-left: auto; display: flex; align-items: center; gap: 10px; }
         .bw-search { width: 200px; height: 36px; border: 2px solid #bbb; border-radius: 18px; display: flex; align-items: center; justify-content: center; color: #666; font-weight: 600; background: #fff; }
         .bw-slideshow { border: 2px solid #bbb; border-radius: 14px; background: #fff; padding: 16px 16px 12px 16px; margin: 14px 0 18px 0; text-align: left; }
@@ -79,7 +80,8 @@
         .bw-dot { width: 10px; height: 10px; border: 2px solid #bbb; border-radius: 50%; background: #fff; }
         .bw-dot.active { background: #666; }
         .content-box { background: white; padding: 40px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
-        .content-box h1 { color: #2c3e50; margin-bottom: 20px; padding-bottom: 15px; border-bottom: 3px solid #3498db; }
+        .content-box h1 { color: #2c3e50;
+            font-size: 1.35rem; margin-bottom: 20px; padding-bottom: 15px; border-bottom: 3px solid #ccc; }
         .content-box h2 { color: #34495e; margin-top: 30px; margin-bottom: 15px; }
         .content-box h3 { color: #555; margin-top: 20px; margin-bottom: 10px; }
         .content-box a { color: #3498db; text-decoration: none; }
@@ -245,7 +247,7 @@
                     <h2><span class="cop-label">Content Organization Proposal</span><span class="cop-page-name">FAQ</span><span class="cop-wireframe">Wireframe</span></h2>
 
                     <div class="bw-header-nav" style="margin: 18px 0 22px 0;">
-                        <div class="bw-header-row" aria-hidden="true">                            <div class="bw-box">ODHC LOGO</div>
+                        <div class="bw-header-row" aria-hidden="true">                            <a href="index.html" style="text-decoration: none;"><div class="bw-box">ODHC LOGO</div></a>
                             <span class="bw-phone">(507) 388-2120</span>
                             <div style="flex: 1;"></div>
                             <div class="bw-pill">Portal Login</div>
